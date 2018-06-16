@@ -50,11 +50,13 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
+Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c \
 Src/main.c \
 Src/stm32f1xx_it.c \
 Src/stm32f1xx_hal_msp.c \
 Src/system_stm32f1xx.c \
-Src/spi.c
+Src/spi.c \
+Src/UART_config.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -140,7 +142,7 @@ LIBDIR =
 LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 
 # default action: build all
-all: bin flash
+all: bin
 
 # Prettify output
 V = 0
@@ -193,7 +195,7 @@ clean:
 
 bin: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
 
-flash:
+flash: bin
 	@echo "[FLASH] flashing $(BUILD_DIR)/$(TARGET).bin to 0x8000000"
 	st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000
 
