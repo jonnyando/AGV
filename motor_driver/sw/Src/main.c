@@ -1,4 +1,5 @@
 #include "main.h"
+// #include "syscalls.h"
 #include "stm32f1xx_hal.h"
 #include "spi.h"
 #include "UART_config.h"
@@ -11,6 +12,27 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 
+// int _write(int file, char *ptr, int len)
+// {
+// 	int DataIdx;
+//
+// 	for (DataIdx = 0; DataIdx < len; DataIdx++)
+// 	{
+// 	   ITM_SendChar( *ptr++ );
+// 	}
+//
+//     GPIOB->BSRR = GPIO_BSRR_BS2;
+// 	return len;
+// }
+
+int __io_putchar(int ch)
+{
+    uint8_t ch8 = ch;
+    transmit_uart2((uint8_t*)&ch8);
+    // HAL_UART_Transmit(&huart3,(uint8_t *)&ch8,1,HAL_MAX_DELAY);
+    return ch;
+}
+
 int main(void)
 {
 
@@ -19,56 +41,29 @@ int main(void)
     SystemClock_Config();
 
     MX_GPIO_Init();
-    MX_USART2_UART_Init();
+    // MX_USART2_UART_Init();
     SPI1_setup();
-    // setup_uart3();
+    setup_uart2();
+    setup_uart3();
 
-	// printf("Status Register: %u\n", (SPI1->SR));
-    HAL_UART_Transmit(&huart3, "USART3->BRR:\t", 13, 100);
-    print_reg(&huart3, USART3->BRR, 16);
-    HAL_UART_Transmit(&huart3, "USART3->CR1:\t", 13, 100);
-    print_reg(&huart3, USART3->CR1, 16);
-    HAL_UART_Transmit(&huart3, "USART3->CR2:\t", 13, 100);
-    print_reg(&huart3, USART3->CR2, 16);
-    HAL_UART_Transmit(&huart3, "USART3->CR3:\t", 13, 100);
-    print_reg(&huart3, USART3->CR3, 16);
-    HAL_UART_Transmit(&huart3, "RCC->APB1ENR:\t", 14, 100);
-    print_reg(&huart3, RCC->APB1ENR, 32);
-    HAL_UART_Transmit(&huart3, "RCC->APB2ENR:\t", 14, 100);
-    print_reg(&huart3, RCC->APB2ENR, 32);
-    HAL_UART_Transmit(&huart3, "GPIOA->CRL:\t", 12, 100);
-    print_reg(&huart3, GPIOA->CRL, 32);
-    HAL_UART_Transmit(&huart3, "GPIOA->CRH:\t", 12, 100);
-    print_reg(&huart3, GPIOA->CRH, 32);
-    HAL_UART_Transmit(&huart3, "GPIOB->CRH:\t", 12, 100);
-    print_reg(&huart3, GPIOB->CRH, 32);
-    HAL_UART_Transmit(&huart3, "SPI1->CR1:\t", 11, 100);
-    print_reg(&huart3, SPI1->CR1, 16);
-    HAL_UART_Transmit(&huart3, "SPI1->CR2:\t", 11, 100);
-    print_reg(&huart3, SPI1->CR2, 16);
-    HAL_UART_Transmit(&huart3, "SPI1->I2SCFGR:\t", 15, 100);
-    print_reg(&huart3, SPI1->I2SCFGR, 16);
-    HAL_UART_Transmit(&huart3, "\n", 1, 100);
+    printf("USART2->BRR\t");    print_reg(USART2->BRR,   32);
+    printf("USART2->CR1\t");    print_reg(USART2->CR1,   32);
+    printf("USART2->CR2\t");    print_reg(USART2->CR2,   32);
+    printf("USART2->CR3\t");    print_reg(USART2->CR3,   32);
+    printf("RCC->APB1ENR\t");   print_reg(RCC->APB1ENR,  32);
+    printf("RCC->APB2ENR\t");   print_reg(RCC->APB2ENR,  32);
+    printf("GPIOA->CRL\t");     print_reg(GPIOA->CRL,    32);
+    printf("GPIOA->CRH\t");     print_reg(GPIOA->CRH,    32);
+    printf("GPIOB->CRH\t");     print_reg(GPIOB->CRH,    32);
+    printf("SPI1->CR1\t");      print_reg(SPI1->CR1,     16);
+    printf("SPI1->CR2\t");      print_reg(SPI1->CR2,     16);
+    printf("SPI1->I2SCFGR\t");  print_reg(SPI1->I2SCFGR, 16);
 
-
-    while (1)
-    {
-        // HAL_Delay(100);
-        // HAL_UART_Transmit(&huart3, &data, 4, 1000);
-        // transmit_uart3();
-        // GPIOB->BSRR = GPIO_BSRR_BS2;
-        // SPI transmit:
-        SPI1_Transfer(0xCA1B);
-        // HAL_UART_Transmit(&huart3, "Sending...", 10, 100);
-        // SPI1_Transfer(0xF8);
-
-        // HAL_UART_Transmit(&huart3, "done\n", 5, 100);
-        // HAL_Delay(1000);
-        // GPIOB->BSRR = GPIO_BSRR_BR2;
+    while (1){
+        uint16_t command = 0xCA1B;
+        printf("printing: %d", command);
+        SPI1_Transfer(command);
         HAL_Delay(1000);
-        // printf("words\n");
-        // test_func();
-
     }
 
 }
@@ -79,7 +74,6 @@ int main(void)
 */
 void SystemClock_Config(void)
 {
-
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
@@ -95,7 +89,6 @@ void SystemClock_Config(void)
     {
         _Error_Handler(__FILE__, __LINE__);
     }
-
     /**Initializes the CPU, AHB and APB busses clocks
     */
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -109,43 +102,40 @@ void SystemClock_Config(void)
     {
         _Error_Handler(__FILE__, __LINE__);
     }
-
     /**Configure the Systick interrupt time
     */
     HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
-
     /**Configure the Systick
     */
     HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
-
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
 /* USART2 init function */
-static void MX_USART2_UART_Init(void)
-{
-    __HAL_RCC_USART3_CLK_ENABLE();
-
-    huart3.Instance = USART3;
-    huart3.Init.BaudRate = 115200;
-    huart3.Init.WordLength = UART_WORDLENGTH_8B;
-    huart3.Init.StopBits = UART_STOPBITS_1;
-    huart3.Init.Parity = UART_PARITY_NONE;
-    huart3.Init.Mode = UART_MODE_TX_RX;
-    huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-    huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-    if (HAL_UART_Init(&huart3) != HAL_OK)
-    {
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);
-        HAL_Delay(200);
-        HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
-        _Error_Handler(__FILE__, __LINE__);
-    }
-
-    __HAL_UART_ENABLE(&huart3);
-
-}
+// static void MX_USART2_UART_Init(void)
+// {
+//     __HAL_RCC_USART3_CLK_ENABLE();
+//
+//     huart3.Instance = USART3;
+//     huart3.Init.BaudRate = 115200;
+//     huart3.Init.WordLength = UART_WORDLENGTH_8B;
+//     huart3.Init.StopBits = UART_STOPBITS_1;
+//     huart3.Init.Parity = UART_PARITY_NONE;
+//     huart3.Init.Mode = UART_MODE_TX_RX;
+//     huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+//     huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+//     if (HAL_UART_Init(&huart3) != HAL_OK)
+//     {
+//         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);
+//         HAL_Delay(200);
+//         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
+//         _Error_Handler(__FILE__, __LINE__);
+//     }
+//
+//     __HAL_UART_ENABLE(&huart3);
+//
+// }
 
 /** Configure pins as
 * Analog
@@ -174,20 +164,20 @@ static void MX_GPIO_Init(void)
     GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-
-    GPIO_InitTypeDef GPIOA_InitStruct;
-    /*Configure GPIO pin : B1_Pin */
-    GPIOA_InitStruct.Pin  = GPIO_PIN_3;
-    GPIOA_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIOA_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOA, &GPIOA_InitStruct);
-
-    GPIO_InitTypeDef GPIO_InitStruct;
-    /*Configure GPIO pin : LD2_Pin */
-    GPIO_InitStruct.Pin   = GPIO_PIN_2;
-    GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+    //
+    // GPIO_InitTypeDef GPIOA_InitStruct;
+    // /*Configure GPIO pin : B1_Pin */
+    // GPIOA_InitStruct.Pin  = GPIO_PIN_3;
+    // GPIOA_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    // GPIOA_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    // HAL_GPIO_Init(GPIOA, &GPIOA_InitStruct);
+    //
+    // GPIO_InitTypeDef GPIO_InitStruct;
+    // /*Configure GPIO pin : LD2_Pin */
+    // GPIO_InitStruct.Pin   = GPIO_PIN_2;
+    // GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
+    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    // HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* EXTI interrupt init*/
     // HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);

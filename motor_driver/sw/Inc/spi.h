@@ -10,7 +10,7 @@
 void test_func(void);
 void SPI1_setup(void);
 void SPI1_Transfer(uint16_t data);
-void print_reg(UART_HandleTypeDef *huart, uint32_t reg, uint8_t reg_sz);
+// void print_reg(UART_HandleTypeDef *huart, uint32_t reg, uint8_t reg_sz);
 
 
 #endif // endif __SPI_H__

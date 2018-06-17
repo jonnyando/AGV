@@ -56,7 +56,8 @@ Src/stm32f1xx_it.c \
 Src/stm32f1xx_hal_msp.c \
 Src/system_stm32f1xx.c \
 Src/spi.c \
-Src/UART_config.c
+Src/UART_config.c \
+Src/syscalls.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -125,8 +126,8 @@ ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffuncti
 
 CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT)
 
-ifeq ($(DEBUG), 0)
-CFLAGS += -g -gdwarf-2
+ifeq ($(DEBUG), 1)
+CFLAGS += -g3 -gdwarf-2
 endif
 
 

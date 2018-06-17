@@ -114,14 +114,14 @@ I2SCFGR = xxxx0xxxxxxxxxxx
         == 0x0000
 */
 
-
-void print_reg(UART_HandleTypeDef *huart, uint32_t reg, uint8_t reg_sz){
-    for (uint8_t i = reg_sz; i > 0; i--) {
-        if (reg & (1<<(i-1))) {
-            HAL_UART_Transmit(huart, "1", 1, 100);
-        } else {
-            HAL_UART_Transmit(huart, "0", 1, 100);
-        }
-    }
-    HAL_UART_Transmit(huart, "\n", 1, 100);
-}
+// 
+// void print_reg(UART_HandleTypeDef *huart, uint32_t reg, uint8_t reg_sz){
+//     for (uint8_t i = reg_sz; i > 0; i--) {
+//         if (reg & (1<<(i-1))) {
+//             HAL_UART_Transmit(huart, "1", 1, 100);
+//         } else {
+//             HAL_UART_Transmit(huart, "0", 1, 100);
+//         }
+//     }
+//     HAL_UART_Transmit(huart, "\n", 1, 100);
+// }
