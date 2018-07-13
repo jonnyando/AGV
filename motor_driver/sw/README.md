@@ -2,7 +2,7 @@
 
 to setup toolchain, download latest [arm-non-eabi-gcc package](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads)
 
-'''bash
+'''sh
 $ cd "${HOME}"/opt
 $ tar xjf ~/Downloads/gcc-arm-none-eabi-7-2017-q4-major-linux.tar.bz2
 $ chmod -R -w "${HOME}"/opt/gcc-arm-none-eabi-7-2017-q4-major
