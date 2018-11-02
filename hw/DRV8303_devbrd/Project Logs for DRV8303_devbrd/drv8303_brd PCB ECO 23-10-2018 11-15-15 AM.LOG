@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=3v3 Pin=C24-1
+Removed Pin From Net: NetName=GND Pin=C24-2
+Removed Pin From Net: NetName=VBUS Pin=C25-1
+Removed Pin From Net: NetName=GND Pin=C25-2
+Removed Pin From Net: NetName=3v3 Pin=C26-1
+Removed Pin From Net: NetName=VBUS Pin=R26-1
+Removed Pin From Net: NetName=3v3 Pin=R27-1
+Removed Pin From Net: NetName=GND Pin=R28-2
+Removed Pin From Net: NetName=3v3 Pin=R29-1
+Removed Member From Class: ClassName=Power Member=C24
+Removed Member From Class: ClassName=Power Member=C26
+Removed Member From Class: ClassName=Power Member=R26
+Removed Member From Class: ClassName=Power Member=R27
+Removed Member From Class: ClassName=Power Member=R28
+Added Component: Designator=U3(SOT-223)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Datasheet"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.diodes.com/assets/Datasheets/AZ1117E.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Part Number"; Value = "AZ1117EH-3.3TRG1DICT-ND"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Diodes Incorporated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = "AZ1117EH-3.3TRG1"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=Power Member=Component U3 AZ1117EH

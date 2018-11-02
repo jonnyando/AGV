@@ -1,0 +1,4 @@
+Record=TopLevelDocument|FileName=TopLevel.SchDoc
+Record=SheetSymbol|SourceDocument=TopLevel.SchDoc|Designator=Gate Driver|SchDesignator=Gate Driver|FileName=DRV8303.SchDoc|SymbolType=Normal|RawFileName=DRV8303.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=TopLevel.SchDoc|Designator=Power|SchDesignator=Power|FileName=Power.SchDoc|SymbolType=Normal|RawFileName=Power.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|SourceDocument=TopLevel.SchDoc|Designator=STM32|SchDesignator=STM32|FileName=STM32F103.SchDoc|SymbolType=Normal|RawFileName=STM32F103.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

@@ -1,0 +1,28 @@
+Change component parameters: Designator = "Q1"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\WNGKBIAA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q3"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\PPKBKKOV"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q4"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\NHIJTRSU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q5"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\KNHVEYKY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q7"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\JDKOYYKY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q9"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\FNVYRWFI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q10"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\GOQGMTNW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q11"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\GBNLADPY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Change component parameters: Designator = "Q12"; Footprint = "PQFN8_5x6"; UniqueID = "\HIHAWDHK\VKFWKDIN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Added Class: Name=pour_over

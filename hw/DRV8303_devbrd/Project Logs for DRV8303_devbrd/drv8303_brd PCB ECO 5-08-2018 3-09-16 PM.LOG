@@ -1,0 +1,4 @@
+Change component parameters: Designator = "P?"; Footprint = "ScrewTerm_3"; UniqueID = "\HIHAWDHK\YNMQCQDU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Added Member To Class: ClassName=pour_over Member=Component P? ScrewTerm_3

@@ -1,0 +1,2 @@
+Change Net Name : Old Net Name=UART2_Rx New Net Name=UART2_Tx
+Change Net Name : Old Net Name=UART2_Tx New Net Name=UART2_Rx

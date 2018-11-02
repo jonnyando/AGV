@@ -1,0 +1,13 @@
+Change Component Designator: OldDesignator=C? NewDesignator=C24
+Change Component Designator: OldDesignator=C? NewDesignator=C25
+Change Component Designator: OldDesignator=C? NewDesignator=C26
+Change Component Designator: OldDesignator=R? NewDesignator=R26
+Change Component Designator: OldDesignator=R? NewDesignator=R27
+Change Component Designator: OldDesignator=R? NewDesignator=R28
+Change Net Name : Old Net Name=NetC?_2 New Net Name=NetC26_2
+Change Net Name : Old Net Name=NetL?_1 New Net Name=NetL1_1
+Change Net Name : Old Net Name=NetR?_2 New Net Name=NetR26_2
+Added Member To Class: ClassName=Power Member=Component C25 pF
+Added Member To Class: ClassName=Power Member=Component C26 pF
+Added Member To Class: ClassName=Power Member=Component R27 R
+Added Member To Class: ClassName=Power Member=Component R28 R

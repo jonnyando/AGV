@@ -1,0 +1,52 @@
+Change Component Comment : Designator=D6 Old Comment=Diode New Comment=Diode_schottky
+Change Component Comment : Designator=D7 Old Comment=Diode New Comment=Diode_schottky
+Change Component Comment : Designator=D8 Old Comment=Diode New Comment=Diode_schottky
+Change Component Designator: OldDesignator=* NewDesignator=M1
+Change Component Designator: OldDesignator=* NewDesignator=M2
+Change Component Designator: OldDesignator=* NewDesignator=M3
+Change Component Designator: OldDesignator=*? NewDesignator=M4
+Change Component Designator: OldDesignator=P? NewDesignator=P4
+Change component parameters: Designator = "D6"; UniqueID = "\HIHAWDHK\IFBPCDLK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "D7"; UniqueID = "\HIHAWDHK\KTKLJDAD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "D8"; UniqueID = "\HIHAWDHK\UFHOOKQE"
+Change component parameters. Clean all parameters for all variants
+Added Component: Designator=R29(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Land patterns"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.vishay.com/docs/60119/landpatterns.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "1k digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "shunt digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/PF1206FRF070R02L/311-0.02AJCT-ND/2178365"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R30(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Land patterns"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.vishay.com/docs/60119/landpatterns.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "1k digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "shunt digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/PF1206FRF070R02L/311-0.02AJCT-ND/2178365"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3v3 Pin=R29-2
+Added Pin To Net: NetName=3v3 Pin=R30-2
+Added Pin To Net: NetName=NetR29_1 Pin=R29-1
+Added Pin To Net: NetName=NetR29_1 Pin=U1-2
+Added Pin To Net: NetName=NetR29_1 Pin=U2-41
+Added Net: Name=NetR29_1
+Added Pin To Net: NetName=NetR30_1 Pin=R30-1
+Added Pin To Net: NetName=NetR30_1 Pin=U1-1
+Added Pin To Net: NetName=NetR30_1 Pin=U2-40
+Added Net: Name=NetR30_1
+Added Member To Class: ClassName=TopLevel Member=Component M1 Mounting_hole
+Added Member To Class: ClassName=TopLevel Member=Component M3 Mounting_hole
+Added Member To Class: ClassName=Gate Driver Member=Component R29 10KR
+Added Member To Class: ClassName=Gate Driver Member=Component R30 10KR

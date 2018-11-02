@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=3v3 Pin=R29-2
+Removed Pin From Net: NetName=3v3 Pin=R30-2
+Removed Member From Class: ClassName=Gate Driver Member=R29
+Removed Member From Class: ClassName=Gate Driver Member=R30
+Added Pin To Net: NetName=NetU1_1 Pin=U1-1
+Added Pin To Net: NetName=NetU1_1 Pin=U2-40
+Added Net: Name=NetU1_1
+Added Pin To Net: NetName=NetU1_2 Pin=U1-2
+Added Pin To Net: NetName=NetU1_2 Pin=U2-41
+Added Net: Name=NetU1_2

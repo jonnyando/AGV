@@ -1,0 +1,5 @@
+Added Component: Designator=*?(M3_drill)
+Add component. Clean all parameters for all variants
+Added Member To Class: ClassName=TopLevel Member=Component *? Mounting_hole
+Added Member To Class: ClassName=TopLevel Member=Component * Mounting_hole
+Added Member To Class: ClassName=TopLevel Member=Component * Mounting_hole

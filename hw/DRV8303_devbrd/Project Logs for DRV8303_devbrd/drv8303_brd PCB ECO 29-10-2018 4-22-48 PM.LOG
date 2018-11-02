@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=VBUS Pin=D6-1
+Removed Pin From Net: NetName=VBUS Pin=D7-1
+Removed Pin From Net: NetName=VBUS Pin=D8-1
+Added Pin To Net: NetName=3v3 Pin=D6-1
+Added Pin To Net: NetName=3v3 Pin=D7-1
+Added Pin To Net: NetName=3v3 Pin=D8-1

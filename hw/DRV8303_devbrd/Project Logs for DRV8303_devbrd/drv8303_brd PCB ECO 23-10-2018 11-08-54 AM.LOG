@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=VBUS Pin=U3-1
+Removed Pin From Net: NetName=GND Pin=U3-2
+Removed Pin From Net: NetName=NetC26_2 Pin=U3-4
+Removed Member From Class: ClassName=Power Member=U3

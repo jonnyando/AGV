@@ -1,0 +1,24 @@
+Removed Pin From Net: NetName=GND Pin=NT1-1
+Removed Pin From Net: NetName=GND Pin=NT2-1
+Removed Pin From Net: NetName=GND Pin=NT3-1
+Removed Pin From Net: NetName=SL_C Pin=NT3-2
+Removed Pin From Net: NetName=SL_C Pin=Q10-1
+Removed Pin From Net: NetName=SL_C Pin=Q10-2
+Removed Pin From Net: NetName=SL_C Pin=Q10-3
+Removed Pin From Net: NetName=SL_C Pin=Q12-1
+Removed Pin From Net: NetName=SL_C Pin=Q12-2
+Removed Pin From Net: NetName=SL_C Pin=Q12-3
+Removed Member From Class: ClassName=Gate Driver Member=NT1
+Removed Member From Class: ClassName=Gate Driver Member=NT2
+Removed Member From Class: ClassName=Gate Driver Member=NT3
+Change Component Comment : Designator=C5 Old Comment=0.1uF New Comment=4.7uF
+Added Pin To Net: NetName=GND Pin=C10-2
+Added Pin To Net: NetName=GND Pin=C11-2
+Added Pin To Net: NetName=GND Pin=Q10-1
+Added Pin To Net: NetName=GND Pin=Q10-2
+Added Pin To Net: NetName=GND Pin=Q10-3
+Added Pin To Net: NetName=GND Pin=Q12-1
+Added Pin To Net: NetName=GND Pin=Q12-2
+Added Pin To Net: NetName=GND Pin=Q12-3
+Added Pin To Net: NetName=GND Pin=U1-26
+Added Pin To Net: NetName=GND Pin=U1-28

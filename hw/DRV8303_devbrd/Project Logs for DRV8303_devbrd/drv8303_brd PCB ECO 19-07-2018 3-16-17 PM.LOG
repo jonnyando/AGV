@@ -1,0 +1,26 @@
+Removed Pin From Net: NetName=SL_C Pin=C10-2
+Removed Pin From Net: NetName=SL_C Pin=Q10-1
+Removed Pin From Net: NetName=SL_C Pin=Q10-2
+Removed Pin From Net: NetName=SL_C Pin=Q10-3
+Removed Pin From Net: NetName=SL_C Pin=Q12-1
+Removed Pin From Net: NetName=SL_C Pin=Q12-2
+Removed Pin From Net: NetName=SL_C Pin=Q12-3
+Removed Pin From Net: NetName=SL_C Pin=U1-28
+Removed Pin From Net: NetName=SL_C Pin=U1-30
+Added Component: Designator=NT1(net_tie)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=SL_C Pin=NT1-1
+Change Net Name : Old Net Name=SL_C New Net Name=SP2
+Added Pin To Net: NetName=SL_C Pin=NT1-2
+Added Pin To Net: NetName=SL_C Pin=Q10-1
+Added Pin To Net: NetName=SL_C Pin=Q10-2
+Added Pin To Net: NetName=SL_C Pin=Q10-3
+Added Pin To Net: NetName=SL_C Pin=Q12-1
+Added Pin To Net: NetName=SL_C Pin=Q12-2
+Added Pin To Net: NetName=SL_C Pin=Q12-3
+Added Pin To Net: NetName=SL_C Pin=U1-30
+Added Net: Name=SL_C
+Added Pin To Net: NetName=SP1 Pin=C10-2
+Added Pin To Net: NetName=SP1 Pin=U1-28
+Added Net: Name=SP1
+Added Member To Class: ClassName=Gate Driver Member=Component NT1 Net Tie

@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [drv8303_brd.PcbDoc]
+   Generated File[drv8303_brd.TXT]
+   Generated File[drv8303_brd.LDP]
+   Generated File[drv8303_brd.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 6:40:37 PM On 28/10/2018

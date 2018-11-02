@@ -1,0 +1,11 @@
+Added Component: Designator=P3(ScrewTerm_2)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P?(ScrewTerm_3)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=VBUS Pin=P3-1
+Added Pin To Net: NetName=GND Pin=P3-2
+Added Pin To Net: NetName=SH_A Pin=P?-1
+Added Pin To Net: NetName=SH_B Pin=P?-2
+Added Pin To Net: NetName=SH_C Pin=P?-3
+Added Class: Name=Power
+Added Member To Class: ClassName=Gate Driver Member=Component P? ScrewTerm_3

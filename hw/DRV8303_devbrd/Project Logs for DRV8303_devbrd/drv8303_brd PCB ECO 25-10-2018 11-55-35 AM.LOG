@@ -1,0 +1,18 @@
+Removed Member From Class: ClassName=Power Member=U4
+Change Component Comment : Designator=C25 Old Comment=pF New Comment=1uF
+Added Component: Designator=C?(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VBUS Pin=C25-1
+Added Pin To Net: NetName=GND Pin=C25-2
+Added Pin To Net: NetName=3v3 Pin=C?-1
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=3v3 Pin=R29-1
+Added Pin To Net: NetName=GND Pin=U3-1
+Added Pin To Net: NetName=3v3 Pin=U3-2
+Added Pin To Net: NetName=3v3 Pin=U3-2
+Added Pin To Net: NetName=VBUS Pin=U3-3
+Added Member To Class: ClassName=Power Member=Component C? 1uF
