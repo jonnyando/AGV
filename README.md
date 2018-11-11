@@ -10,6 +10,8 @@
 - add adc?
 
 ## Fixes:
+- add power led on VBUS
+- add led to EN_GATE pin to tell state
 - increase drill size on stitching vias (currently unnecessarily small)
 - fix/remove thermal relief on source pads for left most FETs
 - add method to sense line voltages on each output phase, for back EMF sensing

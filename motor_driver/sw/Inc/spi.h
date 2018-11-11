@@ -7,9 +7,9 @@
 
 #define SPI_TIMEOUT 1000
 
-void test_func(void);
 void SPI1_setup(void);
 void SPI1_Transfer(uint16_t data);
+uint16_t SPI1_Transcieve(uint16_t TxData);
 // void print_reg(UART_HandleTypeDef *huart, uint32_t reg, uint8_t reg_sz);
 
 

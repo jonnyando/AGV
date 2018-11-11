@@ -3,6 +3,7 @@
 #include "stm32f1xx_hal.h"
 #include "spi.h"
 #include "UART_config.h"
+#include <stdio.h>
 
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart3;
@@ -11,19 +12,6 @@ UART_HandleTypeDef huart3;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
-
-// int _write(int file, char *ptr, int len)
-// {
-// 	int DataIdx;
-//
-// 	for (DataIdx = 0; DataIdx < len; DataIdx++)
-// 	{
-// 	   ITM_SendChar( *ptr++ );
-// 	}
-//
-//     GPIOB->BSRR = GPIO_BSRR_BS2;
-// 	return len;
-// }
 
 int __io_putchar(int ch)
 {
@@ -44,7 +32,7 @@ int main(void)
     // MX_USART2_UART_Init();
     SPI1_setup();
     setup_uart2();
-    setup_uart3();
+    // setup_uart3();
 
     printf("USART2->BRR\t");    print_reg(USART2->BRR,   32);
     printf("USART2->CR1\t");    print_reg(USART2->CR1,   32);
@@ -58,12 +46,53 @@ int main(void)
     printf("SPI1->CR1\t");      print_reg(SPI1->CR1,     16);
     printf("SPI1->CR2\t");      print_reg(SPI1->CR2,     16);
     printf("SPI1->I2SCFGR\t");  print_reg(SPI1->I2SCFGR, 16);
+    fflush(stdout);
+    HAL_Delay(1000);
+    printf("a\n\n\n");
+    GPIOC->ODR |= GPIO_PIN_3;
+    printf("Enabled DRV8303\n");
+
+    GPIOA->BRR |= GPIO_PIN_0;
+    printf("DC_CAL set LOW (off)\n");
+
+    HAL_Delay(1000);
 
     while (1){
-        uint16_t command = 0xCA1B;
-        printf("printing: %d", command);
-        SPI1_Transfer(command);
-        HAL_Delay(1000);
+        // uint16_t CR1 = 0b0001000110001000;
+        // printf("Setting CR1: %u\n", CR1);
+        // uint16_t rx = SPI1_Transcieve(CR1);
+        // // printf("Received: %u\n", rx);
+        // // rx = SPI1_Transcieve(CR1);
+        // // rx &= 0b0000011111111111;
+        // // printf("Received: %u\n", rx);
+        // uint16_t command = 0b1001011111111111;
+        // printf("Reading CR1: %u\n", command);
+        // rx = SPI1_Transcieve(command);
+        // rx &= 0b0000011111111111;
+        // printf("Received: %u\n", rx);
+        // rx = SPI1_Transcieve(command);
+        // rx &= 0b0000011111111111;
+        // printf("Received: %u\n", rx);
+        // HAL_Delay(900);
+        // GPIOB->ODR |= GPIO_PIN_2;   // switch on PB2
+        // HAL_Delay(100);
+        // GPIOB->BRR |= GPIO_PIN_2;   // switch off PB2
+        SPI1_Transcieve(0b1001011111111111);
+        HAL_Delay(10);
+        // SPI1_Transcieve(0b1001011111111111);
+        if(!(GPIOC->IDR & (GPIO_PIN_2 | GPIO_PIN_1))){
+            GPIOB->ODR |= GPIO_PIN_2;
+        }
+        else{
+            GPIOB->BRR |= GPIO_PIN_2;
+        }
+
+        GPIOC->ODR |= GPIO_PIN_10;
+        GPIOC->ODR |= GPIO_PIN_12;
+        HAL_Delay(500);
+        GPIOC->BRR |= GPIO_PIN_10;
+        GPIOC->BRR |= GPIO_PIN_12;
+        HAL_Delay(500);
     }
 
 }
@@ -158,31 +187,54 @@ static void MX_GPIO_Init(void)
     HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
 
-    GPIO_InitTypeDef GPIOC_InitStruct;
-    /*Configure GPIO pin : B1_Pin */
-    GPIOC_InitStruct.Pin  = GPIO_PIN_8;
-    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-    //
-    // GPIO_InitTypeDef GPIOA_InitStruct;
-    // /*Configure GPIO pin : B1_Pin */
-    // GPIOA_InitStruct.Pin  = GPIO_PIN_3;
-    // GPIOA_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    // GPIOA_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    // HAL_GPIO_Init(GPIOA, &GPIOA_InitStruct);
-    //
-    // GPIO_InitTypeDef GPIO_InitStruct;
-    // /*Configure GPIO pin : LD2_Pin */
-    // GPIO_InitStruct.Pin   = GPIO_PIN_2;
-    // GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-    // GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    // HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+    GPIO_InitTypeDef GPIOB_InitStruct;
+    /*Configure LED pin : B2_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_2;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
 
+    GPIO_InitTypeDef GPIOC_InitStruct;
     /* EXTI interrupt init*/
     // HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
     // HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
+    /*Configure DC_CAL pin : C0_Pin */
+    GPIOC_InitStruct.Pin  = GPIO_PIN_0;
+    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
+
+    /*Configure nOCTW pin : C1_Pin */
+    GPIOC_InitStruct.Pin  = GPIO_PIN_1;
+    GPIOC_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIOC_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
+
+    /*Configure EN_GATE pin : C2_Pin */
+    GPIOC_InitStruct.Pin  = GPIO_PIN_2;
+    GPIOC_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIOC_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
+
+    /*Configure EN_GATE pin : C3_Pin */
+    GPIOC_InitStruct.Pin  = GPIO_PIN_3;
+    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
+
+
+    /*Configure CH pin : C12_Pin */
+    GPIOC_InitStruct.Pin  = GPIO_PIN_12;
+    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
+
+    /*Configure CL pin : C10_Pin */
+    GPIOC_InitStruct.Pin  = GPIO_PIN_10;
+    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
 }
 
 /**

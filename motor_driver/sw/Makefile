@@ -57,7 +57,8 @@ Src/stm32f1xx_hal_msp.c \
 Src/system_stm32f1xx.c \
 Src/spi.c \
 Src/UART_config.c \
-Src/syscalls.c
+Src/syscalls.c \
+Src/gpio.c
 
 # ASM sources
 ASM_SOURCES =  \

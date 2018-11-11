@@ -1,5 +1,6 @@
 #include "UART_config.h"
 
+#define TIMEOUT 5000U
 
 void setup_uart1(void){
     // TX PA9
@@ -69,10 +70,10 @@ void setup_uart3(void){
 }
 
 void transmit_uart1(char *ch){
-    int timeout = 1000;
+    int t = TIMEOUT;
     while(!(USART1->SR & USART_SR_TXE)){
-        timeout--;
-        if (timeout<=0){
+        t--;
+        if (t<=0){
             break;
         }
     }
@@ -81,10 +82,10 @@ void transmit_uart1(char *ch){
         i--;
         USART1->DR = (*ch++ & (uint8_t)0xFF);
     }
-    timeout = 1000;
+    t = TIMEOUT;
     while(!(USART1->SR & USART_SR_TC)){
-        timeout--;
-        if (timeout<=0){
+        t--;
+        if (t<=0){
             break;
         }
     }
@@ -92,10 +93,10 @@ void transmit_uart1(char *ch){
 
 void transmit_uart2(char *ch){
     // HAL_Delay(1);
-    int timeout = 1000;
+    int t = TIMEOUT;
     while(!(USART2->SR & USART_SR_TXE)){
-        timeout--;
-        if (timeout<=0){
+        t--;
+        if (t<=0){
             break;
         }
     }
@@ -104,20 +105,20 @@ void transmit_uart2(char *ch){
         i--;
         USART2->DR = (*ch++ & (uint8_t)0xFF);
     }
-    timeout = 1000;
+    t = TIMEOUT;
     while(!(USART2->SR & USART_SR_TC)){
-        timeout--;
-        if (timeout<=0){
+        t--;
+        if (t<=0){
             break;
         }
     }
 }
 
 void transmit_uart3(char *ch){
-    int timeout = 1000;
+    int t = TIMEOUT;
     while(!(USART3->SR & USART_SR_TXE)){
-        timeout--;
-        if (timeout<=0){
+        t--;
+        if (t<=0){
             break;
         }
     }
@@ -126,10 +127,10 @@ void transmit_uart3(char *ch){
         i--;
         USART3->DR = (*ch++ & (uint8_t)0xFF);
     }
-    timeout = 1000;
+    t = TIMEOUT;
     while(!(USART3->SR & USART_SR_TC)){
-        timeout--;
-        if (timeout<=0){
+        t--;
+        if (t<=0){
             break;
         }
     }

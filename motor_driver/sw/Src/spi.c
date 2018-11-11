@@ -1,22 +1,17 @@
 #include "spi.h"
 
-
-void test_func(void){
-    printf("test\n");
-}
-
 void SPI1_setup(void){
 
     RCC->APB2ENR |= RCC_APB2ENR_SPI1EN | RCC_APB2ENR_AFIOEN | RCC_APB2ENR_IOPAEN;
     // pin 4,5,6,7
     GPIOA->CRL &=   0x0000FFFF; // clear bits we want to set
-    GPIOA->CRL |=   0b10110100101110110000000000000000;
+    GPIOA->CRL |=   0b10100100101000110000000000000000;
     // PA4, NSS,  cnf = AFPP, mode = 50MHz
     // PA5, SCK,  cnf = AFPP, mode = 50MHz
     // PA6, MISO, cnf = input floating, mode = input
     // PA7, MOSI, cnf = AFPP, mode = 50MHz
 
-    SPI1->CR1 =   0b0000101100011100;
+    SPI1->CR1 =   0b0000101100101100;
     // BIDIMODE    0   2-line unidirectional mode
     // BIDIOE      x   not one line bidirectional
     // CRCEN       0   CRC disabled
@@ -27,7 +22,7 @@ void SPI1_setup(void){
     // SSI         1   slave select active
     // LSBFIRST    0   MSB first
     // SPE         0   SPI NOT enabled (enabled below)
-    // BR[2:0]     011 fpclk/16    arbitrary setting
+    // BR[2:0]     101 fpclk/64    arbitrary setting
     // MSTR        1   Master configuration
     // CPOL        0   low when idle
     // CPHA        0   rising (first) edge
@@ -48,11 +43,11 @@ void SPI1_setup(void){
     HAL_Delay(10);
 
     // enable SPI1
-    SPI1->CR1      |= SPI_CR1_SPE;
+    SPI1->CR1  |= SPI_CR1_SPE;
+    GPIOA->ODR |= GPIO_PIN_4;
 }
 
-void SPI1_Transfer(uint16_t data)
-{
+void SPI1_Transfer(uint16_t data){
     // Wait until SPI is not busy anymore
     while (SPI1->SR & (SPI_SR_BSY)){
         // printf("stuck (bsy) %d\n", (SPI1->SR));
@@ -67,61 +62,26 @@ void SPI1_Transfer(uint16_t data)
 	}
 }
 
-/*      SPI REGISTERS
----CR1---
-BIDIMODE    0   2-line unidirectional mode
-BIDIOE      x   not one line bidirectional
-CRCEN       0   CRC disabled
-CRCNEXT     0   /X. No CRC
-DFF         1   16 bit mode
-RXONLY      0   transmit and receive
-SSM         1   software slave management
-SSI         1   slave select active
-LSBFIRST    0   MSB first
-SPE         1   SPI enabled
-BR[2:0]     011 fpclk/16    arbitrary setting
-MSTR        1   Master configuration
-CPOL        0   low when idle
-CPHA        0   rising (first) edge
-result:
-CR1 = 0b0000101101011100
-    = 0x0D5C
----CR2---
-TXEIE       0   Tx buffer interupt not enabled
-RXEIE       0   Rx buffer interupt not enabled
-ERRIE       0   error interupt not enabled
-SSOE        1   SS output is enabled
-TXDMAEN     0   Tx buffer DMA disabled
-RXDMAEN     0   Rx buffer DMA disabled
-result:
-CR2 = xxxxxxxx000xx100
-    = 0000000000000100
-    = 0x0004
----SR---
-N/A
----DR---
-N/A
----CRCPR---
-N/A
----RXCRCR---
-N/A
----TXCRCR---
-N/A
----I2SCFGR---
-I2SMOD      0   SPI mode selected
-result:
-I2SCFGR = xxxx0xxxxxxxxxxx
-        == 0x0000
-*/
+uint16_t SPI1_Transcieve(uint16_t TxData){
+    uint16_t RxData = 0;
+    // Wait until SPI is not busy anymore
+    while (SPI1->SR & (SPI_SR_BSY)){
+        // printf("stuck (bsy) %d\n", (SPI1->SR));
+    }
 
-// 
-// void print_reg(UART_HandleTypeDef *huart, uint32_t reg, uint8_t reg_sz){
-//     for (uint8_t i = reg_sz; i > 0; i--) {
-//         if (reg & (1<<(i-1))) {
-//             HAL_UART_Transmit(huart, "1", 1, 100);
-//         } else {
-//             HAL_UART_Transmit(huart, "0", 1, 100);
-//         }
-//     }
-//     HAL_UART_Transmit(huart, "\n", 1, 100);
-// }
+    GPIOA->BRR |= GPIO_PIN_4;
+    // Write data to be transmitted to the SPI data register
+	SPI1->DR = TxData;
+
+	// Wait until transmit complete
+	while (!(SPI1->SR & (SPI_SR_TXE))){
+		// printf("stuck (txe) %d\n", (SPI1->SR));
+	}
+    // HAL_Delay(1);
+    while(!(SPI1->SR & SPI_SR_RXNE)){
+        // printf("received data");
+    }
+    RxData = SPI1->DR;
+    GPIOA->ODR |= GPIO_PIN_4;
+    return RxData;
+}
