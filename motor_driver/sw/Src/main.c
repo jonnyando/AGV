@@ -89,9 +89,11 @@ int main(void)
 
         GPIOC->ODR |= GPIO_PIN_10;
         GPIOC->ODR |= GPIO_PIN_12;
+        GPIOB->ODR |= GPIO_PIN_11;
         HAL_Delay(500);
         GPIOC->BRR |= GPIO_PIN_10;
         GPIOC->BRR |= GPIO_PIN_12;
+        GPIOB->BRR |= GPIO_PIN_11;
         HAL_Delay(500);
     }
 
@@ -235,6 +237,12 @@ static void MX_GPIO_Init(void)
     GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
+
+    /*Configure LED_FAULT pin : B11_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_11;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
 }
 
 /**
