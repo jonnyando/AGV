@@ -3,8 +3,24 @@
 #define TIMEOUT 5000U
 
 void setup_uart1(void){
+    // enable RCC for USART2
+    RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
+    // enable RCC for GPIO port of USART1 (GPIOA)
+    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+    // enable RCC for alternate function clocks
+    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+
+    // setup GPIO pins for USART1
     // TX PA9
     // RX PA10
+    GPIOA->CRH &=   0xfffff00f;
+    GPIOA->CRH |=   0x000004B0;
+
+    // BAUDRATE = 115200;
+    USART1->BRR = 0b0000001000101100;
+    USART1->CR1 = 0b0010000000001100;
+    USART1->CR2 = 0x0000;
+    USART1->CR3 = 0x0000;
 }
 
 void setup_uart2(void){

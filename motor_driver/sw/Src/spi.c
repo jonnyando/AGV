@@ -11,21 +11,21 @@ void SPI1_setup(void){
     // PA6, MISO, cnf = input floating, mode = input
     // PA7, MOSI, cnf = AFPP, mode = 50MHz
 
-    SPI1->CR1 =   0b0000101100101100;
+    SPI1->CR1 =   0b0000100100011101;
     // BIDIMODE    0   2-line unidirectional mode
     // BIDIOE      x   not one line bidirectional
     // CRCEN       0   CRC disabled
     // CRCNEXT     0   /X. No CRC
     // DFF         1   16 bit mode
     // RXONLY      0   transmit and receive
-    // SSM         1   software slave management
-    // SSI         1   slave select active
+    // SSM         0   software slave management
+    // SSI         1   slave select high
     // LSBFIRST    0   MSB first
     // SPE         0   SPI NOT enabled (enabled below)
-    // BR[2:0]     101 fpclk/64    arbitrary setting
+    // BR[2:0]     011 fpclk/16    arbitrary setting
     // MSTR        1   Master configuration
     // CPOL        0   low when idle
-    // CPHA        0   rising (first) edge
+    // CPHA        1   second edge
 
     SPI1->CR2      = 0b0000000000000100;
     // TXEIE       0   Tx buffer interupt not enabled
@@ -44,7 +44,6 @@ void SPI1_setup(void){
 
     // enable SPI1
     SPI1->CR1  |= SPI_CR1_SPE;
-    GPIOA->ODR |= GPIO_PIN_4;
 }
 
 void SPI1_Transfer(uint16_t data){
@@ -62,6 +61,8 @@ void SPI1_Transfer(uint16_t data){
 	}
 }
 
+// uint16_t SPI1_Receive(void){}
+
 uint16_t SPI1_Transcieve(uint16_t TxData){
     uint16_t RxData = 0;
     // Wait until SPI is not busy anymore
@@ -69,7 +70,7 @@ uint16_t SPI1_Transcieve(uint16_t TxData){
         // printf("stuck (bsy) %d\n", (SPI1->SR));
     }
 
-    GPIOA->BRR |= GPIO_PIN_4;
+    //SPI_CS_PORT->BRR |= SPI_CS_PIN;
     // Write data to be transmitted to the SPI data register
 	SPI1->DR = TxData;
 
@@ -77,11 +78,13 @@ uint16_t SPI1_Transcieve(uint16_t TxData){
 	while (!(SPI1->SR & (SPI_SR_TXE))){
 		// printf("stuck (txe) %d\n", (SPI1->SR));
 	}
-    // HAL_Delay(1);
+    //SPI_CS_PORT->ODR |= SPI_CS_PIN;
+    //HAL_Delay(1);
+    //SPI_CS_PORT->BRR |= SPI_CS_PIN;
     while(!(SPI1->SR & SPI_SR_RXNE)){
         // printf("received data");
     }
     RxData = SPI1->DR;
-    GPIOA->ODR |= GPIO_PIN_4;
+    //SPI_CS_PORT->ODR |= SPI_CS_PIN;
     return RxData;
 }

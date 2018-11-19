@@ -6,6 +6,8 @@
 #include <stdint.h>
 
 #define SPI_TIMEOUT 1000
+#define SPI_CS_PIN GPIO_PIN_4
+#define SPI_CS_PORT GPIOA
 
 void SPI1_setup(void);
 void SPI1_Transfer(uint16_t data);

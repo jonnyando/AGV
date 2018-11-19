@@ -5,6 +5,18 @@
 #include "UART_config.h"
 #include <stdio.h>
 
+#define nOCTW       GPIO_PIN_4
+#define nFAULT      GPIO_PIN_5
+#define DC_CAL      GPIO_PIN_6
+#define EN_GATE     GPIO_PIN_7
+#define INH_A       GPIO_PIN_8
+#define INH_B       GPIO_PIN_9
+#define INH_C       GPIO_PIN_10
+#define LED_FAULT   GPIO_PIN_11
+#define INL_C       GPIO_PIN_13
+#define INL_B       GPIO_PIN_14
+#define INL_A       GPIO_PIN_15
+
 /* Private variables ---------------------------------------------------------*/
 UART_HandleTypeDef huart3;
 
@@ -12,12 +24,12 @@ UART_HandleTypeDef huart3;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+uint16_t drv_transceive(uint16_t tx_reg);
 
 int __io_putchar(int ch)
 {
     uint8_t ch8 = ch;
-    transmit_uart2((uint8_t*)&ch8);
-    // HAL_UART_Transmit(&huart3,(uint8_t *)&ch8,1,HAL_MAX_DELAY);
+    transmit_uart1((uint8_t*)&ch8);
     return ch;
 }
 
@@ -29,74 +41,159 @@ int main(void)
     SystemClock_Config();
 
     MX_GPIO_Init();
-    // MX_USART2_UART_Init();
     SPI1_setup();
-    setup_uart2();
-    // setup_uart3();
-
-    printf("USART2->BRR\t");    print_reg(USART2->BRR,   32);
-    printf("USART2->CR1\t");    print_reg(USART2->CR1,   32);
-    printf("USART2->CR2\t");    print_reg(USART2->CR2,   32);
-    printf("USART2->CR3\t");    print_reg(USART2->CR3,   32);
-    printf("RCC->APB1ENR\t");   print_reg(RCC->APB1ENR,  32);
-    printf("RCC->APB2ENR\t");   print_reg(RCC->APB2ENR,  32);
-    printf("GPIOA->CRL\t");     print_reg(GPIOA->CRL,    32);
-    printf("GPIOA->CRH\t");     print_reg(GPIOA->CRH,    32);
-    printf("GPIOB->CRH\t");     print_reg(GPIOB->CRH,    32);
-    printf("SPI1->CR1\t");      print_reg(SPI1->CR1,     16);
-    printf("SPI1->CR2\t");      print_reg(SPI1->CR2,     16);
-    printf("SPI1->I2SCFGR\t");  print_reg(SPI1->I2SCFGR, 16);
+    setup_uart1();
+    // SPI_HandleTypeDef SPIone;
+    // SPIone.Instance                 = SPI1;
+    // SPIone.Init.Mode                = SPI_MODE_MASTER;
+    // SPIone.Init.Direction           = SPI_DIRECTION_2LINES;
+    // SPIone.Init.DataSize            = SPI_DATASIZE_16BIT;
+    // SPIone.Init.CLKPolarity         = SPI_POLARITY_LOW;
+    // SPIone.Init.CLKPhase            = SPI_PHASE_2EDGE;
+    // SPIone.Init.NSS                 = SPI_NSS_HARD_OUTPUT;
+    // SPIone.Init.BaudRatePrescaler   = SPI_BAUDRATEPRESCALER_16;
+    // SPIone.Init.FirstBit            = SPI_FIRSTBIT_MSB;
+    // SPIone.Init.TIMode              = SPI_TIMODE_DISABLE;
+    // SPIone.Init.CRCCalculation      = SPI_CRCCALCULATION_DISABLE;
+    // SPIone.Init.CRCPolynomial       = 10;
+    // HAL_SPI_Init(&SPIone);
+    printf("spi initialized\n\n");
+    fflush(stdout);
+    // printf("USART1->BRR\t");    print_reg(USART1->BRR,   32);
+    // printf("USART1->CR1\t");    print_reg(USART1->CR1,   32);
+    // printf("USART1->CR2\t");    print_reg(USART1->CR2,   32);
+    // printf("USART1->CR3\t");    print_reg(USART1->CR3,   32);
+    // printf("RCC->APB1ENR\t");   print_reg(RCC->APB1ENR,  32);
+    // printf("RCC->APB2ENR\t");   print_reg(RCC->APB2ENR,  32);
+    // printf("GPIOA->CRL\t");     print_reg(GPIOA->CRL,    32);
+    // printf("GPIOA->CRH\t");     print_reg(GPIOA->CRH,    32);
+    // printf("GPIOB->CRH\t");     print_reg(GPIOB->CRH,    32);
+    printf("SPI1->CR1\t\t");      print_reg(SPI1->CR1,     16);
+    printf("SPI1->CR2\t\t");      print_reg(SPI1->CR2,     16);
+    printf("SPI1->SR\t\t");       print_reg(SPI1->SR,      16);
+    printf("SPI1->DR\t\t");       print_reg(SPI1->DR,      16);
+    printf("SPI1->SR\t\t");       print_reg(SPI1->SR,      16);
     fflush(stdout);
     HAL_Delay(1000);
-    printf("a\n\n\n");
-    GPIOC->ODR |= GPIO_PIN_3;
-    printf("Enabled DRV8303\n");
+    GPIOB->BRR |= GPIO_PIN_8;
+    GPIOB->BRR |= GPIO_PIN_9;
+    GPIOB->BRR |= GPIO_PIN_10;
+    GPIOB->BRR |= GPIO_PIN_13;
+    GPIOB->BRR |= GPIO_PIN_14;
+    GPIOB->BRR |= GPIO_PIN_15;
 
-    GPIOA->BRR |= GPIO_PIN_0;
+    GPIOB->BRR |= GPIO_PIN_6;
     printf("DC_CAL set LOW (off)\n");
+    GPIOB->ODR |= GPIO_PIN_7;
+    printf("\nEnabled DRV8303\n");
 
-    HAL_Delay(1000);
+    uint16_t tx = 0b1001100000000011;
+    uint16_t rx = 0x0000;;
+
+  //   // HAL_Delay(1000);
+  //   // lower CS
+  // // // Do blocking read
+  //   uint16_t zerobuff = 0;
+  //   uint16_t controlword = tx;
+  //   uint16_t recbuff = 0b1000000110000001;
+  //   HAL_SPI_Transmit(&SPIone, (uint8_t*)(&controlword), 1, 1000);
+  // //
+  //   // // Datasheet says you don't have to pulse the nCS between transfers, (16 clocks should commit the transfer)
+  //   // // but for some reason you actually need to pulse it.
+  //   // // Actuate chipselect
+  //   // GPIOB->ODR |= GPIO_PIN_4;
+  //   for(int i=0;i<1000;i++){__ASM("nop");}
+  //   // // Actuate chipselect
+  //   // GPIOB->BRR |= GPIO_PIN_4;
+  //   for(int i=0;i<1000;i++){__ASM("nop");}
+  //   //
+  //   HAL_SPI_TransmitReceive(&SPIone, (uint8_t*)(&zerobuff), (uint8_t*)(&recbuff), 1, 1000);
+  //   for(int i=0;i<1000;i++){__ASM("nop");}
+  //   //
+  //   // // Actuate chipselect
+  //   // GPIOB->ODR |= GPIO_PIN_4;
+  //   print_reg(recbuff, 16);
+  //   printf("\n");
+
 
     while (1){
-        // uint16_t CR1 = 0b0001000110001000;
-        // printf("Setting CR1: %u\n", CR1);
-        // uint16_t rx = SPI1_Transcieve(CR1);
-        // // printf("Received: %u\n", rx);
-        // // rx = SPI1_Transcieve(CR1);
-        // // rx &= 0b0000011111111111;
-        // // printf("Received: %u\n", rx);
-        // uint16_t command = 0b1001011111111111;
-        // printf("Reading CR1: %u\n", command);
-        // rx = SPI1_Transcieve(command);
-        // rx &= 0b0000011111111111;
-        // printf("Received: %u\n", rx);
-        // rx = SPI1_Transcieve(command);
-        // rx &= 0b0000011111111111;
-        // printf("Received: %u\n", rx);
-        // HAL_Delay(900);
-        // GPIOB->ODR |= GPIO_PIN_2;   // switch on PB2
-        // HAL_Delay(100);
-        // GPIOB->BRR |= GPIO_PIN_2;   // switch off PB2
-        SPI1_Transcieve(0b1001011111111111);
-        HAL_Delay(10);
+        HAL_Delay(500);
         // SPI1_Transcieve(0b1001011111111111);
-        if(!(GPIOC->IDR & (GPIO_PIN_2 | GPIO_PIN_1))){
-            GPIOB->ODR |= GPIO_PIN_2;
-        }
-        else{
-            GPIOB->BRR |= GPIO_PIN_2;
-        }
 
-        GPIOC->ODR |= GPIO_PIN_10;
-        GPIOC->ODR |= GPIO_PIN_12;
-        GPIOB->ODR |= GPIO_PIN_11;
+        GPIOB->ODR |= INH_A;
+        GPIOB->BRR |= INL_A;
+        // GPIOB->ODR |= GPIO_PIN_9;
+        // GPIOB->ODR |= GPIO_PIN_10;
+        // GPIOB->ODR |= GPIO_PIN_11;
+
+        // GPIOB->BRR |= GPIO_PIN_8;
+        // GPIOB->BRR |= GPIO_PIN_9;
+        // GPIOB->BRR |= GPIO_PIN_10;
+        // GPIOB->BRR |= GPIO_PIN_11;
+
+        tx = 0b1000100000000000;
+        // printf("Sending\t");  print_reg(tx, 16);
+        // SPI_CS_PORT->BRR |= SPI_CS_PIN;
+        // SPI1_Transfer(tx);
+        // for(int i=0;i<35;i++){__ASM("nop");}
+        // SPI_CS_PORT->ODR |= SPI_CS_PIN;
+        // HAL_Delay(1);
+        // SPI_CS_PORT->BRR |= SPI_CS_PIN;
+        // rx = SPI1_Transcieve(0b1000000000000000);
+        // HAL_Delay(1);
+        // SPI_CS_PORT->ODR |= SPI_CS_PIN;
+        
+        // tx = 0b1000000000000000;
+        // printf("Sending\t");  print_reg(tx, 16);
+        // rx = drv_transceive(tx);
+        // printf("received\t");  print_reg(rx, 16);
+        // HAL_Delay(10);
+
+        tx = 0b1000100000000000;
+        printf("Sending\t");  print_reg(tx, 16);
+        rx = drv_transceive(tx);
+        printf("received\t");  print_reg(rx, 16);
+        HAL_Delay(10);
+
+        tx = 0b1001000000000000;
+        printf("Sending\t");  print_reg(tx, 16);
+        rx = drv_transceive(tx);
+        printf("received\t");  print_reg(rx, 16);
+        HAL_Delay(10);
+
+        tx = 0b1001100000000000;
+        printf("Sending\t");  print_reg(tx, 16);
+        rx = drv_transceive(tx);
+        printf("received\t");  print_reg(rx, 16);
+        HAL_Delay(10);
+
+        // GPIOB->ODR |= GPIO_PIN_8;
         HAL_Delay(500);
-        GPIOC->BRR |= GPIO_PIN_10;
-        GPIOC->BRR |= GPIO_PIN_12;
-        GPIOB->BRR |= GPIO_PIN_11;
-        HAL_Delay(500);
+        GPIOB->BRR |= INH_A;
+        GPIOB->ODR |= INL_A;
+
+        GPIOB->BRR |= GPIO_PIN_8;
+        if(GPIOB->IDR && GPIO_PIN_4)
+            printf("nOCTW is HIGH\n");
+        if(GPIOB->IDR && GPIO_PIN_5)
+            printf("nFAULT is HIGH\n");
     }
 
+}
+
+uint16_t drv_transceive(uint16_t tx_reg){
+    tx_reg = 0b1000100000000000;
+    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    SPI1_Transfer(tx_reg);
+    for(int i=0;i<35;i++){__ASM("nop");}
+    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+    HAL_Delay(1);
+    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    uint16_t rx_reg = SPI1_Transcieve(0b1000000000000000);
+    HAL_Delay(1);
+    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+
+    return rx_reg;
 }
 
 /**
@@ -186,60 +283,64 @@ static void MX_GPIO_Init(void)
     __HAL_RCC_GPIOB_CLK_ENABLE();
 
     /*Configure GPIO pin Output Level */
-    HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
+    // HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
 
     GPIO_InitTypeDef GPIOB_InitStruct;
-    /*Configure LED pin : B2_Pin */
-    GPIOB_InitStruct.Pin  = GPIO_PIN_2;
+
+
+    /*Configure nOCTW pin : B04_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_4;
+    GPIOB_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIOB_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure nFAULT pin : B05_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_5;
+    GPIOB_InitStruct.Mode = GPIO_MODE_INPUT;
+    GPIOB_InitStruct.Pull = GPIO_PULLUP;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure DC_CAL pin : B06_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_6;
     GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
-
-    GPIO_InitTypeDef GPIOC_InitStruct;
-    /* EXTI interrupt init*/
-    // HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
-    // HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
-
-    /*Configure DC_CAL pin : C0_Pin */
-    GPIOC_InitStruct.Pin  = GPIO_PIN_0;
-    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-
-    /*Configure nOCTW pin : C1_Pin */
-    GPIOC_InitStruct.Pin  = GPIO_PIN_1;
-    GPIOC_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIOC_InitStruct.Pull = GPIO_PULLUP;
-    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-
-    /*Configure EN_GATE pin : C2_Pin */
-    GPIOC_InitStruct.Pin  = GPIO_PIN_2;
-    GPIOC_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIOC_InitStruct.Pull = GPIO_PULLUP;
-    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-
-    /*Configure EN_GATE pin : C3_Pin */
-    GPIOC_InitStruct.Pin  = GPIO_PIN_3;
-    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-
-
-    /*Configure CH pin : C12_Pin */
-    GPIOC_InitStruct.Pin  = GPIO_PIN_12;
-    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-
-    /*Configure CL pin : C10_Pin */
-    GPIOC_InitStruct.Pin  = GPIO_PIN_10;
-    GPIOC_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-    GPIOC_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-    HAL_GPIO_Init(GPIOC, &GPIOC_InitStruct);
-
+    /*Configure EN_GATE pin : B07_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_7;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure TIM1_CH1 pin : B08_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_8;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure TIM1_CH2 pin : B09_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_9;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure TIM1_CH3 pin : B10_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_10;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
     /*Configure LED_FAULT pin : B11_Pin */
     GPIOB_InitStruct.Pin  = GPIO_PIN_11;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure TIM1_CH3N pin : B13_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_13;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure TIM1_CH2N pin : B14_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_14;
+    GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+    GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+    HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);
+    /*Configure TIM1_CH1N pin : B15_Pin */
+    GPIOB_InitStruct.Pin  = GPIO_PIN_15;
     GPIOB_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
     GPIOB_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     HAL_GPIO_Init(GPIOB, &GPIOB_InitStruct);

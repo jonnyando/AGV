@@ -1,10 +1,12 @@
 # AGV
 
 ## TODO:
-- Add microcontroller (STM32, probably F103)
-- add smps to power drv8303 and micro (3v3)
-- add LEDs (Bus power, drv power, micro power, drv enable)
+- FIX GROUNDING POLYGON
+- FIX AVDD & AGND CONNECTIONS IN SCHEMATIC
+- REDUCE OVERALL SIZE
+- MOVE UART TO SAME SIDE AS SWIO
 - bulk capacitance
+
 - usb port? depends on uC. Would need isolation probably
 - isolated uart/i2c/spi port, for receiving commands from master/host
 - add adc?
