@@ -426,7 +426,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=networked Brother_HL-2140
+TargetPrinter=Networked Brother HL-2150N series
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
@@ -1283,7 +1283,7 @@ ComponentLibIdentifierKind3=Library Name And Type
 ComponentLibraryIdentifier3=myLibs.IntLib
 ComponentDesignItemID3=DRV8303
 ComponentSymbolReference3=DRV8303
-ComponentUpdate3=0
+ComponentUpdate3=1
 ComponentIsDeviceSheet3=0
 ComponentLibIdentifierKind4=Library Name And Type
 ComponentLibraryIdentifier4=myLibs.IntLib
@@ -1307,7 +1307,7 @@ ComponentLibIdentifierKind7=Library Name And Type
 ComponentLibraryIdentifier7=myPassives.IntLib
 ComponentDesignItemID7=Diode_schottky
 ComponentSymbolReference7=Diode_schottky
-ComponentUpdate7=1
+ComponentUpdate7=0
 ComponentIsDeviceSheet7=0
 ComponentLibIdentifierKind8=Library Name And Type
 ComponentLibraryIdentifier8=myPassives.IntLib
@@ -1513,7 +1513,7 @@ ModelType25=PCBLIB
 ModelName25=ScrewTerm_3
 ModelUpdate25=1
 ModelType26=PCBLIB
-ModelName26=SOD-123
+ModelName26=SOD523
 ModelUpdate26=1
 ModelType27=PCBLIB
 ModelName27=SOT-223

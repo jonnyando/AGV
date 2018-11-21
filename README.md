@@ -1,13 +1,22 @@
 # AGV
 
-## TODO:
-- add smps to power drv8303 and micro (3v3)
-- bulk capacitance
-- usb port? depends on uC. Would need isolation probably
-- isolated uart/i2c/spi port, for receiving commands from master/host
-- add adc?
+##Current Specs
+- BLDC motor driver
+- STM32F103C8 microcontroller
+- LEDs on each phase's PWM output, so they will breath in sync with the speed of the motor
+- Sense lines on all three phases, allowing sensorless operation
+- UART connector
+- SWD connector
+- Vin up to 24V (need to double check voltage range on all parts)
+- 3.3v linear reg (want to replace with switched)
+- 3.3v rail indicator LED
+- four quadrant operation (sw not yet implemented)
 
-## Fixes:
-- increase drill size on stitching vias (currently unnecessarily small)
-- fix/remove thermal relief on source pads for left most FETs
-- add fourth mounting hole
+
+## TO DO
+- add connection for rotary encoder
+- add silkscreen indication for power input
+- add bulk input capacitance
+- get overall size down a little
+- determine if parallel 'FETs are necessary for desired use cases.
+- determine power handling capability (similar to above)

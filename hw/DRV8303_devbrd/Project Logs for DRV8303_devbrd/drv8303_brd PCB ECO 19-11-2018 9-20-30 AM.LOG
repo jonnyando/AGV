@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=GND Pin=U1-23
+Removed Pin From Net: NetName=NetC3_2 Pin=U1-24
+Change Component Comment : Designator=R20 Old Comment=10KR New Comment=68KR
+Change Component Comment : Designator=R21 Old Comment=10KR New Comment=68KR
+Change Component Comment : Designator=R22 Old Comment=10KR New Comment=68KR
+Added Pin To Net: NetName=NetC3_2 Pin=U1-23
+Added Pin To Net: NetName=GND Pin=U1-24
