@@ -2,7 +2,7 @@
 
 #define TIMEOUT 5000U
 
-void setup_uart1(void){
+void UART1_setup(void){
     // enable RCC for USART2
     RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
     // enable RCC for GPIO port of USART1 (GPIOA)
@@ -23,7 +23,7 @@ void setup_uart1(void){
     USART1->CR3 = 0x0000;
 }
 
-void setup_uart2(void){
+void UART2_setup(void){
 
     // enable RCC for USART2
     RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
@@ -55,7 +55,7 @@ void setup_uart2(void){
 
 }
 
-void setup_uart3(void){
+void UART3_setup(void){
     // enable RCC for USART3
     RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
     // enable RCC for GPIO port of USART3 (GPIOB)
