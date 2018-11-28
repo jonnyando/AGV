@@ -1,1 +1,3 @@
-motor_driver/sw/build/
+sw/build/
+hw/DRV8303_devbrd/History/
+hw/DRV8303_devbrd/__Previews/
