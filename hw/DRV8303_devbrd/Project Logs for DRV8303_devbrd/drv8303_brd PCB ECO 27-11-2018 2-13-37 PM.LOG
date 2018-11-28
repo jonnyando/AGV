@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=TIM1_CH3 Pin=U2-21
+Removed Pin From Net: NetName=UART1_Tx Pin=U2-30
+Removed Pin From Net: NetName=UART1_Rx Pin=U2-31
+Removed Pin From Net: NetName=NetU1_8 Pin=U2-42
+Removed Pin From Net: NetName=EN_GATE Pin=U2-43
+Removed Pin From Net: NetName=TIM1_CH1 Pin=U2-45
+Removed Pin From Net: NetName=TIM1_CH2 Pin=U2-46
+Added Pin To Net: NetName=TIM1_CH1 Pin=U2-29
+Added Pin To Net: NetName=TIM1_CH2 Pin=U2-30
+Added Pin To Net: NetName=TIM1_CH3 Pin=U2-31
+Added Pin To Net: NetName=UART1_Tx Pin=U2-42
+Added Pin To Net: NetName=UART1_Rx Pin=U2-43
+Added Pin To Net: NetName=NetU1_8 Pin=U2-45
+Added Pin To Net: NetName=EN_GATE Pin=U2-46
+Added Pin To Net: NetName=BOOT1 Pin=U2-20
+Added Net: Name=BOOT1

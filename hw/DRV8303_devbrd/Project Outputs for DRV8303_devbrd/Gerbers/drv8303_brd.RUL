@@ -1,4 +1,4 @@
-DRC Rules Export File for PCB: C:\Users\Jon\Documents\DRV8303_devbrd\drv8303_brd.PcbDoc
+DRC Rules Export File for PCB: C:\Users\Jon\Documents\AGV\hw\DRV8303_devbrd\drv8303_brd.PcbDoc
 RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
 RuleKind=Width|RuleName=Width|Scope=Board|Minimum=6.00
 RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=6.00
