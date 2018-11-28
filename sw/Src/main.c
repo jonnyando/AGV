@@ -42,21 +42,8 @@ int main(void)
 
     MX_GPIO_Init();
     SPI1_setup();
-    setup_uart1();
-    // SPI_HandleTypeDef SPIone;
-    // SPIone.Instance                 = SPI1;
-    // SPIone.Init.Mode                = SPI_MODE_MASTER;
-    // SPIone.Init.Direction           = SPI_DIRECTION_2LINES;
-    // SPIone.Init.DataSize            = SPI_DATASIZE_16BIT;
-    // SPIone.Init.CLKPolarity         = SPI_POLARITY_LOW;
-    // SPIone.Init.CLKPhase            = SPI_PHASE_2EDGE;
-    // SPIone.Init.NSS                 = SPI_NSS_HARD_OUTPUT;
-    // SPIone.Init.BaudRatePrescaler   = SPI_BAUDRATEPRESCALER_16;
-    // SPIone.Init.FirstBit            = SPI_FIRSTBIT_MSB;
-    // SPIone.Init.TIMode              = SPI_TIMODE_DISABLE;
-    // SPIone.Init.CRCCalculation      = SPI_CRCCALCULATION_DISABLE;
-    // SPIone.Init.CRCPolynomial       = 10;
-    // HAL_SPI_Init(&SPIone);
+    UART1_setup();
+
     printf("spi initialized\n\n");
     fflush(stdout);
     // printf("USART1->BRR\t");    print_reg(USART1->BRR,   32);
@@ -88,66 +75,14 @@ int main(void)
     printf("\nEnabled DRV8303\n");
 
     uint16_t tx = 0b1001100000000011;
-    uint16_t rx = 0x0000;;
-
-  //   // HAL_Delay(1000);
-  //   // lower CS
-  // // // Do blocking read
-  //   uint16_t zerobuff = 0;
-  //   uint16_t controlword = tx;
-  //   uint16_t recbuff = 0b1000000110000001;
-  //   HAL_SPI_Transmit(&SPIone, (uint8_t*)(&controlword), 1, 1000);
-  // //
-  //   // // Datasheet says you don't have to pulse the nCS between transfers, (16 clocks should commit the transfer)
-  //   // // but for some reason you actually need to pulse it.
-  //   // // Actuate chipselect
-  //   // GPIOB->ODR |= GPIO_PIN_4;
-  //   for(int i=0;i<1000;i++){__ASM("nop");}
-  //   // // Actuate chipselect
-  //   // GPIOB->BRR |= GPIO_PIN_4;
-  //   for(int i=0;i<1000;i++){__ASM("nop");}
-  //   //
-  //   HAL_SPI_TransmitReceive(&SPIone, (uint8_t*)(&zerobuff), (uint8_t*)(&recbuff), 1, 1000);
-  //   for(int i=0;i<1000;i++){__ASM("nop");}
-  //   //
-  //   // // Actuate chipselect
-  //   // GPIOB->ODR |= GPIO_PIN_4;
-  //   print_reg(recbuff, 16);
-  //   printf("\n");
+    uint16_t rx = 0x0000;
 
 
     while (1){
         HAL_Delay(500);
-        // SPI1_Transcieve(0b1001011111111111);
 
         GPIOB->ODR |= INH_A;
         GPIOB->BRR |= INL_A;
-        // GPIOB->ODR |= GPIO_PIN_9;
-        // GPIOB->ODR |= GPIO_PIN_10;
-        // GPIOB->ODR |= GPIO_PIN_11;
-
-        // GPIOB->BRR |= GPIO_PIN_8;
-        // GPIOB->BRR |= GPIO_PIN_9;
-        // GPIOB->BRR |= GPIO_PIN_10;
-        // GPIOB->BRR |= GPIO_PIN_11;
-
-        tx = 0b1000100000000000;
-        // printf("Sending\t");  print_reg(tx, 16);
-        // SPI_CS_PORT->BRR |= SPI_CS_PIN;
-        // SPI1_Transfer(tx);
-        // for(int i=0;i<35;i++){__ASM("nop");}
-        // SPI_CS_PORT->ODR |= SPI_CS_PIN;
-        // HAL_Delay(1);
-        // SPI_CS_PORT->BRR |= SPI_CS_PIN;
-        // rx = SPI1_Transcieve(0b1000000000000000);
-        // HAL_Delay(1);
-        // SPI_CS_PORT->ODR |= SPI_CS_PIN;
-        
-        // tx = 0b1000000000000000;
-        // printf("Sending\t");  print_reg(tx, 16);
-        // rx = drv_transceive(tx);
-        // printf("received\t");  print_reg(rx, 16);
-        // HAL_Delay(10);
 
         tx = 0b1000100000000000;
         printf("Sending\t");  print_reg(tx, 16);
@@ -182,7 +117,7 @@ int main(void)
 }
 
 uint16_t drv_transceive(uint16_t tx_reg){
-    tx_reg = 0b1000100000000000;
+    //tx_reg = 0b1000100000000000;
     SPI_CS_PORT->BRR |= SPI_CS_PIN;
     SPI1_Transfer(tx_reg);
     for(int i=0;i<35;i++){__ASM("nop");}

@@ -2,6 +2,7 @@
 #define __SPI_H__
 
 #include "stm32f1xx_hal.h"
+#include "stm32f103xb.h"
 #include <stdio.h>
 #include <stdint.h>
 
