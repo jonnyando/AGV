@@ -17,13 +17,13 @@ OPT = -Og
 # source path
 SOURCES_DIR =  \
 Application/User \
-Application/User/Src/stm32f1xx_hal_msp.c \
 Drivers/STM32F1xx_HAL_Driver \
 Drivers \
-Application/User/Src/stm32f1xx_it.c \
 Application \
 Drivers/CMSIS \
 Application/User/Src \
+Application/User/Src/stm32f1xx_hal_msp.c \
+Application/User/Src/stm32f1xx_it.c \
 Application/User/Src/main.c
 
 # firmware library path
@@ -40,20 +40,25 @@ C_SOURCES =  \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
-Src/stm32f1xx_it.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c \
-Src/main.c \
-Src/stm32f1xx_hal_msp.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c \
-/Src/system_stm32f1xx.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c
+Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
+Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c \
+Src/main.c \
+Src/stm32f1xx_it.c \
+Src/stm32f1xx_hal_msp.c \
+Src/system_stm32f1xx.c \
+Src/spi.c \
+Src/UART_config.c \
+Src/syscalls.c \
+Src/gpio.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -122,8 +127,8 @@ ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffuncti
 
 CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT)
 
-ifeq ($(DEBUG), 0)
-CFLAGS += -g -gdwarf-2
+ifeq ($(DEBUG), 1)
+CFLAGS += -g3 -gdwarf-2
 endif
 
 
@@ -139,7 +144,7 @@ LIBDIR =
 LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BUILD_DIR)/$(TARGET).map,--cref -Wl,--gc-sections
 
 # default action: build all
-all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
+all: bin
 
 # Prettify output
 V = 0
@@ -190,7 +195,9 @@ $(BUILD_DIR):
 clean:
 	-rm -fR .dep $(BUILD_DIR)
 
-flash:
+bin: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
+
+flash: bin
 	@echo "[FLASH] flashing $(BUILD_DIR)/$(TARGET).bin to 0x8000000"
 	st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000
 
