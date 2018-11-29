@@ -25,6 +25,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 uint16_t drv_transceive(uint16_t tx_reg);
+void drv_write(uint8_t drv_reg, uint16_t payload);
 
 int __io_putchar(int ch)
 {
@@ -77,6 +78,9 @@ int main(void)
     uint16_t tx = 0b1001100000000011;
     uint16_t rx = 0x0000;
 
+    // sets drv to 3-PWM mode
+    drv_write(0x02, 0b0011001010);
+
 
     while (1){
         HAL_Delay(500);
@@ -118,6 +122,26 @@ int main(void)
 
 uint16_t drv_transceive(uint16_t tx_reg){
     //tx_reg = 0b1000100000000000;
+    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    SPI1_Transfer(tx_reg);
+    for(int i=0;i<35;i++){__ASM("nop");}
+    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+    HAL_Delay(1);
+    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    uint16_t rx_reg = SPI1_Transcieve(0b1000000000000000);
+    HAL_Delay(1);
+    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+
+    return rx_reg;
+}
+
+void drv_write(uint8_t drv_reg, uint16_t payload){
+    //tx_reg = 0b1000100000000000;
+    uint16_t tx_reg;
+    tx_reg = drv_reg << 10;
+    tx_reg |= (1<<15);
+    tx_reg |= payload;
+
     SPI_CS_PORT->BRR |= SPI_CS_PIN;
     SPI1_Transfer(tx_reg);
     for(int i=0;i<35;i++){__ASM("nop");}
