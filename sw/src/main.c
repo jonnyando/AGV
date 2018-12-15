@@ -25,6 +25,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 uint16_t drv_transceive(uint16_t tx_reg);
+void drv_write(uint8_t drv_reg, uint16_t payload);
 
 int __io_putchar(int ch)
 {
@@ -76,6 +77,9 @@ int main(void)
 
     uint16_t tx = 0b1001100000000011;
     uint16_t rx = 0x0000;
+
+    // sets drv to 3-PWM mode
+    drv_write(0x02, 0b0011001010);
 
 
     while (1){
@@ -139,6 +143,26 @@ uint16_t drv_transceive(uint16_t tx_reg){
     return rx_reg;
 }
 
+void drv_write(uint8_t drv_reg, uint16_t payload){
+    //tx_reg = 0b1000100000000000;
+    uint16_t tx_reg;
+    tx_reg = drv_reg << 10;
+    tx_reg |= (1<<15);
+    tx_reg |= payload;
+
+    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    SPI1_Transfer(tx_reg);
+    for(int i=0;i<35;i++){__ASM("nop");}
+    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+    HAL_Delay(1);
+    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    uint16_t rx_reg = SPI1_Transcieve(0b1000000000000000);
+    HAL_Delay(1);
+    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+
+    return rx_reg;
+}
+
 /**
 * @brief System Clock Configuration
 * @retval None
@@ -182,31 +206,6 @@ void SystemClock_Config(void)
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
-
-/* USART2 init function */
-// static void MX_USART2_UART_Init(void)
-// {
-//     __HAL_RCC_USART3_CLK_ENABLE();
-//
-//     huart3.Instance = USART3;
-//     huart3.Init.BaudRate = 115200;
-//     huart3.Init.WordLength = UART_WORDLENGTH_8B;
-//     huart3.Init.StopBits = UART_STOPBITS_1;
-//     huart3.Init.Parity = UART_PARITY_NONE;
-//     huart3.Init.Mode = UART_MODE_TX_RX;
-//     huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-//     huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-//     if (HAL_UART_Init(&huart3) != HAL_OK)
-//     {
-//         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET);
-//         HAL_Delay(200);
-//         HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
-//         _Error_Handler(__FILE__, __LINE__);
-//     }
-//
-//     __HAL_UART_ENABLE(&huart3);
-//
-// }
 
 /** Configure pins as
 * Analog
@@ -298,13 +297,9 @@ static void MX_GPIO_Init(void)
 void _Error_Handler(char *file, int line)
 {
     /* USER CODE BEGIN Error_Handler_Debug */
-    /* User can add his own implementation to report the HAL error return state */
     while(1)
     {
-        // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, GPIO_PIN_SET);
-        // HAL_Delay(300);
-        // HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2, GPIO_PIN_RESET);
-        // HAL_Delay(300);
+        printf("error in %s, line %d", file, line);
     }
     /* USER CODE END Error_Handler_Debug */
 }
