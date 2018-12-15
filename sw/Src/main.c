@@ -81,8 +81,12 @@ int main(void)
     while (1){
         HAL_Delay(500);
 
-        GPIOB->ODR |= INH_A;
+        GPIOB->BRR |= INH_A;
         GPIOB->BRR |= INL_A;
+        GPIOB->BRR |= INH_B;
+        GPIOB->BRR |= INL_B;
+        GPIOB->BRR |= INH_C;
+        GPIOB->BRR |= INL_C;
 
         tx = 0b1000100000000000;
         printf("Sending\t");  print_reg(tx, 16);
@@ -105,7 +109,11 @@ int main(void)
         // GPIOB->ODR |= GPIO_PIN_8;
         HAL_Delay(500);
         GPIOB->BRR |= INH_A;
-        GPIOB->ODR |= INL_A;
+        GPIOB->BRR |= INL_A;
+        GPIOB->BRR |= INH_B;
+        GPIOB->BRR |= INL_B;
+        GPIOB->BRR |= INH_C;
+        GPIOB->BRR |= INL_C;
 
         GPIOB->BRR |= GPIO_PIN_8;
         if(GPIOB->IDR && GPIO_PIN_4)
