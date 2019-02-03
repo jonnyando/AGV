@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=nRST Pin=P1-3
+Removed Pin From Net: NetName=SWDIO Pin=P1-4
+Removed Pin From Net: NetName=SWCLK Pin=P1-5
+Removed Pin From Net: NetName=GND Pin=P1-6
+Change Component Footprint: Designator=P1 Old Footprint=HDR1X6 New Footprint=HDR1X4
+Change Component Comment : Designator=P1 Old Comment=Header 6 New Comment=Header 4
+Change Component Designator: OldDesignator=P? NewDesignator=P3
+Added Pin To Net: NetName=SWDIO Pin=P1-2
+Added Pin To Net: NetName=SWCLK Pin=P1-3
+Added Pin To Net: NetName=GND Pin=P1-4
