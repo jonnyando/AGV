@@ -1,0 +1,42 @@
+Added Component: Designator=U3(DQC0010A)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Category"; Value = "IntegratedCircuits(ICs)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Output"; Value = "500mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "http://www.ti.com/lit/ds/symlink/tps62175.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Rev. C, 07/2015"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Dynamic Catalog"; Value = "Buck(Step-Down)IC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Family"; Value = "PMIC-VoltageRegulators-DCDCSwitchingRegulators"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Featured Product"; Value = "WEBENCHDesignCenter"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Frequency - Switching"; Value = "1MHz"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "http://www.ti.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "SurfaceMount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Type"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Outputs"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-40°C~85°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Other Names"; Value = "296-35096-2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Output Type"; Value = "Adjustable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "10-Pin Small Outline NO-Lead Package, Body 3 x 2 mm, Pitch 0.5 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "DQC10-2400X840TP"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Tape&Reel(TR)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PWM Type"; Value = "Hybrid"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Series"; Value = "DCS-Control™"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Standard Package"; Value = "250"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Device Package"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Synchronous Rectifier"; Value = "Yes"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Type"; Value = "Step-Down(Buck)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Input"; Value = "4.75V~28V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Output"; Value = "1V~6V"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=U3-1
+Added Pin To Net: NetName=VBUS Pin=U3-2
+Added Pin To Net: NetName=VBUS Pin=U3-3
+Added Pin To Net: NetName=GND Pin=U3-4
+Added Pin To Net: NetName=NetR26_2 Pin=U3-5
+Added Pin To Net: NetName=GND Pin=U3-6
+Added Pin To Net: NetName=NetR27_2 Pin=U3-7
+Added Pin To Net: NetName=3v3 Pin=U3-8
+Added Pin To Net: NetName=NetL?_1 Pin=U3-9
+Added Pin To Net: NetName=3v3 Pin=U3-10
+Added Pin To Net: NetName=GND Pin=U3-11
+Added Member To Class: ClassName=Power Member=Component U3 TPS62175DQCT
