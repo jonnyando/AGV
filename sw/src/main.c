@@ -6,6 +6,7 @@
 #include "gpio.h"
 #include <stdio.h>
 
+
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void GPIO_Init(void);
@@ -200,28 +201,22 @@ uint16_t drv_write(uint8_t drv_reg, uint16_t payload){
     return rx_reg;
 }
 
-/**
-* @brief System Clock Configuration
-* @retval None
-*/
+/**@brief System Clock Configuration*/
 void SystemClock_Config(void)
 {
     RCC_OscInitTypeDef RCC_OscInitStruct;
     RCC_ClkInitTypeDef RCC_ClkInitStruct;
 
-    /**Initializes the CPU, AHB and APB busses clocks
-    */
+    /**Initializes the CPU, AHB and APB busses clocks*/
     RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;
     RCC_OscInitStruct.HSICalibrationValue = 16;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI_DIV2;
     RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
-    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-    {/*error*/}
+    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK){/*error*/}
 
-    /**Initializes the CPU, AHB and APB busses clocks
-    */
+    /**Initializes the CPU, AHB and APB busses clocks*/
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
     |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
@@ -229,13 +224,10 @@ void SystemClock_Config(void)
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-    {/*error*/}
-    /**Configure the Systick interrupt time
-    */
+    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK){/*error*/}
+    /*Configure the Systick interrupt time*/
     HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
-    /**Configure the Systick
-    */
+    /**Configure the Systick*/
     HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
@@ -249,29 +241,19 @@ static void GPIO_Init(void)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
 
-    /*Configure nOCTW pin : B05_Pin */
-    pin_mode(GPIOB, nOCTW, GPIO_IN_PULL);
+    pin_mode(GPIOB, nOCTW,     GPIO_IN_PULL);
     pin_pullmode(GPIOB, nOCTW, GPIO_PULLUP);
-    /*Configure nFAULT pin : B04_Pin */
-    pin_mode(GPIOB, nFAULT, GPIO_IN_PULL);
+    pin_mode(GPIOB, nFAULT,    GPIO_IN_PULL);
     pin_pullmode(GPIOB, nFAULT, GPIO_PULLUP);
-    /*Configure DC_CAL pin : A12_Pin */
-    pin_mode(GPIOA, DC_CAL, GPIO_OUT_PP);
-    /*Configure EN_GATE pin : A11_Pin */
-    pin_mode(GPIOA, EN_GATE, GPIO_OUT_PP);
-    /*Configure TIM1_CH1 pin : A08_Pin */
-    pin_mode(GPIOA, INH_A, GPIO_OUT_PP);
-    /*Configure TIM1_CH2 pin : A09_Pin */
-    pin_mode(GPIOA, INH_B, GPIO_OUT_PP);
-    /*Configure TIM1_CH3 pin : A10_Pin */
-    pin_mode(GPIOA, INH_C, GPIO_OUT_PP);
-    /*Configure LED_FAULT pin : B11_Pin */
+    
+    pin_mode(GPIOA, DC_CAL,    GPIO_OUT_PP);
+    pin_mode(GPIOA, EN_GATE,   GPIO_OUT_PP);
+    pin_mode(GPIOA, INH_A,     GPIO_OUT_PP);
+    pin_mode(GPIOA, INH_B,     GPIO_OUT_PP);
+    pin_mode(GPIOA, INH_C,     GPIO_OUT_PP);
     pin_mode(GPIOB, LED_FAULT, GPIO_OUT_PP);
-    /*Configure TIM1_CH3N pin : B13_Pin */
-    pin_mode(GPIOB, INL_C, GPIO_OUT_PP);
-    /*Configure TIM1_CH2N pin : B14_Pin */
-    pin_mode(GPIOB, INL_B, GPIO_OUT_PP);
-    /*Configure TIM1_CH1N pin : B15_Pin */
-    pin_mode(GPIOB, INL_A, GPIO_OUT_PP);
-    pin_mode(GPIOA, 1, GPIO_OUT_PP);
+    pin_mode(GPIOB, INL_C,     GPIO_OUT_PP);
+    pin_mode(GPIOB, INL_B,     GPIO_OUT_PP);
+    pin_mode(GPIOB, INL_A,     GPIO_OUT_PP);
+    pin_mode(GPIOA, 1,         GPIO_OUT_PP);
 }

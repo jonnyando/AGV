@@ -12,7 +12,7 @@
 #define GPIO_IN_AN   0x00000000
 
 #define GPIO_PULLUP 0x01
-#define GPIO_PULLDN 0x01
+#define GPIO_PULLDN 0x00
 
 void pin_mode(GPIO_TypeDef  *port_reg, uint8_t pin, uint8_t mode);
 void pin_speed(GPIO_TypeDef  *port_reg, uint8_t speed);
