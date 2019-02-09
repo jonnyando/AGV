@@ -1,5 +1,5 @@
-#ifndef __UART_CONFIG_H__
-#define __UART_CONFIG_H__
+#ifndef __UART_H__
+#define __UART_H__
 
 #include "stm32f103xb.h"
 #include <stdio.h>
@@ -14,4 +14,4 @@ void transmit_uart3(char *ch);
 
 void print_reg(uint32_t reg, uint8_t reg_sz);
 
-#endif // endif __UART_CONFIG_H__
+#endif // endif __UART_H__

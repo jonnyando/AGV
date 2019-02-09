@@ -34,7 +34,7 @@
 #include <time.h>
 #include <sys/time.h>
 #include <sys/times.h>
-#include "UART_config.h"
+#include "uart.h"
 
 
 /* Variables */

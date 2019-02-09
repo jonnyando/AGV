@@ -1,4 +1,4 @@
-#include "UART_config.h"
+#include "uart.h"
 
 #define TIMEOUT 5000U
 
@@ -6,15 +6,18 @@ void UART1_setup(void){
     // enable RCC for USART2
     RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
     // enable RCC for GPIO port of USART1 (GPIOA)
-    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
+    RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
     // enable RCC for alternate function clocks
     RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
 
+    // remap USART1 to alternate pins
+    AFIO->MAPR |= (1 << 2);
+
     // setup GPIO pins for USART1
-    // TX PA9
-    // RX PA10
-    GPIOA->CRH &=   0xfffff00f;
-    GPIOA->CRH |=   0x000004B0;
+    // TX PB6
+    // RX PB7
+    GPIOB->CRL &=   0x00ffffff;
+    GPIOB->CRL |=   0x4B000000;
 
     // BAUDRATE = 115200;
     USART1->BRR = 0b0000001000101100;

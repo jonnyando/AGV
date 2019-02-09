@@ -21,10 +21,10 @@ Drivers/STM32F1xx_HAL_Driver \
 Drivers \
 Application \
 Drivers/CMSIS \
-Application/User/Src \
-Application/User/Src/stm32f1xx_hal_msp.c \
-Application/User/Src/stm32f1xx_it.c \
-Application/User/Src/main.c
+Application/User/src \
+Application/User/src/stm32f1xx_hal_msp.c \
+Application/User/src/stm32f1xx_it.c \
+Application/User/src/main.c
 
 # firmware library path
 PERIFLIB_PATH =
@@ -51,14 +51,14 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.c \
-Src/main.c \
-Src/stm32f1xx_it.c \
-Src/stm32f1xx_hal_msp.c \
-Src/system_stm32f1xx.c \
-Src/spi.c \
-Src/UART_config.c \
-Src/syscalls.c \
-Src/gpio.c
+src/main.c \
+src/stm32f1xx_it.c \
+src/stm32f1xx_hal_msp.c \
+src/system_stm32f1xx.c \
+src/spi.c \
+src/uart.c \
+src/syscalls.c \
+src/gpio.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -115,7 +115,7 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--IInc \
+-Iinc \
 -IDrivers/STM32F1xx_HAL_Driver/Inc \
 -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F1xx/Include \
