@@ -5,26 +5,10 @@
 #include "uart.h"
 #include "gpio.h"
 #include <stdio.h>
-                    // Pin          // Pin
-#define nOCTW       5      // B
-#define nFAULT      4      // B
-#define DC_CAL      12     // A 
-#define EN_GATE     11     // A 
-#define INH_A       8      // A
-#define INH_B       9      // A
-#define INH_C       10     // A
-#define LED_FAULT   11     // B
-#define INL_C       13     // B
-#define INL_B       14     // B
-#define INL_A       15     // B
-
-/* Private variables ---------------------------------------------------------*/
-UART_HandleTypeDef huart3;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_USART2_UART_Init(void);
+static void GPIO_Init(void);
 uint16_t drv_transceive(uint16_t tx_reg);
 uint16_t drv_write(uint8_t drv_reg, uint16_t payload);
 
@@ -35,35 +19,31 @@ int __io_putchar(int ch)
     return ch;
 }
 
-
 int main(void)
 {
-
-    HAL_Init();
-
     SystemClock_Config();
 
     UART1_setup();
     printf("uart initialized\n\n");
     SPI1_setup();
     printf("spi initialized\n\n");
-    MX_GPIO_Init();
+    GPIO_Init();
     printf("gpio initialized\n\n");
 
     // fflush(stdout);
     // printf("SPI1->CR1\t\t");      print_reg(SPI1->CR1,     16);
     // fflush(stdout);
     HAL_Delay(1000);
-    GPIOA->BRR |= INH_A;
-    GPIOA->BRR |= INH_B;
-    GPIOA->BRR |= INH_C;
-    GPIOB->BRR |= INL_A;
-    GPIOB->BRR |= INL_B;
-    GPIOB->BRR |= INL_C;
-
-    GPIOA->BRR |= DC_CAL;
+    pin_reset(GPIOA, INH_A);
+    pin_reset(GPIOA, INH_A);
+    pin_reset(GPIOA, INH_A);
+    pin_reset(GPIOB, INL_A);
+    pin_reset(GPIOB, INL_B);
+    pin_reset(GPIOB, INL_C);
+    pin_reset(GPIOA, DC_CAL);
     printf("DC_CAL set LOW (off)\n");
-    GPIOA->ODR |= EN_GATE;
+    // GPIOA->ODR |= EN_GATE;
+    pin_set(GPIOA, EN_GATE);
     printf("\nEnabled DRV8303\n");
 
     uint16_t tx = 0b1001100000000011;
@@ -76,17 +56,17 @@ int main(void)
     // sets drv to 3-PWM mode
     // drv_write(0x02, 0b00000001000);
 
-    if(!(GPIOB->IDR && nOCTW)){
+    if(!(GPIOB->IDR && (1 << nOCTW))){
         printf("nOCTW is LOW\n");
-        GPIOB->ODR |= LED_FAULT;
+        pin_set(GPIOB, LED_FAULT);
     } else {
-        GPIOB->BRR |= LED_FAULT;
+        pin_reset(GPIOB, LED_FAULT);
     }
-    if(!(GPIOB->IDR && nFAULT)){
+    if(!(GPIOB->IDR && (1 << nFAULT))){
         printf("nFAULT is LOW\n");
-        GPIOB->ODR |= LED_FAULT;
+        pin_set(GPIOB, LED_FAULT);
     } else {
-        GPIOB->BRR |= LED_FAULT;
+        pin_reset(GPIOB, LED_FAULT);
     }
     uint16_t t_del = 500;
     while (1){
@@ -94,46 +74,49 @@ int main(void)
         pin_set(GPIOA, 1);        
         HAL_Delay(t_del);
         pin_reset(GPIOA, 1);
-        // GPIOA->BRR |= INH_A; // 1
-        // GPIOB->BRR |= INL_A;
-        // GPIOA->ODR |= INH_B;
-        // GPIOB->BRR |= INL_B;
-        // GPIOA->BRR |= INH_C;
+        
         // HAL_Delay(t_del);
-        // GPIOA->BRR |= INH_A; // 2
-        // GPIOB->ODR |= INL_A;
-        // GPIOA->ODR |= INH_B;
-        // GPIOB->BRR |= INL_B;
-        // GPIOA->BRR |= INH_C;
-        // GPIOB->BRR |= INL_C;
+        // pin_reset(GPIOA, INH_A); // 1
+        // pin_reset(GPIOB, INL_A);
+        // pin_set(GPIOA, INH_B);
+        // pin_reset(GPIOB, INL_B);
+        // pin_reset(GPIOA, INH_C);
+        // pin_set(GPIOB, INL_C);
         // HAL_Delay(t_del);
-        // GPIOA->BRR |= INH_A; // 3
-        // GPIOB->ODR |= INL_A;
-        // GPIOA->BRR |= INH_B;
-        // GPIOB->BRR |= INL_B;
-        // GPIOA->ODR |= INH_C;
-        // GPIOB->BRR |= INL_C;
+        // pin_reset(GPIOA, INH_A); // 2
+        // pin_set(GPIOB, INL_A);
+        // pin_set(GPIOA, INH_B);
+        // pin_reset(GPIOB, INL_B);
+        // pin_reset(GPIOA, INH_C);
+        // pin_reset(GPIOB, INL_C);
         // HAL_Delay(t_del);
-        // GPIOA->BRR |= INH_A; // 4
-        // GPIOB->BRR |= INL_A;
-        // GPIOA->BRR |= INH_B;
-        // GPIOB->ODR |= INL_B;
-        // GPIOA->ODR |= INH_C;
-        // GPIOB->BRR |= INL_C;
+        // pin_reset(GPIOA, INH_A); // 3
+        // pin_set(GPIOB, INL_A);
+        // pin_reset(GPIOA, INH_B);
+        // pin_reset(GPIOB, INL_B);
+        // pin_set(GPIOA, INH_C);
+        // pin_reset(GPIOB, INL_C);
         // HAL_Delay(t_del);
-        // GPIOA->ODR |= INH_A; // 5
-        // GPIOB->BRR |= INL_A;
-        // GPIOA->BRR |= INH_B;
-        // GPIOB->ODR |= INL_B;
-        // GPIOA->BRR |= INH_C;
-        // GPIOB->BRR |= INL_C;
+        // pin_reset(GPIOA, INH_A); // 4
+        // pin_reset(GPIOB, INL_A);
+        // pin_reset(GPIOA, INH_B);
+        // pin_set(GPIOB, INL_B);
+        // pin_set(GPIOA, INH_C);
+        // pin_reset(GPIOB, INL_C);
         // HAL_Delay(t_del);
-        // GPIOA->ODR |= INH_A; // 6
-        // GPIOB->BRR |= INL_A;
-        // GPIOA->BRR |= INH_B;
-        // GPIOB->BRR |= INL_B;
-        // GPIOA->BRR |= INH_C;
-        // GPIOB->ODR |= INL_C;
+        // pin_set(GPIOA, INH_A); // 5
+        // pin_reset(GPIOB, INL_A);
+        // pin_reset(GPIOA, INH_B);
+        // pin_set(GPIOB, INL_B);
+        // pin_reset(GPIOA, INH_C);
+        // pin_reset(GPIOB, INL_C);
+        // HAL_Delay(t_del);
+        // pin_set(GPIOA, INH_A); // 6
+        // pin_reset(GPIOB, INL_A);
+        // pin_reset(GPIOA, INH_B);
+        // pin_reset(GPIOB, INL_B);
+        // pin_reset(GPIOA, INH_C);
+        // pin_set(GPIOB, INL_C);
 
         // tx = 0b1000000000000000;
         // //printf("Sending\t");  print_reg(tx, 16);
@@ -204,15 +187,15 @@ uint16_t drv_write(uint8_t drv_reg, uint16_t payload){
 
     printf("transmitting\t");  print_reg(tx_reg, 16);
 
-    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    pin_reset(SPI_CS_PORT, SPI_CS_PIN);
     SPI1_Transfer(tx_reg);
     for(int i=0;i<35;i++){__ASM("nop");}
-    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+    pin_set(SPI_CS_PORT, SPI_CS_PIN);
     HAL_Delay(1);
-    SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    pin_reset(SPI_CS_PORT, SPI_CS_PIN);
     uint16_t rx_reg = SPI1_Transcieve(0b1000000000000000);
     HAL_Delay(1);
-    SPI_CS_PORT->ODR |= SPI_CS_PIN;
+    pin_set(SPI_CS_PORT, SPI_CS_PIN);
 
     return rx_reg;
 }
@@ -235,9 +218,8 @@ void SystemClock_Config(void)
     RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI_DIV2;
     RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-    {
-        _Error_Handler(__FILE__, __LINE__);
-    }
+    {/*error*/}
+
     /**Initializes the CPU, AHB and APB busses clocks
     */
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -248,9 +230,7 @@ void SystemClock_Config(void)
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
     if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
-    {
-        _Error_Handler(__FILE__, __LINE__);
-    }
+    {/*error*/}
     /**Configure the Systick interrupt time
     */
     HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
@@ -261,28 +241,13 @@ void SystemClock_Config(void)
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 }
 
-/** Configure pins as
-* Analog
-* Input
-* Output
-* EVENT_OUT
-* EXTI
-*/
-static void MX_GPIO_Init(void)
+static void GPIO_Init(void)
 {
-
-
     /* GPIO Ports Clock Enable */
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
-
-    /*Configure GPIO pin Output Level */
-
-    // GPIO_InitTypeDef GPIOA_InitStruct;
-    // GPIO_InitTypeDef GPIOB_InitStruct;
-
 
     /*Configure nOCTW pin : B05_Pin */
     pin_mode(GPIOB, nOCTW, GPIO_IN_PULL);
@@ -310,36 +275,3 @@ static void MX_GPIO_Init(void)
     pin_mode(GPIOB, INL_A, GPIO_OUT_PP);
     pin_mode(GPIOA, 1, GPIO_OUT_PP);
 }
-
-/**
-* @brief  This function is executed in case of error occurrence.
-* @param  file: The file name as string.
-* @param  line: The line in file as a number.
-* @retval None
-*/
-void _Error_Handler(char *file, int line)
-{
-    /* USER CODE BEGIN Error_Handler_Debug */
-    while(1)
-    {
-        printf("error in %s, line %d", file, line);
-    }
-    /* USER CODE END Error_Handler_Debug */
-}
-
-#ifdef  USE_FULL_ASSERT
-/**
-* @brief  Reports the name of the source file and the source line number
-*         where the assert_param error has occurred.
-* @param  file: pointer to the source file name
-* @param  line: assert_param error line source number
-* @retval None
-*/
-void assert_failed(uint8_t* file, uint32_t line)
-{
-    /* USER CODE BEGIN 6 */
-    /* User can add his own implementation to report the file name and line number,
-    tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-    /* USER CODE END 6 */
-}
-#endif /* USE_FULL_ASSERT */
