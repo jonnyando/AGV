@@ -35,16 +35,6 @@ int __io_putchar(int ch)
     return ch;
 }
 
-// void pin_mode(GPIO_TypeDef  *port_reg, uint8_t pin, uint8_t mode){
-//     volatile uint32_t *configreg;
-//     uint32_t config;
-//     uint8_t  pin_offset;
-//     configreg = (pin < 8) ? &port_reg->CRL : &port_reg->CRH;
-//     pin_offset = (pin < 8) ? pin : pin - 8;
-//     config = 0xFFFFFFFF ^ ((0b1111) << (pin_offset * 4));
-//     *configreg &= config;
-//     *configreg |= mode << (pin_offset * 4);
-// }
 
 int main(void)
 {
@@ -54,26 +44,15 @@ int main(void)
     SystemClock_Config();
 
     UART1_setup();
-    MX_GPIO_Init();
+    printf("uart initialized\n\n");
     SPI1_setup();
-
     printf("spi initialized\n\n");
-    fflush(stdout);
-    // printf("USART1->BRR\t");    print_reg(USART1->BRR,   32);
-    // printf("USART1->CR1\t");    print_reg(USART1->CR1,   32);
-    // printf("USART1->CR2\t");    print_reg(USART1->CR2,   32);
-    // printf("USART1->CR3\t");    print_reg(USART1->CR3,   32);
-    // printf("RCC->APB1ENR\t");   print_reg(RCC->APB1ENR,  32);
-    // printf("RCC->APB2ENR\t");   print_reg(RCC->APB2ENR,  32);
-    // printf("GPIOA->CRL\t");     print_reg(GPIOA->CRL,    32);
-    // printf("GPIOA->CRH\t");     print_reg(GPIOA->CRH,    32);
-    // printf("GPIOB->CRH\t");     print_reg(GPIOB->CRH,    32);
-    printf("SPI1->CR1\t\t");      print_reg(SPI1->CR1,     16);
-    printf("SPI1->CR2\t\t");      print_reg(SPI1->CR2,     16);
-    printf("SPI1->SR\t\t");       print_reg(SPI1->SR,      16);
-    printf("SPI1->DR\t\t");       print_reg(SPI1->DR,      16);
-    printf("SPI1->SR\t\t");       print_reg(SPI1->SR,      16);
-    fflush(stdout);
+    MX_GPIO_Init();
+    printf("gpio initialized\n\n");
+
+    // fflush(stdout);
+    // printf("SPI1->CR1\t\t");      print_reg(SPI1->CR1,     16);
+    // fflush(stdout);
     HAL_Delay(1000);
     GPIOA->BRR |= INH_A;
     GPIOA->BRR |= INH_B;
@@ -109,11 +88,6 @@ int main(void)
     } else {
         GPIOB->BRR |= LED_FAULT;
     }
-
-    
-    // printf("GPIOB->CRL\t\t");      print_reg(GPIOB->CRL,     32);
-    // printf("GPIOB->ODR\t\t");      print_reg(GPIOB->ODR,     16);
-
     uint16_t t_del = 500;
     while (1){
         HAL_Delay(t_del);
@@ -305,8 +279,6 @@ static void MX_GPIO_Init(void)
     __HAL_RCC_GPIOB_CLK_ENABLE();
 
     /*Configure GPIO pin Output Level */
-    // HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_RESET);
 
     // GPIO_InitTypeDef GPIOA_InitStruct;
     // GPIO_InitTypeDef GPIOB_InitStruct;
