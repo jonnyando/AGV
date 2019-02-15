@@ -1,0 +1,3 @@
+Removed Member From Class: ClassName=TopLevel Member=*
+Change Component Designator: OldDesignator=* NewDesignator=U4
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF
