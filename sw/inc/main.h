@@ -5,6 +5,19 @@
 
 /* Private define ------------------------------------------------------------*/
 
+                // Pin     // Port
+#define nOCTW       5      // B
+#define nFAULT      4      // B
+#define DC_CAL      12     // A 
+#define EN_GATE     11     // A 
+#define INH_A       8      // A
+#define INH_B       9      // A
+#define INH_C       10     // A
+#define LED_FAULT   11     // B
+#define INL_C       13     // B
+#define INL_B       14     // B
+#define INL_A       15     // B
+
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
 #define B1_EXTI_IRQn EXTI15_10_IRQn
@@ -20,21 +33,5 @@
 #define TCK_GPIO_Port GPIOA
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
-
-/* ########################## Assert Selection ############################## */
-/**
-  * @brief Uncomment the line below to expanse the "assert_param" macro in the
-  *        HAL drivers code
-  */
-
-#ifdef __cplusplus
- extern "C" {
-#endif
-void _Error_Handler(char *, int);
-
-#define Error_Handler() _Error_Handler(__FILE__, __LINE__)
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* __MAIN_H__ */
