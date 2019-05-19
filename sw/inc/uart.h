@@ -4,9 +4,9 @@
 #include "stm32f103xb.h"
 #include <stdio.h>
 
-void UART1_setup(void);
-void UART2_setup(void);
-void UART3_setup(void);
+void UART1_Init(void);
+void UART2_Init(void);
+void UART3_Init(void);
 
 void transmit_uart1(char *ch);
 void transmit_uart2(char *ch);

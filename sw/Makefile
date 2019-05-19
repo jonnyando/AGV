@@ -49,7 +49,10 @@ src/system_stm32f1xx.c \
 src/spi.c \
 src/uart.c \
 src/syscalls.c \
-src/gpio.c
+src/gpio.c \
+src/tim.c \
+src/delay.c \
+src/drv8303.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -108,7 +111,6 @@ AS_INCLUDES =
 C_INCLUDES =  \
 -Iinc \
 -IDrivers/STM32F1xx_HAL_Driver/Inc \
--IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ \
 -IDrivers/CMSIS/Include
 

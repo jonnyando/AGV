@@ -3,11 +3,18 @@
 
 /* Includes ------------------------------------------------------------------*/
 
+// #include "syscalls.h"
+#include "stm32f1xx_hal.h"
+#include "spi.h"
+#include "uart.h"
+#include "gpio.h"
+#include <stdio.h>
+#include "drv8303.h"
 /* Private define ------------------------------------------------------------*/
 
                 // Pin     // Port
-#define nOCTW       5      // B
-#define nFAULT      4      // B
+#define nOCTW       15      // A
+#define nFAULT      25      // B
 #define DC_CAL      12     // A 
 #define EN_GATE     11     // A 
 #define INH_A       8      // A
@@ -17,6 +24,12 @@
 #define INL_C       13     // B
 #define INL_B       14     // B
 #define INL_A       15     // B
+#define ENC_I       8      // B
+#define ENC_A       4      // B
+#define ENC_B       5      // B
+
+#define LED         1      // A
+
 
 #define B1_Pin GPIO_PIN_13
 #define B1_GPIO_Port GPIOC
@@ -33,5 +46,7 @@
 #define TCK_GPIO_Port GPIOA
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
+
+
 
 #endif /* __MAIN_H__ */

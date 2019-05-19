@@ -2,7 +2,7 @@
 
 #define TIMEOUT 5000U
 
-void UART1_setup(void){
+void UART1_Init(void){
     // enable RCC for USART2
     RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
     // enable RCC for GPIO port of USART1 (GPIOA)

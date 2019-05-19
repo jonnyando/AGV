@@ -4,6 +4,12 @@
         "stm32f1xx_hal_conf.h": "c",
         "uart_config.h": "c",
         "stm32f103x6.h": "c",
-        "spi.h": "c"
+        "spi.h": "c",
+        "tim.h": "c",
+        "delay.h": "c",
+        "main.h": "c",
+        "gpio.h": "c",
+        "drv8303.h": "c",
+        "uart.h": "c"
     }
 }
