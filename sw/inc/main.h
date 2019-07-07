@@ -8,22 +8,26 @@
 #include "spi.h"
 #include "uart.h"
 #include "gpio.h"
+#include "tim.h"
 #include <stdio.h>
+#include <math.h>
 #include "drv8303.h"
 /* Private define ------------------------------------------------------------*/
+#define PI 3.14159265358979323846264
+
 
                 // Pin     // Port
 #define nOCTW       15      // A
-#define nFAULT      25      // B
+#define nFAULT      12      // B
 #define DC_CAL      12     // A 
 #define EN_GATE     11     // A 
 #define INH_A       8      // A
 #define INH_B       9      // A
 #define INH_C       10     // A
 #define LED_FAULT   11     // B
-#define INL_C       13     // B
+#define INL_A       13     // B
 #define INL_B       14     // B
-#define INL_A       15     // B
+#define INL_C       15     // B
 #define ENC_I       8      // B
 #define ENC_A       4      // B
 #define ENC_B       5      // B
@@ -46,6 +50,8 @@
 #define TCK_GPIO_Port GPIOA
 #define SWO_Pin GPIO_PIN_3
 #define SWO_GPIO_Port GPIOB
+
+static void GPIO_Init(void);
 
 
 

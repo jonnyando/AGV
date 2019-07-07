@@ -37,14 +37,7 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c \
 src/main.c \
-src/stm32f1xx_it.c \
-src/stm32f1xx_hal_msp.c \
 src/system_stm32f1xx.c \
 src/spi.c \
 src/uart.c \
@@ -109,10 +102,10 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--Iinc \
--IDrivers/STM32F1xx_HAL_Driver/Inc \
--IDrivers/CMSIS/Device/ \
--IDrivers/CMSIS/Include
+-I inc \
+-I Drivers/STM32F1xx_HAL_Driver/Inc \
+-I Drivers/CMSIS/Device \
+-I Drivers/CMSIS/Include
 
 
 # compile gcc flags

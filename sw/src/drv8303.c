@@ -17,6 +17,7 @@ uint16_t drv_transceive(uint16_t tx_reg){
 
 uint16_t drv_write(uint8_t drv_reg, uint16_t payload){
     //tx_reg = 0b1000100000000000;
+    payload &= 0b0000011111111111;
     uint16_t tx_reg = 0;
     tx_reg |= drv_reg << 11;
     // tx_reg |= (1<<15);

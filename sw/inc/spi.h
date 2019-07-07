@@ -3,6 +3,7 @@
 
 #include "stm32f1xx_hal.h"
 #include "stm32f103xb.h"
+#include "gpio.h"
 #include <stdio.h>
 #include <stdint.h>
 

@@ -111,7 +111,6 @@ void transmit_uart1(char *ch){
 }
 
 void transmit_uart2(char *ch){
-    // HAL_Delay(1);
     int t = TIMEOUT;
     while(!(USART2->SR & USART_SR_TXE)){
         t--;
@@ -159,14 +158,14 @@ void transmit_uart3(char *ch){
 void print_reg(uint32_t reg, uint8_t reg_sz){
     for (uint8_t i = 0; i < reg_sz; i++) {
         uint8_t shift = reg_sz - 1 - i;
+        // if((i%4)==0) printf(" ");
+        // if((i%8)==0) printf(" ");
+        if((i%16)==0) printf(" ");
         if (reg & (1<<shift)) {
             printf("1");
-            // HAL_UART_Transmit(huart, "1", 1, 100);
         } else {
             printf("0");
-            // HAL_UART_Transmit(huart, "0", 1, 100);
         }
     }
     printf("\n");
-    // HAL_UART_Transmit(huart, "\n", 1, 100);
 }
