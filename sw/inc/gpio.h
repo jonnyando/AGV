@@ -19,5 +19,6 @@ void pin_speed(GPIO_TypeDef  *port_reg, uint8_t speed);
 void pin_pullmode(GPIO_TypeDef  *port_reg, uint8_t pin, uint8_t pull);
 void pin_set(GPIO_TypeDef  *port_reg, uint8_t pin);
 void pin_reset(GPIO_TypeDef  *port_reg, uint8_t pin);
+uint8_t pin_read(GPIO_TypeDef  *port_reg, uint8_t pin);
 
 #endif // endif __GPIO_H__

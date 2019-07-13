@@ -14,21 +14,6 @@ OPT = -Og
 #######################################
 # paths
 #######################################
-# source path
-SOURCES_DIR =  \
-Application/User \
-Drivers/STM32F1xx_HAL_Driver \
-Drivers \
-Application \
-Drivers/CMSIS \
-Application/User/src \
-Application/User/src/stm32f1xx_hal_msp.c \
-Application/User/src/stm32f1xx_it.c \
-Application/User/src/main.c
-
-# firmware library path
-PERIFLIB_PATH =
-
 # Build path
 BUILD_DIR = build
 
@@ -37,19 +22,15 @@ BUILD_DIR = build
 ######################################
 # C sources
 C_SOURCES =  \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c \
-Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c \
 src/main.c \
-src/stm32f1xx_it.c \
-src/stm32f1xx_hal_msp.c \
 src/system_stm32f1xx.c \
 src/spi.c \
 src/uart.c \
 src/syscalls.c \
-src/gpio.c
+src/gpio.c \
+src/tim.c \
+src/delay.c \
+src/drv8303.c
 
 # ASM sources
 ASM_SOURCES =  \
@@ -98,7 +79,7 @@ AS_DEFS =
 # C defines
 C_DEFS =  \
 -DUSE_HAL_DRIVER \
--DSTM32F103xB
+-D STM32F103xB
 
 
 # AS includes
@@ -106,11 +87,9 @@ AS_INCLUDES =
 
 # C includes
 C_INCLUDES =  \
--Iinc \
--IDrivers/STM32F1xx_HAL_Driver/Inc \
--IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
--IDrivers/CMSIS/Device/ \
--IDrivers/CMSIS/Include
+-I inc \
+-I Drivers/CMSIS/Device \
+-I Drivers/CMSIS/Include
 
 
 # compile gcc flags

@@ -29,3 +29,8 @@ void pin_set(GPIO_TypeDef  *port_reg, uint8_t pin){
 void pin_reset(GPIO_TypeDef  *port_reg, uint8_t pin){
     port_reg->BRR |= (1<<pin);
 }
+
+uint8_t pin_read(GPIO_TypeDef  *port_reg, uint8_t pin){
+    uint8_t boolean = (port_reg->IDR & (1<<pin)) ? 1 : 0;
+    return boolean;
+}

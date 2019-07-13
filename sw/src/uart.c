@@ -1,8 +1,8 @@
 #include "uart.h"
 
-#define TIMEOUT 5000U
+#define UART_TIMEOUT 5000U
 
-void UART1_setup(void){
+void UART1_Init(void){
     // enable RCC for USART2
     RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
     // enable RCC for GPIO port of USART1 (GPIOA)
@@ -88,20 +88,21 @@ void UART3_setup(void){
 
 }
 
-void transmit_uart1(char *ch){
-    int t = TIMEOUT;
+void transmit_uart1(char *ch, uint32_t len){
+    int t = UART_TIMEOUT;
+    char *p = ch;
     while(!(USART1->SR & USART_SR_TXE)){
         t--;
         if (t<=0){
             break;
         }
     }
-    int i = 1;
+    uint32_t i = len;
     while(i > 0){
         i--;
-        USART1->DR = (*ch++ & (uint8_t)0xFF);
+        USART1->DR = (*p++ & (uint8_t)0xFF);
     }
-    t = TIMEOUT;
+    t = UART_TIMEOUT;
     while(!(USART1->SR & USART_SR_TC)){
         t--;
         if (t<=0){
@@ -110,9 +111,25 @@ void transmit_uart1(char *ch){
     }
 }
 
+void transmit_byte_uart1(char ch){
+    int t = UART_TIMEOUT;
+    while(!(USART1->SR & USART_SR_TXE)){
+        t--;
+        if (t<=0){
+            break;
+        }
+    }
+    USART1->DR = (ch & (uint8_t)0xFF);
+    t = UART_TIMEOUT;
+    while(!(USART1->SR & USART_SR_TC)){
+        t--;
+        if (t<=0){
+            break;
+        }
+    }
+}
 void transmit_uart2(char *ch){
-    // HAL_Delay(1);
-    int t = TIMEOUT;
+    int t = UART_TIMEOUT;
     while(!(USART2->SR & USART_SR_TXE)){
         t--;
         if (t<=0){
@@ -124,7 +141,7 @@ void transmit_uart2(char *ch){
         i--;
         USART2->DR = (*ch++ & (uint8_t)0xFF);
     }
-    t = TIMEOUT;
+    t = UART_TIMEOUT;
     while(!(USART2->SR & USART_SR_TC)){
         t--;
         if (t<=0){
@@ -134,7 +151,7 @@ void transmit_uart2(char *ch){
 }
 
 void transmit_uart3(char *ch){
-    int t = TIMEOUT;
+    int t = UART_TIMEOUT;
     while(!(USART3->SR & USART_SR_TXE)){
         t--;
         if (t<=0){
@@ -146,7 +163,7 @@ void transmit_uart3(char *ch){
         i--;
         USART3->DR = (*ch++ & (uint8_t)0xFF);
     }
-    t = TIMEOUT;
+    t = UART_TIMEOUT;
     while(!(USART3->SR & USART_SR_TC)){
         t--;
         if (t<=0){
@@ -159,14 +176,14 @@ void transmit_uart3(char *ch){
 void print_reg(uint32_t reg, uint8_t reg_sz){
     for (uint8_t i = 0; i < reg_sz; i++) {
         uint8_t shift = reg_sz - 1 - i;
+        // if((i%4)==0) printf(" ");
+        // if((i%8)==0) printf(" ");
+        if((i%16)==0) printf(" ");
         if (reg & (1<<shift)) {
             printf("1");
-            // HAL_UART_Transmit(huart, "1", 1, 100);
         } else {
             printf("0");
-            // HAL_UART_Transmit(huart, "0", 1, 100);
         }
     }
     printf("\n");
-    // HAL_UART_Transmit(huart, "\n", 1, 100);
 }

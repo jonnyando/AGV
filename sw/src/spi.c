@@ -1,17 +1,18 @@
 #include "spi.h"
 
-void SPI1_setup(void){
+void SPI1_Init(void){
 
     RCC->APB2ENR |= RCC_APB2ENR_SPI1EN | RCC_APB2ENR_AFIOEN | RCC_APB2ENR_IOPAEN;
-    // pin 4,5,6,7
-    GPIOA->CRL &=   0x0000FFFF; // clear bits we want to set
-    GPIOA->CRL |=   0b10100100101000110000000000000000;
     // PA4, NSS,  cnf = AFPP, mode = 50MHz
     // PA5, SCK,  cnf = AFPP, mode = 50MHz
     // PA6, MISO, cnf = input floating, mode = input
     // PA7, MOSI, cnf = AFPP, mode = 50MHz
+    pin_mode(GPIOA, 4, GPIO_OUT_PP);
+    pin_mode(GPIOA, 5, GPIO_AF_PP);
+    pin_mode(GPIOA, 6, GPIO_IN_FL);
+    pin_mode(GPIOA, 7, GPIO_AF_PP);
 
-    SPI1->CR1 =   0b0000100100011101;
+    SPI1->CR1 =   0b0000100100111101;
     // BIDIMODE    0   2-line unidirectional mode
     // BIDIOE      x   not one line bidirectional
     // CRCEN       0   CRC disabled
@@ -40,25 +41,22 @@ void SPI1_setup(void){
     // I2SMOD      0   SPI mode selected
     // I2SCFGR = xxxx0xxxxxxxxxxx
 
-    HAL_Delay(10);
-
     // enable SPI1
     SPI1->CR1  |= SPI_CR1_SPE;
 }
 
 void SPI1_Transfer(uint16_t data){
     // Wait until SPI is not busy anymore
-    while (SPI1->SR & (SPI_SR_BSY)){
-        // printf("stuck (bsy) %d\n", (SPI1->SR));
-    }
+    while (SPI1->SR & (SPI_SR_BSY)){}
 
+    pin_reset(GPIOA, SPI_CS_PIN);
     // Write data to be transmitted to the SPI data register
 	SPI1->DR = data;
 
-	// Wait until transmit complete
-	while (!(SPI1->SR & (SPI_SR_TXE))){
-		// printf("stuck (txe) %d\n", (SPI1->SR));
-	}
+	while (!(SPI1->SR & (SPI_SR_TXE))){}
+    while (SPI1->SR & (SPI_SR_BSY)){}
+    pin_set(GPIOA, SPI_CS_PIN);
+    SPI1->DR;
 }
 
 // uint16_t SPI1_Receive(void){}
@@ -66,25 +64,23 @@ void SPI1_Transfer(uint16_t data){
 uint16_t SPI1_Transcieve(uint16_t TxData){
     uint16_t RxData = 0;
     // Wait until SPI is not busy anymore
-    while (SPI1->SR & (SPI_SR_BSY)){
-        // printf("stuck (bsy) %d\n", (SPI1->SR));
-    }
+    SPI1_Transfer(TxData);
 
-    //SPI_CS_PORT->BRR |= SPI_CS_PIN;
-    // Write data to be transmitted to the SPI data register
-	SPI1->DR = TxData;
-
-	// Wait until transmit complete
-	while (!(SPI1->SR & (SPI_SR_TXE))){
-		// printf("stuck (txe) %d\n", (SPI1->SR));
-	}
-    //SPI_CS_PORT->ODR |= SPI_CS_PIN;
-    //HAL_Delay(1);
-    //SPI_CS_PORT->BRR |= SPI_CS_PIN;
+    pin_reset(GPIOA, SPI_CS_PIN);
+    uint16_t timeout = 10000;
     while(!(SPI1->SR & SPI_SR_RXNE)){
-        // printf("received data");
+        if(timeout == 0){
+            break;
+            printf("break\n");
+        }
+        timeout--;
     }
+    
     RxData = SPI1->DR;
-    //SPI_CS_PORT->ODR |= SPI_CS_PIN;
+
+    while (SPI1->SR & (SPI_SR_BSY)){}
+    pin_set(GPIOA, SPI_CS_PIN);
+    // printf("SPI1->SR\t");  print_reg(SPI1->SR, 16);
+
     return RxData;
 }
