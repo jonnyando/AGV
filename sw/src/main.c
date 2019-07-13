@@ -6,7 +6,8 @@ void SystemClock_Config(void);
 int __io_putchar(int ch)
 {
     uint8_t ch8 = ch;
-    transmit_uart1((uint8_t*)&ch8);
+    transmit_byte_uart1(ch8);
+    // ITM_SendChar(ch);
     return ch;
 }
 
@@ -22,36 +23,30 @@ void myDelay(uint32_t mS){
     while(myTicks<mS);
 }
 
+drv8303 drv;
+
 int main(void)
 {   
     // SystemInit();
     SystemClock_Config();
 
-    UART1_Init();  printf("uart initialized\n\n");
-    SPI1_Init();   printf("spi initialized\n\n");
-    GPIO_Init();   printf("gpio initialized\n\n");
-    TIM1_Init();   printf("tim1 initialized\n\n");
+    UART1_Init();  printf("\nuart initialized\n");
+    SPI1_Init();   printf("spi initialized\n");
+    GPIO_Init();   printf("gpio initialized\n");
+    TIM1_Init();   printf("tim1 initialized\n");
+    ADC1_Init();    printf("ADC1 initialized\n");
     
     // printf("RCC->CR\t\t");          print_reg(RCC->CR,     32);
-    printf("RCC->CFGR\t\t");        print_reg(RCC->CFGR,    32);
-    printf("RCC->APB1ENR\t\t");     print_reg(RCC->APB1ENR, 32);
-    printf("RCC->APB2ENR\t\t");     print_reg(RCC->APB2ENR, 32);
-    printf("RCC->AHBENR\t\t");      print_reg(RCC->AHBENR,  32);
 
-    // pin_reset(GPIOA, INH_A);
-    pin_reset(GPIOA, INH_B);
-    pin_reset(GPIOA, INH_C);
-    // pin_reset(GPIOB, INL_A);
-    pin_reset(GPIOB, INL_B);
-    pin_reset(GPIOB, INL_C);
-    pin_reset(GPIOA, EN_GATE);
-    pin_reset(GPIOB, LED_FAULT);
-    pin_reset(SPI_CS_PORT, SPI_CS_PIN);
-    // HAL_Delay(1000);
     pin_reset(GPIOA, DC_CAL);
     printf("DC_CAL set LOW (off)\n");
     pin_set(GPIOA, EN_GATE);
     printf("\nEnabled DRV8303\n");
+
+    uint8_t tc[3] = "abc";
+    // transmit_byte_uart1(*tc);
+    // transmit_byte_uart1('\n');
+    transmit_uart1(tc, 3);
 
     uint16_t tx;
     uint16_t rx;
@@ -64,16 +59,16 @@ int main(void)
 
     // rx = drv_read(0x00);
     // printf("Status register 1\t");  print_reg(rx, 16);
-    // HAL_Delay(10);
+    // myDelay(10);
     // rx = drv_read(0x01);
     // printf("Status register 2\t");  print_reg(rx, 16);
-    // HAL_Delay(10);
+    // myDelay(10);
     rx = drv_read(0x02);
     printf("Control register 1\t");  print_reg(rx, 16);
-    // HAL_Delay(10);
+    // myDelay(10);
     // rx = drv_read(0x03);
     // printf("Control register 2\t");  print_reg(rx, 16);
-    // HAL_Delay(10);
+    // myDelay(10);
 
     printf("\n");
     uint16_t t_del = 50;
@@ -92,19 +87,19 @@ int main(void)
     
     while (1){
         // pin_set(GPIOA, LED);
-        // HAL_Delay(1000);
+        // myDelay(1000);
         // pin_reset(GPIOA, LED);
-        // HAL_Delay(200);
+        // myDelay(200);
         // printf("beep..\n");
         // fflush(stdout);
         
         // pin_set(GPIOA, INH_A);
         // pin_set(GPIOB, INL_A);
-        // HAL_Delay(5);
+        // myDelay(5);
         // pin_reset(GPIOA, INH_A);
         // pin_reset(GPIOB, INL_A);
-        // HAL_Delay(5);
-        // HAL_Delay(t_del);
+        // myDelay(5);
+        // myDelay(t_del);
         // pin_reset(GPIOA, INH_A); // 1
         // pin_reset(GPIOB, INL_A);
         // pin_set(GPIOA, INH_B);
@@ -112,7 +107,7 @@ int main(void)
         // pin_reset(GPIOA, INH_C);
         // pin_set(GPIOB, INL_C);
         // printf("1\n");
-        // HAL_Delay(t_del);
+        // myDelay(t_del);
         // pin_reset(GPIOA, INH_A); // 2
         // pin_set(GPIOB, INL_A);
         // pin_set(GPIOA, INH_B);
@@ -120,7 +115,7 @@ int main(void)
         // pin_reset(GPIOA, INH_C);
         // pin_reset(GPIOB, INL_C);
         // printf("2\n");
-        // HAL_Delay(t_del);
+        // myDelay(t_del);
         // pin_reset(GPIOA, INH_A); // 3
         // pin_set(GPIOB, INL_A);
         // pin_reset(GPIOA, INH_B);
@@ -128,7 +123,7 @@ int main(void)
         // pin_set(GPIOA, INH_C);
         // pin_reset(GPIOB, INL_C);
         // printf("3\n");
-        // HAL_Delay(t_del);
+        // myDelay(t_del);
         // pin_reset(GPIOA, INH_A); // 4
         // pin_reset(GPIOB, INL_A);
         // pin_reset(GPIOA, INH_B);
@@ -136,7 +131,7 @@ int main(void)
         // pin_set(GPIOA, INH_C);
         // pin_reset(GPIOB, INL_C);
         // printf("4\n");
-        // HAL_Delay(t_del);
+        // myDelay(t_del);
         // pin_set(GPIOA, INH_A); // 5
         // pin_reset(GPIOB, INL_A);
         // pin_reset(GPIOA, INH_B);
@@ -144,7 +139,7 @@ int main(void)
         // pin_reset(GPIOA, INH_C);
         // pin_reset(GPIOB, INL_C);
         // printf("5\n");
-        // HAL_Delay(t_del);
+        // myDelay(t_del);
         // pin_set(GPIOA, INH_A); // 6
         // pin_reset(GPIOB, INL_A);
         // pin_reset(GPIOA, INH_B);
@@ -153,17 +148,17 @@ int main(void)
         // pin_set(GPIOB, INL_C);
         // printf("6\n");
 
-        // HAL_Delay(10);
+        // myDelay(10);
         myDelay(10);
         // rx = drv_read(0x00);
         // printf("Status register 1\t");  print_reg(rx, 16);
-        // HAL_Delay(1);
+        // myDelay(1);
         // rx = drv_read(0x01);
         // printf("Status register 2\t");  print_reg(rx, 16);
-        // HAL_Delay(1);
+        // myDelay(1);
         // rx = drv_read(0x02);
         // printf("Control register 1\t");  print_reg(rx, 16);
-        // HAL_Delay(1);
+        // myDelay(1);
         // rx = drv_read(0x03);
         // printf("Control register 2\t");  print_reg(rx, 16);
 
@@ -210,14 +205,13 @@ void SystemClock_Config(void)
     while(!(RCC->CR & (1<<1)));  // wait for HSI to stabilise
     // calibrate
     // RCC->CFGR &= ~(0b1110 << 18);  // PLLMUL = x16
-    RCC->CFGR |= RCC_CFGR_PLLMULL16;  // PLLMUL = x16
+    RCC->CFGR = (RCC->CFGR & (~RCC_CFGR_PLLMULL16))| RCC_CFGR_PLLMULL16;  // PLLMUL = x16
     RCC->CFGR &= ~RCC_CFGR_PLLSRC;       // PLLSOURCE = HSI/2
     RCC->CR |= (1 << 24);         // PLL enable
     while(!(RCC->CR & (1<<25))); // wait for PLL to stabilise
 
-    if(FLASH_ACR_LATENCY_1> (FLASH->ACR & FLASH_ACR_LATENCY)){
-     FLASH->ACR = (FLASH->ACR & (~FLASH_ACR_LATENCY)) | FLASH_ACR_LATENCY_1;
-    }
+     // increase FLASH latency before setting SYSCLK > 24MHz
+    FLASH->ACR = (FLASH->ACR & (~FLASH_ACR_LATENCY)) | FLASH_ACR_LATENCY_2;
 
     RCC->CFGR |= RCC_CFGR_HPRE_DIV1; // Set AHB prescaler to SYSLCK/1
     RCC->CFGR = (RCC->CFGR & (~RCC_CFGR_SW_Msk)) | RCC_CFGR_SW_PLL;    // Set SYSCLCK to PLL
@@ -229,33 +223,7 @@ void SystemClock_Config(void)
 
     // SystemCoreClock = 64000000;
     SystemCoreClockUpdate();
-
-    /*
-        RCC_OscInitTypeDef RCC_OscInitStruct;
-        RCC_ClkInitTypeDef RCC_ClkInitStruct;
-
-        // Initializes the CPU, AHB and APB busses clocks
-        RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-        RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-        RCC_OscInitStruct.HSICalibrationValue = 16;
-        RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-        RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI_DIV2;
-        RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL16;
-        HAL_RCC_OscConfig(&RCC_OscInitStruct);
-
-        // Initializes the CPU, AHB and APB busses clocks
-        RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-        |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-        RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-        RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-        RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-        RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-
-        HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2);
-    */
     
-    /*CANNOT RECONFIGURE RCC WITHOUT ALSO CONFIGURING SYSTICK/DELAY*/
-
     /*Configure the Systick interrupt time*/
     SysTick_Config(64000);
     NVIC_SetPriority(SysTick_IRQn, 0);

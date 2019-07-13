@@ -41,8 +41,6 @@ void SPI1_Init(void){
     // I2SMOD      0   SPI mode selected
     // I2SCFGR = xxxx0xxxxxxxxxxx
 
-    // HAL_Delay(10);
-
     // enable SPI1
     SPI1->CR1  |= SPI_CR1_SPE;
 }
@@ -67,8 +65,6 @@ uint16_t SPI1_Transcieve(uint16_t TxData){
     uint16_t RxData = 0;
     // Wait until SPI is not busy anymore
     SPI1_Transfer(TxData);
-    
-    // HAL_Delay(1);
 
     pin_reset(GPIOA, SPI_CS_PIN);
     uint16_t timeout = 10000;

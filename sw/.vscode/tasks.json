@@ -18,6 +18,14 @@
         },
         {
             "type": "shell",
+            "label": "make only",
+            "command": "make",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
             "label": "make clean",
             "command": "make",
             "args": ["clean"],

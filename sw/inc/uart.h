@@ -8,7 +8,8 @@ void UART1_Init(void);
 void UART2_Init(void);
 void UART3_Init(void);
 
-void transmit_uart1(char *ch);
+void transmit_uart1(char *ch, uint32_t len);
+void transmit_byte_uart1(char ch);
 void transmit_uart2(char *ch);
 void transmit_uart3(char *ch);
 

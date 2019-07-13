@@ -11,6 +11,8 @@
         "gpio.h": "c",
         "drv8303.h": "c",
         "uart.h": "c",
-        "stm32f1xx_hal_rcc.h": "c"
+        "stm32f1xx_hal_rcc.h": "c",
+        "stm32f1xx.h": "c",
+        "stm32f103xb.h": "c"
     }
 }

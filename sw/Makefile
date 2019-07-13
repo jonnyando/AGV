@@ -14,21 +14,6 @@ OPT = -Og
 #######################################
 # paths
 #######################################
-# source path
-SOURCES_DIR =  \
-Application/User \
-Drivers/STM32F1xx_HAL_Driver \
-Drivers \
-Application \
-Drivers/CMSIS \
-Application/User/src \
-Application/User/src/stm32f1xx_hal_msp.c \
-Application/User/src/stm32f1xx_it.c \
-Application/User/src/main.c
-
-# firmware library path
-PERIFLIB_PATH =
-
 # Build path
 BUILD_DIR = build
 
@@ -94,7 +79,7 @@ AS_DEFS =
 # C defines
 C_DEFS =  \
 -DUSE_HAL_DRIVER \
--DSTM32F103xB
+-D STM32F103xB
 
 
 # AS includes
@@ -103,7 +88,6 @@ AS_INCLUDES =
 # C includes
 C_INCLUDES =  \
 -I inc \
--I Drivers/STM32F1xx_HAL_Driver/Inc \
 -I Drivers/CMSIS/Device \
 -I Drivers/CMSIS/Include
 

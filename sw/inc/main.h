@@ -4,7 +4,11 @@
 /* Includes ------------------------------------------------------------------*/
 
 // #include "syscalls.h"
-#include "stm32f1xx_hal.h"
+// #include "stm32f1xx_hal.h"
+#ifndef STM32F103xB
+    #define STM32F103xB
+#endif
+#include "stm32f1xx.h"
 #include "spi.h"
 #include "uart.h"
 #include "gpio.h"
@@ -12,6 +16,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "drv8303.h"
+
 /* Private define ------------------------------------------------------------*/
 #define PI 3.14159265358979323846264
 
