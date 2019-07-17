@@ -11,19 +11,27 @@ void UART1_Init(void){
     RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
 
     // remap USART1 to alternate pins
-    AFIO->MAPR |= (1 << 2);
+    AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
 
     // setup GPIO pins for USART1
     // TX PB6
     // RX PB7
-    GPIOB->CRL &=   0x00ffffff;
-    GPIOB->CRL |=   0x4B000000;
+    pin_mode(GPIOB, 6, GPIO_AF_PP);
+    pin_mode(GPIOB, 7, GPIO_IN_FL);
 
     // BAUDRATE = 115200;
     USART1->BRR = 0b0000001000101100;
     USART1->CR1 = 0b0010000000001100;
     USART1->CR2 = 0x0000;
     USART1->CR3 = 0x0000;
+}
+
+void UART1_pin_Remap(uint8_t setting){
+    if (setting){
+        AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
+    } else {
+        AFIO->MAPR &= (~AFIO_MAPR_USART1_REMAP);
+    }
 }
 
 void UART2_setup(void){
@@ -101,12 +109,12 @@ void transmit_uart1(char *ch, uint32_t len){
     while(i > 0){
         i--;
         USART1->DR = (*p++ & (uint8_t)0xFF);
-    }
-    t = UART_TIMEOUT;
-    while(!(USART1->SR & USART_SR_TC)){
-        t--;
-        if (t<=0){
-            break;
+        t = UART_TIMEOUT;
+        while(!(USART1->SR & USART_SR_TC)){
+            t--;
+            if (t<=0){
+                break;
+            }
         }
     }
 }

@@ -3,6 +3,7 @@
 
 #include "stm32f103xb.h"
 #include <stdio.h>
+#include "gpio.h"
 
 void UART1_Init(void);
 void UART2_Init(void);
