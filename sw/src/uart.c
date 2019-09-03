@@ -2,31 +2,40 @@
 
 #define UART_TIMEOUT 5000U
 
-void UART1_Init(void){
-    // enable RCC for USART2
-    RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
+void UART_Init(USART_TypeDef *uart){
+    // enable RCC for USART
+    // RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
+    if(uart == USART1){
+        RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
+    } else if (uart == USART2){
+        RCC->APB2ENR |= RCC_APB1ENR_USART2EN;
+    } else if (uart == USART3){
+        RCC->APB2ENR |= RCC_APB1ENR_USART3EN;
+    }
     // enable RCC for GPIO port of USART1 (GPIOA)
-    RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
+    // RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
     // enable RCC for alternate function clocks
-    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+    // RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
 
     // remap USART1 to alternate pins
-    AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
+    // AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
 
     // setup GPIO pins for USART1
     // TX PB6
     // RX PB7
-    pin_mode(GPIOB, 6, GPIO_AF_PP);
-    pin_mode(GPIOB, 7, GPIO_IN_FL);
+    // pin_mode(GPIOB, 6, GPIO_AF_PP);
+    // pin_mode(GPIOB, 7, GPIO_IN_FL);
 
     // BAUDRATE = 115200;
-    USART1->BRR = 0b0000001000101100;
-    USART1->CR1 = 0b0010000000001100;
-    USART1->CR2 = 0x0000;
-    USART1->CR3 = 0x0000;
+    uart->BRR = 0b0000001000101100;
+    uart->CR1 = 0b0010000000001100;
+    uart->CR2 = 0x0000;
+    uart->CR3 = 0x0000;
 }
 
-void UART1_pin_Remap(uint8_t setting){
+// TODO void UART_Baudrate(USART_TypeDef *uart, uint32_t baud){}
+
+void UART_pin_Remap(USART_TypeDef *uart, uint8_t setting){
     if (setting){
         AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
     } else {
@@ -34,72 +43,10 @@ void UART1_pin_Remap(uint8_t setting){
     }
 }
 
-void UART2_setup(void){
-
-    // enable RCC for USART2
-    RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
-    // enable RCC for GPIO port of USART2 (GPIOA)
-    RCC->APB2ENR |= RCC_APB2ENR_IOPAEN;
-    // enable RCC for alternate function clocks
-    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
-
-    // setup GPIO pins for USART2
-    // TX PA2
-    // RX PA3
-    GPIOA->CRL &=   0xffff00ff;
-    GPIOA->CRL |=   0x00004B00;
-    // ( GPIO_CRL_MODE2_0  // pin 10, alternate function
-    //                 | GPIO_CRL_MODE2_1  // TX
-    //                 // | GPIO_CRL_CNF2_0
-    //                 | GPIO_CRL_CNF2_1
-    //
-    //                 | GPIO_CRL_MODE3_0  // pin 11, alternate function
-    //                 | GPIO_CRL_MODE3_1  // RX
-    //                 // | GPIO_CRL_CNF3_0
-    //                 | GPIO_CRL_CNF3_1 );
-
-    USART2->BRR = 0b0000000100010110;
-    USART2->CR1 = 0b0010000000001100;
-    USART2->CR2 = 0x0000;
-    USART2->CR3 = 0x0000;
-
-
-}
-
-void UART3_setup(void){
-    // enable RCC for USART3
-    RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
-    // enable RCC for GPIO port of USART3 (GPIOB)
-    RCC->APB2ENR |= RCC_APB2ENR_IOPBEN;
-    // enable RCC for alternate function clocks
-    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
-
-    // setup GPIO pins for USART
-    // TX PB10
-    // RX PB11
-    GPIOB->CRH &=   0xffff00ff;
-    GPIOB->CRH |=   ( GPIO_CRH_MODE10_0  // pin 10, alternate function
-                    | GPIO_CRH_MODE10_1  // TX
-                    // | GPIO_CRH_CNF10_0
-                    | GPIO_CRH_CNF10_1
-
-                    | GPIO_CRH_MODE11_0  // pin 11, alternate function
-                    | GPIO_CRH_MODE11_1  // RX
-                    // | GPIO_CRH_CNF11_0
-                    | GPIO_CRH_CNF11_1 );
-
-    USART3->BRR = 0b0000000100010110;
-    USART3->CR1 = 0b0010000000001100;
-    USART3->CR2 = 0x0000;
-    USART3->CR3 = 0x0000;
-
-
-}
-
-void transmit_uart1(char *ch, uint32_t len){
+void transmit_uart(USART_TypeDef *uart, char *ch, uint32_t len){
     int t = UART_TIMEOUT;
     char *p = ch;
-    while(!(USART1->SR & USART_SR_TXE)){
+    while(!(uart->SR & USART_SR_TXE)){
         t--;
         if (t<=0){
             break;
@@ -108,9 +55,9 @@ void transmit_uart1(char *ch, uint32_t len){
     uint32_t i = len;
     while(i > 0){
         i--;
-        USART1->DR = (*p++ & (uint8_t)0xFF);
+        uart->DR = (*p++ & (uint8_t)0xFF);
         t = UART_TIMEOUT;
-        while(!(USART1->SR & USART_SR_TC)){
+        while(!(uart->SR & USART_SR_TC)){
             t--;
             if (t<=0){
                 break;
@@ -119,60 +66,17 @@ void transmit_uart1(char *ch, uint32_t len){
     }
 }
 
-void transmit_byte_uart1(char ch){
+void transmit_byte_uart(USART_TypeDef *uart, char ch){
     int t = UART_TIMEOUT;
-    while(!(USART1->SR & USART_SR_TXE)){
+    while(!(uart->SR & USART_SR_TXE)){
         t--;
         if (t<=0){
             break;
         }
     }
-    USART1->DR = (ch & (uint8_t)0xFF);
+    uart->DR = (ch & (uint8_t)0xFF);
     t = UART_TIMEOUT;
-    while(!(USART1->SR & USART_SR_TC)){
-        t--;
-        if (t<=0){
-            break;
-        }
-    }
-}
-void transmit_uart2(char *ch){
-    int t = UART_TIMEOUT;
-    while(!(USART2->SR & USART_SR_TXE)){
-        t--;
-        if (t<=0){
-            break;
-        }
-    }
-    int i = 1;
-    while(i > 0){
-        i--;
-        USART2->DR = (*ch++ & (uint8_t)0xFF);
-    }
-    t = UART_TIMEOUT;
-    while(!(USART2->SR & USART_SR_TC)){
-        t--;
-        if (t<=0){
-            break;
-        }
-    }
-}
-
-void transmit_uart3(char *ch){
-    int t = UART_TIMEOUT;
-    while(!(USART3->SR & USART_SR_TXE)){
-        t--;
-        if (t<=0){
-            break;
-        }
-    }
-    int i = 1;
-    while(i > 0){
-        i--;
-        USART3->DR = (*ch++ & (uint8_t)0xFF);
-    }
-    t = UART_TIMEOUT;
-    while(!(USART3->SR & USART_SR_TC)){
+    while(!(uart->SR & USART_SR_TC)){
         t--;
         if (t<=0){
             break;
