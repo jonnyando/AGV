@@ -2,6 +2,7 @@
 #define __DRV8303_H__
 
 #include "stm32f103xb.h"
+#include "spi.h"
 
 typedef struct
 {
@@ -9,7 +10,15 @@ typedef struct
     uint16_t SR2;
     uint16_t CR1;
     uint16_t CR2;
-} drv8303;
+    SPI_TypeDef *spi;
+} drv8303_TypeDef;
+
+
+/*******      Register Address Definitions       *******/
+#define DRV_STATUS_1                0x0U << 11
+#define DRV_STATUS_2                0x1U << 11
+#define DRV_CTRL_1                  0x2U << 11
+#define DRV_CTRL_2                  0x3U << 11
 
 /*******  Bit definitions for Status Register 1  *******/
 #define SR1_FETLC_OC_Pos            (0U)
@@ -78,7 +87,7 @@ typedef struct
 #define CR1_PWM_MODE                CR1_PWM_MODE_Msk
 
 #define CR1_PWM_MODE_6              0x000U
-#define CR1_PWM_MODE_3              0x004U
+#define CR1_PWM_MODE_3              CR1_PWM_MODE
 
 /* Over-current protection configuration */
 #define CR1_OCP_MODE_Pos            (4U)
@@ -170,11 +179,14 @@ typedef struct
 
 
 
-
-uint16_t drv_transceive(uint16_t tx_reg);
-uint16_t drv_write(uint8_t drv_reg, uint16_t payload);
-uint16_t drv_transceive(uint16_t tx_reg);
-uint16_t drv_read(uint8_t drv_reg);
+void drv8303_Init(drv8303_TypeDef *drv, SPI_TypeDef *spi);
+uint16_t drv_transceive(drv8303_TypeDef *drv, uint16_t tx_reg);
+uint16_t drv_write(drv8303_TypeDef *drv, uint32_t drv_reg, uint16_t payload);
+uint16_t drv_transceive(drv8303_TypeDef *drv, uint16_t tx_reg);
+uint16_t drv_read(drv8303_TypeDef *drv, uint32_t drv_reg);
+void drv_write_reg(drv8303_TypeDef *drv, uint16_t reg);
+void drv_read_reg(drv8303_TypeDef *drv, uint16_t reg);
+void drv_update(drv8303_TypeDef *drv);
 
 
 #endif // endif __DRV8303_H__
