@@ -10,7 +10,7 @@
             "servertype": "openocd",
             "svdFile": "./STM32F103.svd",
             "configFiles": [
-                "/home/jon/Downloads/openocd-0.10.0/tcl/interface/stlink-v2.cfg",
+                "/home/jon/Downloads/openocd-0.10.0/tcl/interface/stlink-v2-1.cfg",
                 "/home/jon/Downloads/openocd-0.10.0/tcl/target/stm32f1x.cfg"
             ]
         },
