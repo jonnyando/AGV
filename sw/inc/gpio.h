@@ -3,6 +3,7 @@
 
 #include "stm32f103xb.h"
 
+static void GPIO_Init(void);
 #define GPIO_OUT_PP  0x00000002
 #define GPIO_OUT_OD  0x00000006
 #define GPIO_AF_PP   0x0000000B

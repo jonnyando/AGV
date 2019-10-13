@@ -16,47 +16,70 @@
 #include <stdio.h>
 #include <math.h>
 #include "drv8303.h"
+#include "adc.h"
+#include "dma.h"
+#include "iwdg.h"
 
 /* Private define ------------------------------------------------------------*/
 #define PI 3.14159265358979323846264
 
 
-                // Pin     // Port
-#define nOCTW       15      // A
-#define nFAULT      12      // B
-#define DC_CAL      12     // A 
-#define EN_GATE     11     // A 
-#define INH_A       8      // A
-#define INH_B       9      // A
-#define INH_C       10     // A
-#define LED_FAULT   11     // B
-#define INL_A       13     // B
-#define INL_B       14     // B
-#define INL_C       15     // B
-#define ENC_I       8      // B
-#define ENC_A       4      // B
-#define ENC_B       5      // B
+#define nOCTW_Pin       15 // A
+#define nOCTW_Port      GPIOA
+#define nFAULT_Pin      12 // B
+#define nFAULT_Port     GPIOB
+#define DC_CAL_Pin      12     // A 
+#define DC_CAL_Port     GPIOA
+#define EN_GATE_Pin     11     // A
+#define EN_GATE_Port    GPIOA
+#define INH_A_Pin       8      // A
+#define INH_B_Pin       9      // A
+#define INH_C_Pin       10     // A
+#define INH_A_Port      GPIOA
+#define INH_B_Port      GPIOA
+#define INH_C_Port      GPIOA
+#define INL_A_Pin       13     // B
+#define INL_B_Pin       14     // B
+#define INL_C_Pin       15     // B
+#define INL_A_Port      GPIOB
+#define INL_B_Port      GPIOB
+#define INL_C_Port      GPIOB
+#define LED_FAULT_Pin   11     // B
+#define LED_FAULT_Port  GPIOB
+#define ENC_I           8      // B
+#define ENC_A           4      // B
+#define ENC_B           5      // B
+#define ASENSE_Pin      1      // A
+#define BSENSE_Pin      2      // A
+#define CSENSE_Pin      3      // A
+#define ASENSE_Port     GPIOA
+#define BSENSE_Port     GPIOA
+#define CSENSE_Port     GPIOA
+#define SO1_Pin         1      // B
+#define SO2_Pin         0      // B
+#define SO1_Port        GPIOB
+#define SO2_Port        GPIOB
+/* SPI Pins */
+#define SPI_PORT        GPIOA
+#define SPI_Pin_NSS     4
+#define SPI_Pin_SCK     5
+#define SPI_Pin_MISO    6
+#define SPI_Pin_MOSI    7
+/* USART1 Pins */
+#define USART1_PORT     GPIOB
+#define USART_Pin_TX    6
+#define USART_Pin_RX    7
 
-#define LED         1      // A
 
-
-#define B1_Pin GPIO_PIN_13
-#define B1_GPIO_Port GPIOC
-#define B1_EXTI_IRQn EXTI15_10_IRQn
-#define USART_TX_Pin GPIO_PIN_2
-#define USART_TX_GPIO_Port GPIOA
-#define USART_RX_Pin GPIO_PIN_3
-#define USART_RX_GPIO_Port GPIOA
-#define LD2_Pin GPIO_PIN_5
-#define LD2_GPIO_Port GPIOA
-#define TMS_Pin GPIO_PIN_13
-#define TMS_GPIO_Port GPIOA
-#define TCK_Pin GPIO_PIN_14
-#define TCK_GPIO_Port GPIOA
-#define SWO_Pin GPIO_PIN_3
-#define SWO_GPIO_Port GPIOB
-
-static void GPIO_Init(void);
+// #define B1_Pin GPIO_PIN_13
+// #define B1_GPIO_Port GPIOC
+// #define B1_EXTI_IRQn EXTI15_10_IRQn
+// #define USART_TX_Pin GPIO_PIN_2
+// #define USART_TX_GPIO_Port GPIOA
+// #define USART_RX_Pin GPIO_PIN_3
+// #define USART_RX_GPIO_Port GPIOA
+// #define SWO_Pin GPIO_PIN_3
+// #define SWO_GPIO_Port GPIOB
 
 
 
