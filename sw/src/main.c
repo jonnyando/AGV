@@ -11,9 +11,43 @@ int __io_putchar(int ch)
 }
 
 volatile uint32_t myTicks = 0;
+
 void SysTick_Handler(void)
 {
     myTicks++;
+}
+
+void DMA1_Channel1_IRQHandler(void){
+    // pin_set(GPIOB, 11);
+    if(DMA1->ISR & DMA_ISR_TEIF1){
+        printf("DMA error\n");
+        DMA1->IFCR |= (DMA_IFCR_CGIF1 | DMA_IFCR_CTEIF1);
+    } else if(DMA1->ISR & DMA_ISR_HTIF1){
+        // printf("DMA half transfer\n");
+        DMA1->IFCR |= (DMA_IFCR_CGIF1 | DMA_IFCR_CHTIF1);
+    } else if(DMA1->ISR & DMA_ISR_TCIF1){
+        // printf("DMA transfer complete\n");
+        DMA1->IFCR |= (DMA_IFCR_CGIF1 | DMA_IFCR_CTCIF1);
+    }else if(DMA1->ISR & DMA_ISR_GIF1){
+        // printf("DMA global interrupt\n");
+        DMA1->IFCR |= DMA_IFCR_CGIF1;
+    }
+}
+
+void ADC1_2_IRQHandler(void){
+    // pin_set(GPIOB, 11);
+    // blink_fault();
+    // printf("ADC interrupt\n");
+}
+
+void HardFault_Handler(void){
+    pin_set(GPIOB, 11);
+}
+void BusFault_Handler(void){
+    pin_set(GPIOB, 11);
+}
+void UsageFault_Handler(void){
+    pin_set(GPIOB, 11);
 }
 
 void myDelay(uint32_t mS){
@@ -21,25 +55,106 @@ void myDelay(uint32_t mS){
     while(myTicks<mS);
 }
 
+uint16_t ADC_samples[10];
+
+void blink_fault(void){
+    pin_reset(GPIOB, 11);
+    myDelay(50);
+    pin_set(GPIOB, 11);
+    myDelay(50);
+    pin_reset(GPIOB, 11);
+    myDelay(50);
+    pin_set(GPIOB, 11);
+}
 
 int main(void)
 {   
     // SystemInit();
     SystemClock_Config();
 
-    GPIO_Init();                printf("gpio initialized\n");
-    UART_Init(USART1);          printf("uart1 initialized\n");
+
+
+    pin_reset(GPIOB, 11);
+    myDelay(50);
+    pin_set(GPIOB, 11);
+    myDelay(50);
+    pin_reset(GPIOB, 11);
+    myDelay(50);
+    pin_set(GPIOB, 11);
+
+    watchdog_set_prescaler(32);
+    watchdog_set_reload_reg(0xfff);
+    watchdog_start();
+
+    GPIO_Init();
+    UART_Init(USART1);
     UART_pin_Remap(USART1, 1);
-    SPI_Init(SPI1);             printf("spi1 initialized\n");
-    TIM1_Init();                printf("tim1 initialized\n");
-    // ADC1_Init();    printf("ADC1 initialized\n");
+    printf("uart1 initialized\n");
+    printf("gpio initialized\n");
+    SPI_Init(SPI1);             printf("SPI1 initialized\n");
     
+    if(RCC->CSR & RCC_CSR_IWDGRSTF){
+        printf("\nIWDG reset detected\n");
+    }
+    printf("mem adress: ADC1->DR=%d\n",&(ADC1->DR));
+    
+
+    NVIC_SetPriority(HardFault_IRQn, 0);
+    NVIC_EnableIRQ(HardFault_IRQn);
+    NVIC_SetPriority(BusFault_IRQn, 0);
+    NVIC_EnableIRQ(BusFault_IRQn);
+    NVIC_SetPriority(UsageFault_IRQn, 0);
+    NVIC_EnableIRQ(UsageFault_IRQn);
+
     // printf("RCC->CR\t\t");          print_reg(RCC->CR,     32);
 
-    pin_reset(GPIOA, DC_CAL);
+    RCC->AHBENR |= RCC_AHBENR_DMA1EN;
+    DMA1_Channel1->CPAR = (uint32_t)&(ADC1->DR);
+    DMA1_Channel1->CMAR = (uint32_t)ADC_samples;
+    DMA1_Channel1->CNDTR = 5;
+    DMA1_Channel1->CCR &= ~(DMA_CCR_PL_0 | DMA_CCR_PL_1);
+    // DMA1_Channel1->CNDTR = (sizeof(ADC_samples)/sizeof(ADC_samples[0]));
+    // memory icnrement
+    // circular mode
+    // set peripheral and memory sizes to 16b
+    DMA1_Channel1->CCR |= DMA_CCR_MINC | DMA_CCR_CIRC 
+                        | DMA_CCR_PSIZE_0 | DMA_CCR_MSIZE_0
+                        | DMA_CCR_TEIE | DMA_CCR_TCIE | DMA_CCR_HTIE;
+    // DMA1_Channel1->CCR &= ~(DMA_CCR_HTIE);
+    DMA1_Channel1->CCR |= DMA_CCR_EN;
+    
+    // enable
+    myDelay(500);
+
+    printf("DMA1 Channel1 initialised\n");
+    
+    ADC1_Init();    printf("ADC1 initialized\n");
+
+    ADC1->CR1 |= ADC_CR1_EOCIE;
+    ADC1->CR2 |= ADC_CR2_CONT;
+    ADC1->CR2 |= ADC_CR2_ADON;
+    myDelay(10);
+    ADC1->CR2 |= (ADC_CR2_RSTCAL);
+    ADC1->CR2 |= (ADC_CR2_CAL);
+    printf("adc on, calibrating...\n");
+    while((ADC1->CR2) & (ADC_CR2_CAL)){
+        // myDelay(1);
+        ;
+    }
+    ADC1->CR2 |= ADC_CR2_ADON;
+
+
+    myDelay(10);
+    // print_reg(ADC1->CR2, 32);
+    printf("adc on and calibrated\n");
+    myDelay(10);
+    myDelay(500);
+    
+
+    TIM1_Init();                printf("tim1 initialized\n");
+    pin_reset(DC_CAL_Port, DC_CAL_Pin);
     printf("DC_CAL set LOW (off)\n");
-
-
+    myDelay(10);
     uint16_t tx;
     uint16_t rx;
 
@@ -47,20 +162,19 @@ int main(void)
     drv8303_Init(&drv, SPI1);
     drv_update(&drv);
 
-
     // sets OC_ADJ_SET to 24 (Vds = 1.043v)
     // Disable OCP
     // sets drv to 3-PWM mode
     // uint16_t set_reg = 0b01000000000 | 0b00000110000 | 0b00000001000;
     // uint16_t set_reg = (CR1_OC_ADJ_SET_24 | CR1_OCP_MODE_DISABLED | CR1_PWM_MODE_3);
     uint16_t set_reg = (CR1_OC_ADJ_SET_7 | CR1_PWM_MODE_3);
-    pin_set(GPIOA, EN_GATE);
+    pin_set(EN_GATE_Port, EN_GATE_Pin);
     myDelay(100);
     drv_write(&drv, DRV_CTRL_1, set_reg);
     printf("\nEnabled DRV8303\n");
 
     // myDelay(10);
-    myDelay(100);
+    myDelay(500);
     printf("transmitting to drv\n");
     rx = drv_read(&drv, DRV_STATUS_1);
     printf("Status register 1\t");   print_reg(rx, 16);
@@ -84,40 +198,70 @@ int main(void)
     uint32_t angle_b = 0;
     uint32_t angle_c = 0;
     uint32_t max_duty_cycle = 7500;
-    float duty_cycle_a;
-    float duty_cycle_b;
-    float duty_cycle_c;
-    float angle_step = 30;
+    uint16_t duty_cycle_a;
+    uint16_t duty_cycle_b;
+    uint16_t duty_cycle_c;
+    uint16_t angle_step = 30;
     
-    uint8_t tc[3] = "abc";
+    // uint8_t tc[3] = "abc";
     // transmit_byte_uart1(*tc);
     // transmit_byte_uart1('\n');
-    transmit_uart(USART1, tc, 3);
+    // transmit_uart(USART1, tc, 3);
 
     drv_update(&drv);
     
     // drv_write(&drv, DRV_CTRL_1, set_reg);
+    watchdog_reload();
+    printf("Interrupts enabled\n");
+
+    
+    NVIC_SetPriority(DMA1_Channel1_IRQn, 1);
+    NVIC_EnableIRQ(DMA1_Channel1_IRQn);
+    NVIC_SetPriority(ADC1_IRQn, 2);
+    NVIC_EnableIRQ(ADC1_IRQn);
+    printf("while(1)\n");
     while (1){
+        // while(1){
+        //     ;
+        // }
         // myDelay(200);
         // printf("beep..\n");
         // fflush(stdout);
+        // ASENSE, BSENSE, CSENSE, A_CURR, B_CURR
+        // for(int i = 0; i < 4; i++){
+        //     printf("%d, ", ADC_samples[i]);
+        // }
+        // printf("%d\n", ADC_samples[4]);
         
+        // if (DMA1->ISR & DMA_ISR_TEIF1){
+        //     printf("DMA1 error interrupt\n");
+        //     DMA1->IFCR |= DMA_IFCR_CTEIF1;
+        //     DMA1->IFCR |= DMA_IFCR_CGIF1;
+        // }
+        // if (DMA1->ISR & DMA_ISR_HTIF1){
+        //     printf("DMA1 half transfer interrupt\n");
+        //     DMA1->IFCR |= DMA_IFCR_CHTIF1;
+        //     DMA1->IFCR |= DMA_IFCR_CGIF1;
+        // }
+        // if (DMA1->ISR & DMA_ISR_TCIF1){
+        //     printf("DMA1 transfer complete interrupt\n");
+        //     DMA1->IFCR |= DMA_IFCR_CTCIF1;
+        //     DMA1->IFCR |= DMA_IFCR_CGIF1;
+        // }
 
         myDelay(10);
 
-        if(!pin_read(GPIOA, nOCTW)){
-            printf("nOCTW is LOW\n");
-            pin_set(GPIOB, LED_FAULT);
-        } else {
-            pin_reset(GPIOB, LED_FAULT);
-        }
-        if(!pin_read(GPIOB, nFAULT)){
-            printf("nFAULT is LOW\n");
-            pin_set(GPIOB, LED_FAULT);
-        } else {
-            pin_reset(GPIOB, LED_FAULT);
-        }
+        // if(!pin_read(nOCTW_Port, nOCTW_Pin)){
+        //     printf("nOCTW is LOW\n");
+        //     pin_set(LED_FAULT_Port, LED_FAULT_Pin);
+        // } else if(!pin_read(LED_FAULT_Port, nFAULT_Pin)){
+        //     printf("nFAULT is LOW\n");
+        //     pin_set(LED_FAULT_Port, LED_FAULT_Pin);
+        // } else {
+        //     pin_reset(LED_FAULT_Port, LED_FAULT_Pin);
+        // }
 
+        pin_reset(LED_FAULT_Port, LED_FAULT_Pin);
 
         angle_b = angle_a + 120;
         angle_c = angle_a + 240;
@@ -134,6 +278,7 @@ int main(void)
         TIM1->CCR2  = duty_cycle_b;
         TIM1->CCR3  = duty_cycle_c;
 
+        watchdog_reload();
     }
 
 
@@ -182,29 +327,35 @@ static void GPIO_Init(void)
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN; // enable GPIOC
     RCC->APB2ENR |= RCC_APB2ENR_IOPDEN; // enable GPIOD
 
-    pin_mode(GPIOA, nOCTW,     GPIO_IN_PULL);
-    pin_pullmode(GPIOA, nOCTW, GPIO_PULLUP);
-    pin_mode(GPIOB, nFAULT,    GPIO_IN_PULL);
-    pin_pullmode(GPIOB, nFAULT, GPIO_PULLUP);
+    pin_mode(     nOCTW_Port, nOCTW_Pin, GPIO_IN_PULL);
+    pin_pullmode( nOCTW_Port, nOCTW_Pin, GPIO_PULLUP);
+    pin_mode(     nFAULT_Port, nFAULT_Pin, GPIO_IN_PULL);
+    pin_pullmode( nFAULT_Port, nFAULT_Pin, GPIO_PULLUP);
     
-    pin_mode(GPIOA, DC_CAL,    GPIO_OUT_PP);
-    pin_mode(GPIOA, EN_GATE,   GPIO_OUT_PP);
-    pin_mode(GPIOA, INH_A,     GPIO_AF_PP);
-    pin_mode(GPIOA, INH_B,     GPIO_AF_PP);
-    pin_mode(GPIOA, INH_C,     GPIO_AF_PP);
-    pin_mode(GPIOB, LED_FAULT, GPIO_OUT_PP);
-    pin_mode(GPIOB, INL_A,     GPIO_AF_PP);
-    pin_mode(GPIOB, INL_B,     GPIO_OUT_PP);
-    pin_mode(GPIOB, INL_C,     GPIO_OUT_PP);
-    pin_mode(GPIOA, LED,       GPIO_OUT_PP);
+    pin_mode(DC_CAL_Port,  DC_CAL_Pin,  GPIO_OUT_PP);
+    pin_mode(EN_GATE_Port, EN_GATE_Pin, GPIO_OUT_PP);
+    pin_mode(INH_A_Port,   INH_A_Pin,   GPIO_AF_PP);
+    pin_mode(INH_B_Port,   INH_B_Pin,   GPIO_AF_PP);
+    pin_mode(INH_C_Port,   INH_C_Pin,   GPIO_AF_PP);
+    pin_mode(INL_A_Port,   INL_A_Pin,   GPIO_AF_PP);
+    pin_mode(INL_B_Port,   INL_B_Pin,   GPIO_AF_PP);
+    pin_mode(INL_C_Port,   INL_C_Pin,   GPIO_AF_PP);
+    pin_mode(LED_FAULT_Port, LED_FAULT_Pin, GPIO_OUT_PP);
 
     // SPI Pin setup
-    pin_mode(GPIOA, 4, GPIO_OUT_PP); // NSS
-    pin_mode(GPIOA, 5, GPIO_AF_PP);  // SCK,
-    pin_mode(GPIOA, 6, GPIO_IN_FL);  // MISO
-    pin_mode(GPIOA, 7, GPIO_AF_PP);  // MOSI
+    pin_mode(SPI_PORT, SPI_Pin_NSS, GPIO_OUT_PP); // NSS
+    pin_mode(SPI_PORT, SPI_Pin_SCK, GPIO_AF_PP);  // SCK,
+    pin_mode(SPI_PORT, SPI_Pin_MISO, GPIO_IN_FL);  // MISO
+    pin_mode(SPI_PORT, SPI_Pin_MOSI, GPIO_AF_PP);  // MOSI
 
     // setup GPIO pins for USART1
-    pin_mode(GPIOB, 6, GPIO_AF_PP); // TX PB6
-    pin_mode(GPIOB, 7, GPIO_IN_FL); // RX PB7
+    pin_mode(USART1_PORT, USART_Pin_RX, GPIO_IN_FL); // RX PB7
+    pin_mode(USART1_PORT, USART_Pin_TX, GPIO_AF_PP); // TX PB6
+
+    // setup GPIO pins for ADC1
+    pin_mode(ASENSE_Port, ASENSE_Pin, GPIO_IN_AN);
+    pin_mode(BSENSE_Port, BSENSE_Pin, GPIO_IN_AN);
+    pin_mode(CSENSE_Port, CSENSE_Pin, GPIO_IN_AN);
+    pin_mode(SO1_Port,    SO1_Pin,    GPIO_IN_AN);
+    pin_mode(SO2_Port,    SO2_Pin,    GPIO_IN_AN);
 }

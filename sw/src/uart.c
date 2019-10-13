@@ -36,11 +36,15 @@ void UART_Init(USART_TypeDef *uart){
 // TODO void UART_Baudrate(USART_TypeDef *uart, uint32_t baud){}
 
 void UART_pin_Remap(USART_TypeDef *uart, uint8_t setting){
-    if (setting){
-        AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
-    } else {
-        AFIO->MAPR &= (~AFIO_MAPR_USART1_REMAP);
-    }
+    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+    AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
+    // if (setting){    
+    //     AFIO->MAPR |= AFIO_MAPR_USART1_REMAP;
+    // } else {
+    //     AFIO->MAPR &= (~AFIO_MAPR_USART1_REMAP);
+    // }
+
+    return;
 }
 
 void transmit_uart(USART_TypeDef *uart, char *ch, uint32_t len){

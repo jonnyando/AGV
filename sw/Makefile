@@ -29,8 +29,11 @@ src/uart.c \
 src/syscalls.c \
 src/gpio.c \
 src/tim.c \
+src/adc.c \
+src/dma.c \
 src/delay.c \
-src/drv8303.c
+src/drv8303.c \
+src/iwdg.c
 
 # ASM sources
 ASM_SOURCES =  \
