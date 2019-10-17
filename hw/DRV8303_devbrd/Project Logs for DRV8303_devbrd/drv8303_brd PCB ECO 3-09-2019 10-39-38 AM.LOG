@@ -1,0 +1,10 @@
+Added Component: Designator=C24(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C28(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C29(electrolytic)
+Add component. Clean all parameters for all variants
+Added Member To Class: ClassName=Gate Driver Member=Component C24 100uF
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF
+Added Member To Class: ClassName=Gate Driver Member=Component C28 100uF
+Added Member To Class: ClassName=Gate Driver Member=Component C29 100uF

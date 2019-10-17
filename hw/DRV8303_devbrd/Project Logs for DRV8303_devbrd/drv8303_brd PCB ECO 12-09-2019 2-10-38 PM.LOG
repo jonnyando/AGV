@@ -1,0 +1,2 @@
+Change Net Name : Old Net Name=SPI.SDI New Net Name=SPI.MOSI
+Change Net Name : Old Net Name=SPI.SDO New Net Name=SPI.MISO

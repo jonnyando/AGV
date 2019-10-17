@@ -10,7 +10,7 @@ void watchdog_start(void){
     IWDG->KR = 0xCCCC;
 }
 
-void watchdog_set_prescaler(uint8_t pr_val){
+void watchdog_set_prescaler(uint16_t pr_val){
 
     IWDG->KR = 0x5555; // unlock access to PR
 

@@ -1,0 +1,637 @@
+Removed Pin From Net: NetName=GND Pin=C2-1
+Removed Pin From Net: NetName=GND Pin=C3-1
+Removed Pin From Net: NetName=GND Pin=C4-1
+Removed Pin From Net: NetName=VBUS Pin=C5-1
+Removed Pin From Net: NetName=GND Pin=C5-2
+Removed Pin From Net: NetName=VBUS Pin=C6-1
+Removed Pin From Net: NetName=GND Pin=C6-2
+Removed Pin From Net: NetName=SH_B Pin=C8-2
+Removed Pin From Net: NetName=SH_C Pin=C9-2
+Removed Pin From Net: NetName=GND Pin=C12-2
+Removed Pin From Net: NetName=GND Pin=C13-2
+Removed Pin From Net: NetName=GND Pin=C21-2
+Removed Pin From Net: NetName=GND Pin=C22-2
+Removed Pin From Net: NetName=GND Pin=C23-2
+Removed Pin From Net: NetName=VBUS Pin=C26-1
+Removed Pin From Net: NetName=GND Pin=C26-2
+Removed Pin From Net: NetName=5v Pin=C27-1
+Removed Pin From Net: NetName=GND Pin=C27-2
+Removed Pin From Net: NetName=3v3 Pin=D8-1
+Removed Pin From Net: NetName=GND Pin=D10-1
+Removed Pin From Net: NetName=VBUS Pin=D17-2
+Removed Pin From Net: NetName=GND Pin=D17-3
+Removed Pin From Net: NetName=GND Pin=P3-1
+Removed Pin From Net: NetName=VBUS Pin=P3-2
+Removed Pin From Net: NetName=SH_B Pin=P4-2
+Removed Pin From Net: NetName=SL_A Pin=Q2-1
+Removed Pin From Net: NetName=SL_A Pin=Q2-2
+Removed Pin From Net: NetName=SL_A Pin=Q2-3
+Removed Pin From Net: NetName=NetQ1_4 Pin=Q3-4
+Removed Pin From Net: NetName=SH_B Pin=Q5-1
+Removed Pin From Net: NetName=SH_B Pin=Q5-2
+Removed Pin From Net: NetName=SH_B Pin=Q5-3
+Removed Pin From Net: NetName=SH_B Pin=Q6-0
+Removed Pin From Net: NetName=SL_B Pin=Q6-1
+Removed Pin From Net: NetName=SL_B Pin=Q6-2
+Removed Pin From Net: NetName=SL_B Pin=Q6-3
+Removed Pin From Net: NetName=SH_B Pin=Q6-5
+Removed Pin From Net: NetName=SH_B Pin=Q6-6
+Removed Pin From Net: NetName=SH_B Pin=Q6-7
+Removed Pin From Net: NetName=SH_B Pin=Q6-8
+Removed Pin From Net: NetName=VBUS Pin=Q7-0
+Removed Pin From Net: NetName=SH_B Pin=Q7-1
+Removed Pin From Net: NetName=SH_B Pin=Q7-2
+Removed Pin From Net: NetName=SH_B Pin=Q7-3
+Removed Pin From Net: NetName=NetQ5_4 Pin=Q7-4
+Removed Pin From Net: NetName=VBUS Pin=Q7-5
+Removed Pin From Net: NetName=VBUS Pin=Q7-6
+Removed Pin From Net: NetName=VBUS Pin=Q7-7
+Removed Pin From Net: NetName=VBUS Pin=Q7-8
+Removed Pin From Net: NetName=VBUS Pin=Q9-0
+Removed Pin From Net: NetName=SH_C Pin=Q9-1
+Removed Pin From Net: NetName=SH_C Pin=Q9-2
+Removed Pin From Net: NetName=SH_C Pin=Q9-3
+Removed Pin From Net: NetName=VBUS Pin=Q9-5
+Removed Pin From Net: NetName=VBUS Pin=Q9-6
+Removed Pin From Net: NetName=VBUS Pin=Q9-7
+Removed Pin From Net: NetName=VBUS Pin=Q9-8
+Removed Pin From Net: NetName=SH_C Pin=Q10-0
+Removed Pin From Net: NetName=GND Pin=Q10-1
+Removed Pin From Net: NetName=GND Pin=Q10-2
+Removed Pin From Net: NetName=GND Pin=Q10-3
+Removed Pin From Net: NetName=SH_C Pin=Q10-5
+Removed Pin From Net: NetName=SH_C Pin=Q10-6
+Removed Pin From Net: NetName=SH_C Pin=Q10-7
+Removed Pin From Net: NetName=SH_C Pin=Q10-8
+Removed Pin From Net: NetName=VBUS Pin=Q11-0
+Removed Pin From Net: NetName=SH_C Pin=Q11-1
+Removed Pin From Net: NetName=SH_C Pin=Q11-2
+Removed Pin From Net: NetName=SH_C Pin=Q11-3
+Removed Pin From Net: NetName=NetQ9_4 Pin=Q11-4
+Removed Pin From Net: NetName=VBUS Pin=Q11-5
+Removed Pin From Net: NetName=VBUS Pin=Q11-6
+Removed Pin From Net: NetName=VBUS Pin=Q11-7
+Removed Pin From Net: NetName=VBUS Pin=Q11-8
+Removed Pin From Net: NetName=GND Pin=Q12-1
+Removed Pin From Net: NetName=GND Pin=Q12-2
+Removed Pin From Net: NetName=GND Pin=Q12-3
+Removed Pin From Net: NetName=GND Pin=R1-1
+Removed Pin From Net: NetName=NetQ1_4 Pin=R2-2
+Removed Pin From Net: NetName=SL_A Pin=R4-1
+Removed Pin From Net: NetName=GND Pin=R4-2
+Removed Pin From Net: NetName=NetQ5_4 Pin=R5-2
+Removed Pin From Net: NetName=SL_B Pin=R7-1
+Removed Pin From Net: NetName=GND Pin=R7-2
+Removed Pin From Net: NetName=NetQ9_4 Pin=R8-2
+Removed Pin From Net: NetName=3v3 Pin=R12-2
+Removed Pin From Net: NetName=GND Pin=R13-1
+Removed Pin From Net: NetName=SH_B Pin=R21-2
+Removed Pin From Net: NetName=SH_C Pin=R22-2
+Removed Pin From Net: NetName=GND Pin=R23-1
+Removed Pin From Net: NetName=GND Pin=R25-1
+Removed Pin From Net: NetName=VBUS Pin=R30-1
+Removed Pin From Net: NetName=GND Pin=U1-0
+Removed Pin From Net: NetName=EN_GATE Pin=U1-12
+Removed Pin From Net: NetName=TIM1_CH3 Pin=U1-13
+Removed Pin From Net: NetName=TIM1_CH3N Pin=U1-14
+Removed Pin From Net: NetName=TIM1_CH2 Pin=U1-15
+Removed Pin From Net: NetName=TIM1_CH2N Pin=U1-16
+Removed Pin From Net: NetName=TIM1_CH1 Pin=U1-17
+Removed Pin From Net: NetName=TIM1_CH1N Pin=U1-18
+Removed Pin From Net: NetName=GND Pin=U1-24
+Removed Pin From Net: NetName=VBUS Pin=U1-25
+Removed Pin From Net: NetName=GND Pin=U1-30
+Removed Pin From Net: NetName=SH_C Pin=U1-32
+Removed Pin From Net: NetName=SL_B Pin=U1-35
+Removed Pin From Net: NetName=SH_B Pin=U1-37
+Removed Pin From Net: NetName=SL_A Pin=U1-40
+Removed Pin From Net: NetName=3v3 Pin=U1-45
+Removed Pin From Net: NetName=GND Pin=U1-46
+Removed Pin From Net: NetName=GND Pin=U1-47
+Removed Pin From Net: NetName=GND Pin=U1-48
+Removed Pin From Net: NetName=ENC_I Pin=U2-22
+Removed Pin From Net: NetName=EN_GATE Pin=U2-32
+Removed Pin From Net: NetName=UART1_Tx Pin=U2-42
+Removed Pin From Net: NetName=UART1_Rx Pin=U2-43
+Removed Pin From Net: NetName=LED_FAULT Pin=U2-45
+Change Component Footprint: Designator=R25 Old Footprint=RESC0603(1608)_N New Footprint=RESC1206_kelvin
+Change Component Footprint: Designator=R30 Old Footprint=RESC0603(1608)_N New Footprint=RESC1206_kelvin
+Change Component Footprint: Designator=R4 Old Footprint=RESC1206_kelvin New Footprint=RESC0603(1608)_N
+Change Component Footprint: Designator=R7 Old Footprint=RESC1206_kelvin New Footprint=RESC0603(1608)_N
+Change Component Comment : Designator=R4 Old Comment=0.01R New Comment=1K
+Change Component Comment : Designator=R7 Old Comment=0.01R New Comment=10R
+Change Component Comment : Designator=C10 Old Comment=0.1uF New Comment=22uF
+Change Component Comment : Designator=C11 Old Comment=0.1uF New Comment=22uF
+Change Component Comment : Designator=R30 Old Comment=1KR New Comment=0.01R
+Change Component Comment : Designator=R25 Old Comment=10KR New Comment=0.01R
+Change Component Comment : Designator=R23 Old Comment=10KR New Comment=68KR
+Change Component Comment : Designator=R5 Old Comment=10R New Comment=1K
+Change Component Comment : Designator=R2 Old Comment=10R New Comment=1KR
+Change Component Comment : Designator=R6 Old Comment=10R New Comment=68KR
+Change Component Comment : Designator=R20 Old Comment=68KR New Comment=10R
+Change Component Comment : Designator=R21 Old Comment=68KR New Comment=10R
+Change Component Comment : Designator=R22 Old Comment=68KR New Comment=10R
+Change component parameters: Designator = "R4"; Footprint = "RESC0603(1608)_N"; UniqueID = "\HIHAWDHK\KXRSLUJI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "res_0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "1K"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5"; Footprint = "RESC0603(1608)_N"; UniqueID = "\HIHAWDHK\YWCKBMKE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "res_0603"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "1K"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R7"; Footprint = "RESC0603(1608)_N"; UniqueID = "\MZYISTOO\KKEGYTXN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Land patterns"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.vishay.com/docs/60119/landpatterns.pdf"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2Description"; Value = "1k digikey"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink3Description"; Value = "shunt digikey"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink3URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/PF1206FRF070R02L/311-0.02AJCT-ND/2178365"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters: Designator = "R25"; Footprint = "RESC1206_kelvin"; UniqueID = "\MZYISTOO\TIAJAVPU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "Generic_res_kelvin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "0.01R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R30"; Footprint = "RESC1206_kelvin"; UniqueID = "\MZYISTOO\YTGACDOJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "Generic_res_kelvin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "0.01R"; VariantName = "[No Variations]"
+Added Component: Designator=C31(CAP0402(1005)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C32(CAP0402(1005)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C33(CAP0402(1005)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C34(CAP0402(1005)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C35(CAP0402(1005)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Added Component: Designator=C36(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C37(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C38(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C39(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C40(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C41(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=C42(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C43(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C44(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=D3(SOT23)
+Add component. Clean all parameters for all variants
+Added Component: Designator=D4(LED0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=D5(SOD523)
+Add component. Clean all parameters for all variants
+Added Component: Designator=P2(ScrewTerm_2)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ClassName"; Value = "pour_over"; VariantName = "[No Variations]"
+Added Component: Designator=R16(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Land patterns"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.vishay.com/docs/60119/landpatterns.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "1k digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "shunt digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/PF1206FRF070R02L/311-0.02AJCT-ND/2178365"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R17(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Land patterns"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.vishay.com/docs/60119/landpatterns.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "1k digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "shunt digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/PF1206FRF070R02L/311-0.02AJCT-ND/2178365"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R18(RESC0603(1608)_N)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Land patterns"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.vishay.com/docs/60119/landpatterns.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2Description"; Value = "1k digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3Description"; Value = "shunt digikey"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink3URL"; Value = "https://www.digikey.com.au/product-detail/en/yageo/PF1206FRF070R02L/311-0.02AJCT-ND/2178365"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=R31(RESC1206_kelvin)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part"; Value = "Generic_res_kelvin"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PartValue"; Value = "0.01R"; VariantName = "[No Variations]"
+Added Component: Designator=U6(WQFN-40)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.ti.com/lit/ds/symlink/drv8323.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part"; Value = "DRV8323S"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VBUS Pin=C10-1
+Added Pin To Net: NetName=GND Pin=C10-2
+Added Pin To Net: NetName=5v Pin=C11-1
+Added Pin To Net: NetName=GND Pin=C11-2
+Added Pin To Net: NetName=GND Pin=C31-1
+Added Pin To Net: NetName=GND Pin=C32-1
+Added Pin To Net: NetName=GND Pin=C35-1
+Added Pin To Net: NetName=3v3 Pin=C35-2
+Added Pin To Net: NetName=GND Pin=C36-2
+Added Pin To Net: NetName=GND Pin=C37-2
+Added Pin To Net: NetName=GND Pin=C38-2
+Added Pin To Net: NetName=VBUS Pin=C42-1
+Added Pin To Net: NetName=GND Pin=C42-2
+Added Pin To Net: NetName=VBUS Pin=C43-1
+Added Pin To Net: NetName=GND Pin=C43-2
+Added Pin To Net: NetName=VBUS Pin=C44-1
+Added Pin To Net: NetName=GND Pin=C44-2
+Added Pin To Net: NetName=VBUS Pin=D3-2
+Added Pin To Net: NetName=GND Pin=D3-3
+Added Pin To Net: NetName=GND Pin=D4-1
+Added Pin To Net: NetName=3v3 Pin=D5-1
+Added Pin To Net: NetName=GND Pin=P2-1
+Added Pin To Net: NetName=VBUS Pin=P2-2
+Added Pin To Net: NetName=SL_A Pin=P4-2
+Added Pin To Net: NetName=SH_B Pin=P4-3
+Added Pin To Net: NetName=SH_B Pin=Q1-1
+Added Pin To Net: NetName=SH_B Pin=Q1-2
+Added Pin To Net: NetName=SH_B Pin=Q1-3
+Added Pin To Net: NetName=VBUS Pin=Q2-0
+Added Pin To Net: NetName=SH_B Pin=Q2-1
+Added Pin To Net: NetName=SH_B Pin=Q2-2
+Added Pin To Net: NetName=SH_B Pin=Q2-3
+Added Pin To Net: NetName=NetQ1_4 Pin=Q2-4
+Added Pin To Net: NetName=VBUS Pin=Q2-5
+Added Pin To Net: NetName=VBUS Pin=Q2-6
+Added Pin To Net: NetName=VBUS Pin=Q2-7
+Added Pin To Net: NetName=VBUS Pin=Q2-8
+Added Pin To Net: NetName=SL_A Pin=Q3-1
+Added Pin To Net: NetName=SL_A Pin=Q3-2
+Added Pin To Net: NetName=SL_A Pin=Q3-3
+Added Pin To Net: NetName=VBUS Pin=Q4-0
+Added Pin To Net: NetName=VBUS Pin=Q4-5
+Added Pin To Net: NetName=VBUS Pin=Q4-6
+Added Pin To Net: NetName=VBUS Pin=Q4-7
+Added Pin To Net: NetName=VBUS Pin=Q4-8
+Added Pin To Net: NetName=SH_C Pin=Q5-1
+Added Pin To Net: NetName=SH_C Pin=Q5-2
+Added Pin To Net: NetName=SH_C Pin=Q5-3
+Added Pin To Net: NetName=VBUS Pin=Q6-0
+Added Pin To Net: NetName=SH_C Pin=Q6-1
+Added Pin To Net: NetName=SH_C Pin=Q6-2
+Added Pin To Net: NetName=SH_C Pin=Q6-3
+Added Pin To Net: NetName=NetQ5_4 Pin=Q6-4
+Added Pin To Net: NetName=VBUS Pin=Q6-5
+Added Pin To Net: NetName=VBUS Pin=Q6-6
+Added Pin To Net: NetName=VBUS Pin=Q6-7
+Added Pin To Net: NetName=VBUS Pin=Q6-8
+Added Pin To Net: NetName=SH_B Pin=Q7-0
+Added Pin To Net: NetName=SL_B Pin=Q7-1
+Added Pin To Net: NetName=SL_B Pin=Q7-2
+Added Pin To Net: NetName=SL_B Pin=Q7-3
+Added Pin To Net: NetName=SH_B Pin=Q7-5
+Added Pin To Net: NetName=SH_B Pin=Q7-6
+Added Pin To Net: NetName=SH_B Pin=Q7-7
+Added Pin To Net: NetName=SH_B Pin=Q7-8
+Added Pin To Net: NetName=SL_A Pin=Q9-0
+Added Pin To Net: NetName=SL_A Pin=Q9-5
+Added Pin To Net: NetName=SL_A Pin=Q9-6
+Added Pin To Net: NetName=SL_A Pin=Q9-7
+Added Pin To Net: NetName=SL_A Pin=Q9-8
+Added Pin To Net: NetName=SL_A Pin=Q10-0
+Added Pin To Net: NetName=NetQ9_4 Pin=Q10-4
+Added Pin To Net: NetName=SL_A Pin=Q10-5
+Added Pin To Net: NetName=SL_A Pin=Q10-6
+Added Pin To Net: NetName=SL_A Pin=Q10-7
+Added Pin To Net: NetName=SL_A Pin=Q10-8
+Added Pin To Net: NetName=SH_C Pin=Q11-0
+Added Pin To Net: NetName=SH_C Pin=Q11-5
+Added Pin To Net: NetName=SH_C Pin=Q11-6
+Added Pin To Net: NetName=SH_C Pin=Q11-7
+Added Pin To Net: NetName=SH_C Pin=Q11-8
+Added Pin To Net: NetName=VBUS Pin=R2-1
+Added Pin To Net: NetName=3v3 Pin=R4-2
+Added Pin To Net: NetName=GND Pin=R5-1
+Added Pin To Net: NetName=SH_B Pin=R6-2
+Added Pin To Net: NetName=NetQ1_4 Pin=R7-2
+Added Pin To Net: NetName=NetQ5_4 Pin=R9-2
+Added Pin To Net: NetName=GND Pin=R16-1
+Added Pin To Net: NetName=SL_A Pin=R17-2
+Added Pin To Net: NetName=GND Pin=R18-1
+Added Pin To Net: NetName=NetQ9_4 Pin=R21-2
+Added Pin To Net: NetName=SH_C Pin=R23-2
+Added Pin To Net: NetName=SL_B Pin=R25-1
+Added Pin To Net: NetName=GND Pin=R25-2
+Added Pin To Net: NetName=GND Pin=R30-2
+Added Pin To Net: NetName=GND Pin=R31-2
+Added Pin To Net: NetName=LED_FAULT Pin=U2-38
+Added Pin To Net: NetName=ENC_I Pin=U2-42
+Added Pin To Net: NetName=SH_B Pin=U6-7
+Added Pin To Net: NetName=SL_A Pin=U6-14
+Added Pin To Net: NetName=SH_C Pin=U6-17
+Added Pin To Net: NetName=GND Pin=U6-32
+Added Pin To Net: NetName=3v3 Pin=U6-33
+Added Pin To Net: NetName=TIM1_CH3 Pin=U6-34
+Added Pin To Net: NetName=TIM1_CH3N Pin=U6-35
+Added Pin To Net: NetName=TIM1_CH2 Pin=U6-36
+Added Pin To Net: NetName=TIM1_CH2N Pin=U6-37
+Added Pin To Net: NetName=TIM1_CH1 Pin=U6-38
+Added Pin To Net: NetName=TIM1_CH1N Pin=U6-39
+Added Pin To Net: NetName=GND Pin=U6-40
+Added Pin To Net: NetName=GND Pin=U6-41
+Change Net Name : Old Net Name=SH_B New Net Name=SH_A
+Change Net Name : Old Net Name=SL_A New Net Name=SH_B
+Change Net Name : Old Net Name=SL_B New Net Name=NetQ7_1
+Added Pin To Net: NetName=NetC33_1 Pin=C33-1
+Added Pin To Net: NetName=NetC33_1 Pin=U6-3
+Added Net: Name=NetC33_1
+Added Pin To Net: NetName=NetC34_1 Pin=C34-1
+Added Pin To Net: NetName=NetC34_1 Pin=U6-1
+Added Net: Name=NetC34_1
+Added Pin To Net: NetName=NetC34_2 Pin=C34-2
+Added Pin To Net: NetName=NetC34_2 Pin=U6-2
+Added Net: Name=NetC34_2
+Added Pin To Net: NetName=NetC36_1 Pin=C36-1
+Added Pin To Net: NetName=NetC36_1 Pin=D5-2
+Added Pin To Net: NetName=NetC36_1 Pin=R6-1
+Added Pin To Net: NetName=NetC36_1 Pin=R16-2
+Added Pin To Net: NetName=NetC36_1 Pin=U2-11
+Added Net: Name=NetC36_1
+Added Pin To Net: NetName=NetC37_1 Pin=C37-1
+Added Pin To Net: NetName=NetC37_1 Pin=D6-2
+Added Pin To Net: NetName=NetC37_1 Pin=R17-1
+Added Pin To Net: NetName=NetC37_1 Pin=R18-2
+Added Pin To Net: NetName=NetC37_1 Pin=U2-12
+Added Net: Name=NetC37_1
+Added Pin To Net: NetName=NetC38_1 Pin=C38-1
+Added Pin To Net: NetName=NetC38_1 Pin=D7-2
+Added Pin To Net: NetName=NetC38_1 Pin=R23-1
+Added Pin To Net: NetName=NetC38_1 Pin=R24-2
+Added Pin To Net: NetName=NetC38_1 Pin=U2-13
+Added Net: Name=NetC38_1
+Added Pin To Net: NetName=NetC39_1 Pin=C39-1
+Added Pin To Net: NetName=NetC39_1 Pin=R25-3
+Added Pin To Net: NetName=NetC39_1 Pin=U6-10
+Added Net: Name=NetC39_1
+Added Pin To Net: NetName=NetC39_2 Pin=C39-2
+Added Pin To Net: NetName=NetC39_2 Pin=R25-4
+Added Pin To Net: NetName=NetC39_2 Pin=U6-9
+Added Net: Name=NetC39_2
+Added Pin To Net: NetName=NetC40_1 Pin=C40-1
+Added Pin To Net: NetName=NetC40_1 Pin=R30-3
+Added Pin To Net: NetName=NetC40_1 Pin=U6-11
+Added Net: Name=NetC40_1
+Added Pin To Net: NetName=NetC40_2 Pin=C40-2
+Added Pin To Net: NetName=NetC40_2 Pin=R30-4
+Added Pin To Net: NetName=NetC40_2 Pin=U6-12
+Added Net: Name=NetC40_2
+Added Pin To Net: NetName=NetC41_1 Pin=C41-1
+Added Pin To Net: NetName=NetC41_1 Pin=R31-3
+Added Pin To Net: NetName=NetC41_1 Pin=U6-20
+Added Net: Name=NetC41_1
+Added Pin To Net: NetName=NetC41_2 Pin=C41-2
+Added Pin To Net: NetName=NetC41_2 Pin=R31-4
+Added Pin To Net: NetName=NetC41_2 Pin=U6-19
+Added Net: Name=NetC41_2
+Added Pin To Net: NetName=NetD4_2 Pin=D4-2
+Added Pin To Net: NetName=NetD4_2 Pin=R2-2
+Added Net: Name=NetD4_2
+Added Pin To Net: NetName=NetQ3_4 Pin=Q3-4
+Added Pin To Net: NetName=NetQ3_4 Pin=Q4-4
+Added Pin To Net: NetName=NetQ3_4 Pin=R8-2
+Added Net: Name=NetQ3_4
+Added Pin To Net: NetName=NetQ7_4 Pin=Q7-4
+Added Pin To Net: NetName=NetQ7_4 Pin=Q8-4
+Added Pin To Net: NetName=NetQ7_4 Pin=R20-2
+Added Net: Name=NetQ7_4
+Added Pin To Net: NetName=NetQ9_1 Pin=Q9-1
+Added Pin To Net: NetName=NetQ9_1 Pin=Q9-2
+Added Pin To Net: NetName=NetQ9_1 Pin=Q9-3
+Added Pin To Net: NetName=NetQ9_1 Pin=Q10-1
+Added Pin To Net: NetName=NetQ9_1 Pin=Q10-2
+Added Pin To Net: NetName=NetQ9_1 Pin=Q10-3
+Added Pin To Net: NetName=NetQ9_1 Pin=R30-1
+Added Net: Name=NetQ9_1
+Added Pin To Net: NetName=NetQ11_1 Pin=Q11-1
+Added Pin To Net: NetName=NetQ11_1 Pin=Q11-2
+Added Pin To Net: NetName=NetQ11_1 Pin=Q11-3
+Added Pin To Net: NetName=NetQ11_1 Pin=Q12-1
+Added Pin To Net: NetName=NetQ11_1 Pin=Q12-2
+Added Pin To Net: NetName=NetQ11_1 Pin=Q12-3
+Added Pin To Net: NetName=NetQ11_1 Pin=R31-1
+Added Net: Name=NetQ11_1
+Added Pin To Net: NetName=NetQ11_4 Pin=Q11-4
+Added Pin To Net: NetName=NetQ11_4 Pin=Q12-4
+Added Pin To Net: NetName=NetQ11_4 Pin=R22-2
+Added Net: Name=NetQ11_4
+Added Pin To Net: NetName=NetR4_1 Pin=R4-1
+Added Pin To Net: NetName=NetR4_1 Pin=R5-2
+Added Pin To Net: NetName=NetR4_1 Pin=U6-24
+Added Net: Name=NetR4_1
+Added Pin To Net: NetName=NetR7_1 Pin=R7-1
+Added Pin To Net: NetName=NetR7_1 Pin=U6-6
+Added Net: Name=NetR7_1
+Added Pin To Net: NetName=NetR8_1 Pin=R8-1
+Added Pin To Net: NetName=NetR8_1 Pin=U6-13
+Added Net: Name=NetR8_1
+Added Pin To Net: NetName=NetR9_1 Pin=R9-1
+Added Pin To Net: NetName=NetR9_1 Pin=U6-16
+Added Net: Name=NetR9_1
+Added Pin To Net: NetName=NetR20_1 Pin=R20-1
+Added Pin To Net: NetName=NetR20_1 Pin=U6-8
+Added Net: Name=NetR20_1
+Added Pin To Net: NetName=NetR21_1 Pin=R21-1
+Added Pin To Net: NetName=NetR21_1 Pin=U6-15
+Added Net: Name=NetR21_1
+Added Pin To Net: NetName=NetR22_1 Pin=R22-1
+Added Pin To Net: NetName=NetR22_1 Pin=U6-18
+Added Net: Name=NetR22_1
+Added Pin To Net: NetName=NetU2_10 Pin=U2-10
+Added Pin To Net: NetName=NetU2_10 Pin=U6-22
+Added Net: Name=NetU2_10
+Added Pin To Net: NetName=NetU2_14 Pin=U2-14
+Added Pin To Net: NetName=NetU2_14 Pin=U6-29
+Added Net: Name=NetU2_14
+Added Pin To Net: NetName=NetU2_15 Pin=U2-15
+Added Pin To Net: NetName=NetU2_15 Pin=U6-28
+Added Net: Name=NetU2_15
+Added Pin To Net: NetName=NetU2_16 Pin=U2-16
+Added Net: Name=NetU2_16
+Added Pin To Net: NetName=NetU2_17 Pin=U2-17
+Added Net: Name=NetU2_17
+Added Pin To Net: NetName=NetU2_18 Pin=U2-18
+Added Pin To Net: NetName=NetU2_18 Pin=U6-23
+Added Net: Name=NetU2_18
+Added Pin To Net: NetName=NetU2_19 Pin=U2-19
+Added Pin To Net: NetName=NetU2_19 Pin=U6-21
+Added Net: Name=NetU2_19
+Added Pin To Net: NetName=NetU2_43 Pin=U2-43
+Added Pin To Net: NetName=NetU2_43 Pin=U6-30
+Added Net: Name=NetU2_43
+Added Pin To Net: NetName=NetU2_45 Pin=U2-45
+Added Pin To Net: NetName=NetU2_45 Pin=U6-31
+Added Net: Name=NetU2_45
+Added Pin To Net: NetName=NetU2_46 Pin=U2-46
+Added Pin To Net: NetName=NetU2_46 Pin=U6-25
+Added Net: Name=NetU2_46
+Added Pin To Net: NetName=NetU6_26 Pin=U6-26
+Added Net: Name=NetU6_26
+Added Pin To Net: NetName=NetU6_27 Pin=U6-27
+Added Net: Name=NetU6_27
+Added Pin To Net: NetName=UART3_Rx Pin=U2-22
+Added Net: Name=UART3_Rx
+Added Pin To Net: NetName=UART3_Tx Pin=U2-21
+Added Net: Name=UART3_Tx
+Added Pin To Net: NetName=VCC Pin=C31-2
+Added Pin To Net: NetName=VCC Pin=C32-2
+Added Pin To Net: NetName=VCC Pin=C33-2
+Added Pin To Net: NetName=VCC Pin=U6-4
+Added Pin To Net: NetName=VCC Pin=U6-5
+Added Net: Name=VCC
+Added Member To Class: ClassName=TopLevel Member=Component C10 22uF
+Added Member To Class: ClassName=TopLevel Member=Component C11 22uF
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF
+Added Member To Class: ClassName=Gate Driver Member=Component C31 100nF
+Added Member To Class: ClassName=Gate Driver Member=Component C32 100nF
+Added Member To Class: ClassName=Gate Driver Member=Component C33 100nF
+Added Member To Class: ClassName=Gate Driver Member=Component C34 100nF
+Added Member To Class: ClassName=Gate Driver Member=Component C35 100nF
+Added Member To Class: ClassName=MOSFETS Member=Component C36 0.1uF
+Added Member To Class: ClassName=MOSFETS Member=Component C37 0.1uF
+Added Member To Class: ClassName=MOSFETS Member=Component C38 0.1uF
+Added Member To Class: ClassName=MOSFETS Member=Component C39 0.1uF
+Added Member To Class: ClassName=MOSFETS Member=Component C40 0.1uF
+Added Member To Class: ClassName=MOSFETS Member=Component C41 0.1uF
+Added Member To Class: ClassName=MOSFETS Member=Component C42 100uF
+Added Member To Class: ClassName=MOSFETS Member=Component C43 100uF
+Added Member To Class: ClassName=MOSFETS Member=Component C44 100uF
+Added Member To Class: ClassName=TopLevel Member=Component D3 TVS
+Added Member To Class: ClassName=TopLevel Member=Component D4 LED
+Added Member To Class: ClassName=MOSFETS Member=Component D5 Diode_schottky
+Added Member To Class: ClassName=MOSFETS Member=Component D6 Diode_schottky
+Added Member To Class: ClassName=MOSFETS Member=Component D7 Diode_schottky
+Added Member To Class: ClassName=pour_over Member=Component P2 ScrewTerm_2
+Added Member To Class: ClassName=TopLevel Member=Component P2 ScrewTerm_2
+Added Member To Class: ClassName=STM32 Member=Component P3 Header 5
+Added Member To Class: ClassName=MOSFETS Member=Component P4 ScrewTerm_3
+Added Member To Class: ClassName=pour_over Member=Component P4 ScrewTerm_3
+Added Member To Class: ClassName=MOSFETS Member=Component Q1 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q1 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q2 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q2 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q3 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q3 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q4 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q4 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q5 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q5 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q6 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q6 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q7 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q7 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q8 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q8 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q9 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q9 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q10 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q10 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q11 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q11 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q12 FDMS7682
+Added Member To Class: ClassName=pour_over Member=Component Q12 FDMS7682
+Added Member To Class: ClassName=TopLevel Member=Component R2 1KR
+Added Member To Class: ClassName=Gate Driver Member=Component R4 1K
+Added Member To Class: ClassName=Gate Driver Member=Component R5 1K
+Added Member To Class: ClassName=MOSFETS Member=Component R6 68KR
+Added Member To Class: ClassName=MOSFETS Member=Component R7 10R
+Added Member To Class: ClassName=MOSFETS Member=Component R8 10R
+Added Member To Class: ClassName=MOSFETS Member=Component R9 10R
+Added Member To Class: ClassName=MOSFETS Member=Component R16 10KR
+Added Member To Class: ClassName=MOSFETS Member=Component R17 68KR
+Added Member To Class: ClassName=MOSFETS Member=Component R18 10KR
+Added Member To Class: ClassName=MOSFETS Member=Component R20 10R
+Added Member To Class: ClassName=MOSFETS Member=Component R21 10R
+Added Member To Class: ClassName=MOSFETS Member=Component R22 10R
+Added Member To Class: ClassName=MOSFETS Member=Component R23 68KR
+Added Member To Class: ClassName=MOSFETS Member=Component R24 10KR
+Added Member To Class: ClassName=MOSFETS Member=Component R25 0.01R
+Added Member To Class: ClassName=MOSFETS Member=Component R30 0.01R
+Added Member To Class: ClassName=MOSFETS Member=Component R31 0.01R
+Added Member To Class: ClassName=TopLevel Member=Component U4 AP2204
+Added Member To Class: ClassName=Gate Driver Member=Component U6 DRV8323S

@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=VBUS Pin=D11-1
+Removed Pin From Net: NetName=SH_A Pin=D11-2
+Removed Pin From Net: NetName=VBUS Pin=D12-1
+Removed Pin From Net: NetName=SH_B Pin=D12-2
+Removed Pin From Net: NetName=VBUS Pin=D13-1
+Removed Pin From Net: NetName=SH_C Pin=D13-2
+Removed Pin From Net: NetName=SH_A Pin=D14-1
+Removed Pin From Net: NetName=SL_A Pin=D14-2
+Removed Pin From Net: NetName=SH_B Pin=D15-1
+Removed Pin From Net: NetName=SL_B Pin=D15-2
+Removed Pin From Net: NetName=SH_C Pin=D16-1
+Removed Pin From Net: NetName=GND Pin=D16-2
+Removed Member From Class: ClassName=Gate Driver Member=D11
+Removed Member From Class: ClassName=Gate Driver Member=D12
+Removed Member From Class: ClassName=Gate Driver Member=D13
+Removed Member From Class: ClassName=Gate Driver Member=D14
+Removed Member From Class: ClassName=Gate Driver Member=D15
+Removed Member From Class: ClassName=Gate Driver Member=D16
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF

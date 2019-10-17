@@ -1,0 +1,9 @@
+Added Component: Designator=C42(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C43(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C44(electrolytic)
+Add component. Clean all parameters for all variants
+Added Member To Class: ClassName=MOSFETS Member=Component C42 100uF
+Added Member To Class: ClassName=MOSFETS Member=Component C43 100uF
+Added Member To Class: ClassName=MOSFETS Member=Component C44 100uF

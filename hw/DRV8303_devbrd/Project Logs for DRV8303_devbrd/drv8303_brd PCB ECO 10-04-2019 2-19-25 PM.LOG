@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=VBUS Pin=D17-1
+Removed Pin From Net: NetName=GND Pin=D17-2
+Added Pin To Net: NetName=VBUS Pin=D17-2
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF

@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=SNA Pin=C39-1
+Removed Pin From Net: NetName=SPA Pin=C39-2
+Removed Pin From Net: NetName=SNB Pin=C40-1
+Removed Pin From Net: NetName=SPB Pin=C40-2
+Removed Pin From Net: NetName=SNC Pin=C41-1
+Removed Pin From Net: NetName=SPC Pin=C41-2
+Change Component Footprint: Designator=C39 Old Footprint=RESC0603(1608)_N New Footprint=CAP0402(1005)_N
+Change Component Footprint: Designator=C40 Old Footprint=RESC0603(1608)_N New Footprint=CAP0402(1005)_N
+Change Component Footprint: Designator=C41 Old Footprint=RESC0603(1608)_N New Footprint=CAP0402(1005)_N
+Change Component Comment : Designator=C39 Old Comment=0.1uF New Comment=100nF
+Change Component Comment : Designator=C40 Old Comment=0.1uF New Comment=100nF
+Change Component Comment : Designator=C41 Old Comment=0.1uF New Comment=100nF
+Change component parameters: Designator = "C39"; Footprint = "CAP0402(1005)_N"; UniqueID = "\MZYISTOO\GVZQMRCD"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C40"; Footprint = "CAP0402(1005)_N"; UniqueID = "\MZYISTOO\HDOQLFBA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "C41"; Footprint = "CAP0402(1005)_N"; UniqueID = "\MZYISTOO\ZXOSMDQQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "cap_generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "100nF"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=SPA Pin=C39-1
+Added Pin To Net: NetName=SNA Pin=C39-2
+Added Pin To Net: NetName=SPB Pin=C40-1
+Added Pin To Net: NetName=SNB Pin=C40-2
+Added Pin To Net: NetName=SPC Pin=C41-1
+Added Pin To Net: NetName=SNC Pin=C41-2

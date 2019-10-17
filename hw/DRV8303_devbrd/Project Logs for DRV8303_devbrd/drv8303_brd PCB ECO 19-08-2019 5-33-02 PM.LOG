@@ -1,0 +1,45 @@
+Removed Pin From Net: NetName=SL_A Pin=C10-1
+Removed Pin From Net: NetName=GND Pin=C10-2
+Removed Pin From Net: NetName=SL_B Pin=C11-1
+Removed Pin From Net: NetName=GND Pin=C11-2
+Removed Pin From Net: NetName=GND Pin=U1-26
+Removed Pin From Net: NetName=SL_A Pin=U1-27
+Removed Pin From Net: NetName=GND Pin=U1-28
+Removed Pin From Net: NetName=SL_B Pin=U1-29
+Removed Member From Class: ClassName=pour_over Member=R4
+Removed Member From Class: ClassName=pour_over Member=R7
+Change Component Footprint: Designator=R4 Old Footprint=RESC1206(3216)_M New Footprint=RESC1206_kelvin
+Change Component Footprint: Designator=R7 Old Footprint=RESC1206(3216)_M New Footprint=RESC1206_kelvin
+Change component parameters: Designator = "R4"; Footprint = "RESC1206_kelvin"; UniqueID = "\HIHAWDHK\KFRGPXIT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "Generic_res_kelvin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "0.01R"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R7"; Footprint = "RESC1206_kelvin"; UniqueID = "\HIHAWDHK\TBUWWOYS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "Generic_res_kelvin"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "0.01R"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=SN1 Pin=C10-1
+Added Pin To Net: NetName=SN1 Pin=R4-3
+Added Pin To Net: NetName=SN1 Pin=U1-29
+Added Net: Name=SN1
+Added Pin To Net: NetName=SN2 Pin=C11-1
+Added Pin To Net: NetName=SN2 Pin=R7-3
+Added Pin To Net: NetName=SN2 Pin=U1-27
+Added Net: Name=SN2
+Added Pin To Net: NetName=SP1 Pin=C10-2
+Added Pin To Net: NetName=SP1 Pin=R4-4
+Added Pin To Net: NetName=SP1 Pin=U1-28
+Added Net: Name=SP1
+Added Pin To Net: NetName=SP2 Pin=C11-2
+Added Pin To Net: NetName=SP2 Pin=R7-4
+Added Pin To Net: NetName=SP2 Pin=U1-26
+Added Net: Name=SP2
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF

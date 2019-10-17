@@ -2,10 +2,11 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void blink_fault(void);
 
 int __io_putchar(int ch)
 {
-    transmit_byte_uart(USART1, (uint8_t)ch);
+    transmit_byte_uart(USART3, (uint8_t)ch);
     // ITM_SendChar(ch);
     return ch;
 }
@@ -36,18 +37,18 @@ void DMA1_Channel1_IRQHandler(void){
 
 void ADC1_2_IRQHandler(void){
     // pin_set(GPIOB, 11);
-    // blink_fault();
-    // printf("ADC interrupt\n");
+    blink_fault();
+    printf("ADC interrupt\n");
 }
 
 void HardFault_Handler(void){
-    pin_set(GPIOB, 11);
+    pin_set(LED_FAULT_Port, LED_FAULT_Pin);
 }
 void BusFault_Handler(void){
-    pin_set(GPIOB, 11);
+    pin_set(LED_FAULT_Port, LED_FAULT_Pin);
 }
 void UsageFault_Handler(void){
-    pin_set(GPIOB, 11);
+    pin_set(LED_FAULT_Port, LED_FAULT_Pin);
 }
 
 void myDelay(uint32_t mS){
@@ -57,38 +58,54 @@ void myDelay(uint32_t mS){
 
 uint16_t ADC_samples[10];
 
+
 void blink_fault(void){
-    pin_reset(GPIOB, 11);
+    pin_reset(LED_FAULT_Port, LED_FAULT_Pin);
     myDelay(50);
-    pin_set(GPIOB, 11);
+    pin_set(LED_FAULT_Port, LED_FAULT_Pin);
     myDelay(50);
-    pin_reset(GPIOB, 11);
+    pin_reset(LED_FAULT_Port, LED_FAULT_Pin);
     myDelay(50);
-    pin_set(GPIOB, 11);
+    pin_set(LED_FAULT_Port, LED_FAULT_Pin);
 }
 
 int main(void)
 {   
     // SystemInit();
+    // ITM_SendChar('A');
     SystemClock_Config();
+    RCC->APB2ENR |= RCC_APB2ENR_AFIOEN;
+    AFIO->MAPR |= (AFIO_MAPR_SWJ_CFG_1);
+    DBGMCU->CR |= DBGMCU_CR_TRACE_IOEN;
+    /* Configure Trace Port Interface Unit */
+    CoreDebug->DEMCR |= CoreDebug_DEMCR_TRCENA_Msk; // Enable access to registers
+    DWT->CTRL = 0x400003FE; // DWT needs to provide sync for ITM
+    ITM->LAR = 0xC5ACCE55; // Allow access to the Control Register
+    ITM->TPR = 0x0000000F; // Trace access privilege from user level code, please
+    ITM->TCR = 0x0001000D;
+    ITM->TER = 1; // Only Enable stimulus port 1
+    ITM_SendChar('A');
 
 
 
-    pin_reset(GPIOB, 11);
+    pin_reset(ENABLE_Port, ENABLE_Pin);
     myDelay(50);
-    pin_set(GPIOB, 11);
+    pin_set(ENABLE_Port, ENABLE_Pin);
     myDelay(50);
-    pin_reset(GPIOB, 11);
+    pin_reset(ENABLE_Port, ENABLE_Pin);
     myDelay(50);
-    pin_set(GPIOB, 11);
+    pin_set(ENABLE_Port, ENABLE_Pin);
 
     watchdog_set_prescaler(32);
     watchdog_set_reload_reg(0xfff);
     watchdog_start();
 
     GPIO_Init();
-    UART_Init(USART1);
-    UART_pin_Remap(USART1, 1);
+    // for(;;){
+    //     myDelay(100);
+    // }
+    UART_Init(USART3);
+    // UART_pin_Remap(USART1, 1);
     printf("uart1 initialized\n");
     printf("gpio initialized\n");
     SPI_Init(SPI1);             printf("SPI1 initialized\n");
@@ -152,8 +169,8 @@ int main(void)
     
 
     TIM1_Init();                printf("tim1 initialized\n");
-    pin_reset(DC_CAL_Port, DC_CAL_Pin);
-    printf("DC_CAL set LOW (off)\n");
+    pin_reset(CAL_Port, CAL_Pin);
+    printf("CAL set LOW (off)\n");
     myDelay(10);
     uint16_t tx;
     uint16_t rx;
@@ -168,7 +185,7 @@ int main(void)
     // uint16_t set_reg = 0b01000000000 | 0b00000110000 | 0b00000001000;
     // uint16_t set_reg = (CR1_OC_ADJ_SET_24 | CR1_OCP_MODE_DISABLED | CR1_PWM_MODE_3);
     uint16_t set_reg = (CR1_OC_ADJ_SET_7 | CR1_PWM_MODE_3);
-    pin_set(EN_GATE_Port, EN_GATE_Pin);
+    // pin_set(ENABLE_Port, ENABLE_Pin);
     myDelay(100);
     drv_write(&drv, DRV_CTRL_1, set_reg);
     printf("\nEnabled DRV8303\n");
@@ -184,6 +201,11 @@ int main(void)
     printf("Control register 1\t");  print_reg(rx, 16);
     rx = drv_read(&drv, DRV_CTRL_2);
     printf("Control register 2\t");  print_reg(rx, 16);
+    if (rx!= 0b0011001100110011){
+        while(1){
+            blink_fault();
+        }
+    }
     myDelay(10);
     // rx = drv_read(0x03);
     // printf("Control register 2\t");  print_reg(rx, 16);
@@ -327,13 +349,13 @@ static void GPIO_Init(void)
     RCC->APB2ENR |= RCC_APB2ENR_IOPCEN; // enable GPIOC
     RCC->APB2ENR |= RCC_APB2ENR_IOPDEN; // enable GPIOD
 
-    pin_mode(     nOCTW_Port, nOCTW_Pin, GPIO_IN_PULL);
-    pin_pullmode( nOCTW_Port, nOCTW_Pin, GPIO_PULLUP);
+    // pin_mode(     nOCTW_Port, nOCTW_Pin, GPIO_IN_PULL);
+    // pin_pullmode( nOCTW_Port, nOCTW_Pin, GPIO_PULLUP);
     pin_mode(     nFAULT_Port, nFAULT_Pin, GPIO_IN_PULL);
     pin_pullmode( nFAULT_Port, nFAULT_Pin, GPIO_PULLUP);
     
-    pin_mode(DC_CAL_Port,  DC_CAL_Pin,  GPIO_OUT_PP);
-    pin_mode(EN_GATE_Port, EN_GATE_Pin, GPIO_OUT_PP);
+    pin_mode(CAL_Port,  CAL_Pin,  GPIO_OUT_PP);
+    pin_mode(ENABLE_Port, ENABLE_Pin, GPIO_OUT_PP);
     pin_mode(INH_A_Port,   INH_A_Pin,   GPIO_AF_PP);
     pin_mode(INH_B_Port,   INH_B_Pin,   GPIO_AF_PP);
     pin_mode(INH_C_Port,   INH_C_Pin,   GPIO_AF_PP);
@@ -349,13 +371,15 @@ static void GPIO_Init(void)
     pin_mode(SPI_PORT, SPI_Pin_MOSI, GPIO_AF_PP);  // MOSI
 
     // setup GPIO pins for USART1
-    pin_mode(USART1_PORT, USART_Pin_RX, GPIO_IN_FL); // RX PB7
-    pin_mode(USART1_PORT, USART_Pin_TX, GPIO_AF_PP); // TX PB6
+    pin_mode(USART3_PORT, USART_Pin_RX, GPIO_IN_FL); // RX PB7
+    pin_mode(USART3_PORT, USART_Pin_TX, GPIO_AF_PP); // TX PB6
 
     // setup GPIO pins for ADC1
     pin_mode(ASENSE_Port, ASENSE_Pin, GPIO_IN_AN);
     pin_mode(BSENSE_Port, BSENSE_Pin, GPIO_IN_AN);
     pin_mode(CSENSE_Port, CSENSE_Pin, GPIO_IN_AN);
-    pin_mode(SO1_Port,    SO1_Pin,    GPIO_IN_AN);
-    pin_mode(SO2_Port,    SO2_Pin,    GPIO_IN_AN);
+    pin_mode(SOA_Port,    SOA_Pin,    GPIO_IN_AN);
+    pin_mode(SOB_Port,    SOB_Pin,    GPIO_IN_AN);
+    pin_mode(SOC_Port,    SOC_Pin,    GPIO_IN_AN);
+    // pin_mode(GPIOB, 3, GPIO_AF_PP);
 }

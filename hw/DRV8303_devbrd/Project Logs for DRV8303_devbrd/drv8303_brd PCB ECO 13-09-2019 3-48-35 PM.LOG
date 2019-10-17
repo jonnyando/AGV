@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=VBUS Pin=C10-1
+Removed Pin From Net: NetName=GND Pin=C10-2
+Removed Pin From Net: NetName=GND Pin=C11-2
+Removed Pin From Net: NetName=GND Pin=P3-5
+Removed Pin From Net: NetName=VBUS Pin=U4-1
+Removed Pin From Net: NetName=GND Pin=U4-2
+Removed Pin From Net: NetName=VBUS Pin=U4-3
+Removed Member From Class: ClassName=TopLevel Member=C10
+Removed Member From Class: ClassName=TopLevel Member=C11
+Removed Member From Class: ClassName=STM32 Member=P3
+Removed Member From Class: ClassName=TopLevel Member=U4

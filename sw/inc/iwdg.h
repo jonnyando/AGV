@@ -13,7 +13,7 @@
 
 void watchdog_reload(void);
 void watchdog_start(void);
-void watchdog_set_prescaler(uint8_t pr_val);
+void watchdog_set_prescaler(uint16_t pr_val);
 void watchdog_set_reload_reg(uint16_t rr_val);
 
 #endif // endif __IWDG_H__

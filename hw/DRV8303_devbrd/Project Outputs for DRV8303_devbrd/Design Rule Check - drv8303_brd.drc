@@ -1,11 +1,10 @@
 Protel Design System Design Rule Check
 PCB File : C:\Users\Jon\Documents\AGV\hw\DRV8303_devbrd\drv8303_brd.PcbDoc
-Date     : 15/02/2019
-Time     : 2:51:12 PM
+Date     : 17/09/2019
+Time     : 3:20:39 PM
 
-Processing Rule : Clearance Constraint (Gap=0.152mm) (All),(All)
-   Violation between Clearance Constraint: (0.123mm < 0.152mm) Between Track (45.85mm,79.9mm)(47.3mm,79.9mm) on Top Layer And Via (46.9mm,79.4mm) from Top Layer to Bottom Layer 
-Rule Violations :1
+Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
+Rule Violations :0
 
 Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
 Rule Violations :0
@@ -16,69 +15,89 @@ Rule Violations :0
 Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
 Rule Violations :0
 
-Processing Rule : Width Constraint (Min=0.152mm) (Max=2.54mm) (Preferred=0.254mm) (All)
+Processing Rule : Width Constraint (Min=6mil) (Max=100mil) (Preferred=8mil) (All)
 Rule Violations :0
 
-Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)
 Rule Violations :0
 
-Processing Rule : Hole Size Constraint (Min=0.3mm) (Max=10mm) (All)
-   Violation between Hole Size Constraint: (0.2mm < 0.3mm) Via (44.9mm,78.984mm) from Top Layer to Bottom Layer Actual Hole Size = 0.2mm
-   Violation between Hole Size Constraint: (0.2mm < 0.3mm) Via (44.9mm,79.816mm) from Top Layer to Bottom Layer Actual Hole Size = 0.2mm
-Rule Violations :2
-
-Processing Rule : Hole To Hole Clearance (Gap=0.127mm) (All),(All)
+Processing Rule : Hole Size Constraint (Min=11.811mil) (Max=393.701mil) (All)
 Rule Violations :0
 
-Processing Rule : Minimum Solder Mask Sliver (Gap=0.089mm) (All),(All)
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-1(43.95mm,80.4mm) on Top Layer And Pad U3-11(44.9mm,79.4mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-1(43.95mm,80.4mm) on Top Layer And Pad U3-2(43.95mm,79.9mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-10(45.85mm,80.4mm) on Top Layer And Pad U3-11(44.9mm,79.4mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-10(45.85mm,80.4mm) on Top Layer And Pad U3-9(45.85mm,79.9mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-2(43.95mm,79.9mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-3(43.95mm,79.4mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-4(43.95mm,78.9mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-5(43.95mm,78.4mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-6(45.85mm,78.4mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-7(45.85mm,78.9mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-8(45.85mm,79.4mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.077mm < 0.089mm) Between Pad U3-11(44.9mm,79.4mm) on Top Layer And Pad U3-9(45.85mm,79.9mm) on Top Layer [Top Solder] Mask Sliver [0.077mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-2(43.95mm,79.9mm) on Top Layer And Pad U3-3(43.95mm,79.4mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-3(43.95mm,79.4mm) on Top Layer And Pad U3-4(43.95mm,78.9mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-4(43.95mm,78.9mm) on Top Layer And Pad U3-5(43.95mm,78.4mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-6(45.85mm,78.4mm) on Top Layer And Pad U3-7(45.85mm,78.9mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-7(45.85mm,78.9mm) on Top Layer And Pad U3-8(45.85mm,79.4mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-   Violation between Minimum Solder Mask Sliver Constraint: (0.047mm < 0.089mm) Between Pad U3-8(45.85mm,79.4mm) on Top Layer And Pad U3-9(45.85mm,79.9mm) on Top Layer [Top Solder] Mask Sliver [0.047mm]
-Rule Violations :18
-
-Processing Rule : Silk To Solder Mask (Clearance=0.127mm) (IsPad),(All)
+Processing Rule : Hole To Hole Clearance (Gap=5mil) (All),(All)
 Rule Violations :0
 
-Processing Rule : Silk to Silk (Clearance=0.127mm) (All),(All)
-   Violation between Silk To Silk Clearance Constraint: (Collision < 0.127mm) Between Text "C7" (70.675mm,51.371mm) on Top Overlay And Text "D12" (68.312mm,49.214mm) on Top Overlay Silk Text to Silk Clearance [0mm]
-   Violation between Silk To Silk Clearance Constraint: (Collision < 0.127mm) Between Text "C8" (68.135mm,51.371mm) on Top Overlay And Text "D12" (68.312mm,49.214mm) on Top Overlay Silk Text to Silk Clearance [0mm]
-   Violation between Silk To Silk Clearance Constraint: (0.031mm < 0.127mm) Between Text "R23" (50.292mm,77.47mm) on Top Overlay And Text "R27" (47.4mm,74.9mm) on Top Overlay Silk Text to Silk Clearance [0.031mm]
-Rule Violations :3
+Processing Rule : Minimum Solder Mask Sliver (Gap=3.5mil) (All),(All)
+Rule Violations :0
 
-Processing Rule : Net Antennae (Tolerance=0mm) (All)
-   Violation between Net Antennae: Via (79.9mm,85.9mm) from Top Layer to Bottom Layer 
+Processing Rule : Silk To Solder Mask (Clearance=5mil) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (3.89mil < 5mil) Between Pad C33-2(2421.26mil,2767.716mil) on Top Layer And Text "C34" (2440.945mil,2783.465mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.89mil]
 Rule Violations :1
 
-Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Processing Rule : Silk to Silk (Clearance=5mil) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (2.063mil < 5mil) Between Text "7" (3287.087mil,2812.441mil) on Top Overlay And Track (3257.087mil,2822.441mil)(3457.087mil,2822.441mil) on Top Overlay Silk Text to Silk Clearance [2.063mil]
+   Violation between Silk To Silk Clearance Constraint: (2.063mil < 5mil) Between Text "8" (3387.087mil,2812.441mil) on Top Overlay And Track (3257.087mil,2822.441mil)(3457.087mil,2822.441mil) on Top Overlay Silk Text to Silk Clearance [2.063mil]
+   Violation between Silk To Silk Clearance Constraint: (3.652mil < 5mil) Between Text "C17" (2858.268mil,3011.811mil) on Top Overlay And Text "C35" (2787.402mil,2862.205mil) on Top Overlay Silk Text to Silk Clearance [3.652mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 5mil) Between Text "C31" (2366.142mil,2736.22mil) on Top Overlay And Text "C32" (2322.827mil,2736.218mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 5mil) Between Text "C31" (2366.142mil,2736.22mil) on Top Overlay And Text "C33" (2397.638mil,2736.22mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 5mil) Between Text "C33" (2397.638mil,2736.22mil) on Top Overlay And Text "C34" (2440.945mil,2783.465mil) on Top Overlay Silk Text to Silk Clearance [0mil]
+Rule Violations :6
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
 Rule Violations :0
 
-Waived Violations Of Rule : Minimum Solder Mask Sliver (Gap=0.089mm) (All),(All)
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (65.55mm,59.581mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:55:32 PM
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (65.55mm,63.482mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:55:38 PM
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (66.85mm,59.581mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:55:42 PM
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (66.85mm,63.482mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:55:47 PM
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (68.151mm,59.581mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:56:02 PM
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (68.151mm,63.482mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:55:51 PM
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (69.451mm,59.581mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:55:58 PM
-   Waived Violation between Minimum Solder Mask Sliver Constraint: (0.06mm < 0.089mm) Between Area Fill (65.291mm,59.792mm) (69.71mm,63.271mm) on Top Solder And Via (69.451mm,63.482mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.06mm]Waived by Jon Anderson at 25/10/2018 2:55:54 PM
-Waived Violations :8
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Waived Violations Of Rule : Clearance Constraint (Gap=6mil) (All),(All)
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R25-1(2153.543mil,2305.118mil) on Top Layer And Pad R25-3(2153.543mil,2317.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:07:15 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R25-1(2153.543mil,2305.118mil) on Top Layer And Track (2153.543mil,2317.205mil)(2153.543mil,2330.709mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:07:20 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R25-1(2153.543mil,2305.118mil) on Top Layer And Track (2153.543mil,2330.709mil)(2160.59mil,2337.756mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:07:27 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R25-2(2153.543mil,2419.291mil) on Top Layer And Pad R25-4(2153.543mil,2407.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:06:52 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R25-2(2153.543mil,2419.291mil) on Top Layer And Track (2153.543mil,2389.764mil)(2153.543mil,2407.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:06:26 PMshunt
+   Waived Violation between Clearance Constraint: (2.89mil < 6mil) Between Pad R25-2(2153.543mil,2419.291mil) on Top Layer And Track (2153.543mil,2389.764mil)(2156.654mil,2386.653mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:06:38 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R30-1(2633.858mil,2305.118mil) on Top Layer And Pad R30-3(2633.858mil,2317.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:20:30 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R30-1(2633.858mil,2305.118mil) on Top Layer And Track (2625.984mil,2338.583mil)(2633.858mil,2330.709mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:20:20 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R30-1(2633.858mil,2305.118mil) on Top Layer And Track (2633.858mil,2317.205mil)(2633.858mil,2330.709mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:20:25 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R30-2(2633.858mil,2419.291mil) on Top Layer And Pad R30-4(2633.858mil,2407.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:20:13 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R30-2(2633.858mil,2419.291mil) on Top Layer And Track (2622.047mil,2385.827mil)(2633.858mil,2397.638mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:20:03 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R30-2(2633.858mil,2419.291mil) on Top Layer And Track (2633.858mil,2397.638mil)(2633.858mil,2407.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:20:08 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R31-1(3114.173mil,2305.118mil) on Top Layer And Pad R31-3(3114.173mil,2317.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:19:44 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R31-1(3114.173mil,2305.118mil) on Top Layer And Track (3098.425mil,2342.52mil)(3114.173mil,2326.772mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:19:54 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R31-1(3114.173mil,2305.118mil) on Top Layer And Track (3114.173mil,2317.205mil)(3114.173mil,2326.772mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:19:49 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R31-2(3114.173mil,2419.291mil) on Top Layer And Pad R31-4(3114.173mil,2407.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:19:25 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R31-2(3114.173mil,2419.291mil) on Top Layer And Track (3098.425mil,2385.827mil)(3114.173mil,2401.575mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:19:30 PMshunt
+   Waived Violation between Clearance Constraint: (Collision < 6mil) Between Pad R31-2(3114.173mil,2419.291mil) on Top Layer And Track (3114.173mil,2401.575mil)(3114.173mil,2407.205mil) on Top Layer Waived by Jon Anderson at 17/09/2019 3:19:36 PMshunt
+Waived Violations :18
+
+Waived Violations Of Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+   Waived Violation between Short-Circuit Constraint: Between Pad R25-1(2153.543mil,2305.118mil) on Top Layer And Pad R25-3(2153.543mil,2317.205mil) on Top Layer Location : [X = 2153.543mil][Y = 2317.205mil]Waived by Jon Anderson at 17/09/2019 3:08:17 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R25-1(2153.543mil,2305.118mil) on Top Layer And Track (2153.543mil,2317.205mil)(2153.543mil,2330.709mil) on Top Layer Location : [X = 2153.543mil][Y = 2320.441mil]Waived by Jon Anderson at 17/09/2019 3:07:33 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R25-1(2153.543mil,2305.118mil) on Top Layer And Track (2153.543mil,2330.709mil)(2160.59mil,2337.756mil) on Top Layer Location : [X = 2153.543mil][Y = 2327.193mil]Waived by Jon Anderson at 17/09/2019 3:07:41 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R25-2(2153.543mil,2419.291mil) on Top Layer And Pad R25-4(2153.543mil,2407.205mil) on Top Layer Location : [X = 2153.543mil][Y = 2407.205mil]Waived by Jon Anderson at 17/09/2019 3:05:42 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R25-2(2153.543mil,2419.291mil) on Top Layer And Track (2153.543mil,2389.764mil)(2153.543mil,2407.205mil) on Top Layer Location : [X = 2153.543mil][Y = 2403.968mil]Waived by Jon Anderson at 17/09/2019 3:04:37 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R30-1(2633.858mil,2305.118mil) on Top Layer And Pad R30-3(2633.858mil,2317.205mil) on Top Layer Location : [X = 2633.858mil][Y = 2317.205mil]Waived by Jon Anderson at 17/09/2019 3:18:32 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R30-1(2633.858mil,2305.118mil) on Top Layer And Track (2625.984mil,2338.583mil)(2633.858mil,2330.709mil) on Top Layer Location : [X = 2633.858mil][Y = 2327.193mil]Waived by Jon Anderson at 17/09/2019 3:18:37 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R30-1(2633.858mil,2305.118mil) on Top Layer And Track (2633.858mil,2317.205mil)(2633.858mil,2330.709mil) on Top Layer Location : [X = 2633.858mil][Y = 2320.441mil]Waived by Jon Anderson at 17/09/2019 3:18:42 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R30-2(2633.858mil,2419.291mil) on Top Layer And Pad R30-4(2633.858mil,2407.205mil) on Top Layer Location : [X = 2633.858mil][Y = 2407.205mil]Waived by Jon Anderson at 17/09/2019 3:18:08 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R30-2(2633.858mil,2419.291mil) on Top Layer And Track (2622.047mil,2385.827mil)(2633.858mil,2397.638mil) on Top Layer Location : [X = 2632.521mil][Y = 2399.185mil]Waived by Jon Anderson at 17/09/2019 3:18:12 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R30-2(2633.858mil,2419.291mil) on Top Layer And Track (2633.858mil,2397.638mil)(2633.858mil,2407.205mil) on Top Layer Location : [X = 2633.858mil][Y = 2403.968mil]Waived by Jon Anderson at 17/09/2019 3:18:19 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R31-1(3114.173mil,2305.118mil) on Top Layer And Pad R31-3(3114.173mil,2317.205mil) on Top Layer Location : [X = 3114.173mil][Y = 2317.205mil]Waived by Jon Anderson at 17/09/2019 3:19:08 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R31-1(3114.173mil,2305.118mil) on Top Layer And Track (3098.425mil,2342.52mil)(3114.173mil,2326.772mil) on Top Layer Location : [X = 3112.836mil][Y = 2325.224mil]Waived by Jon Anderson at 17/09/2019 3:19:13 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R31-1(3114.173mil,2305.118mil) on Top Layer And Track (3114.173mil,2317.205mil)(3114.173mil,2326.772mil) on Top Layer Location : [X = 3114.173mil][Y = 2320.441mil]Waived by Jon Anderson at 17/09/2019 3:19:17 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R31-2(3114.173mil,2419.291mil) on Top Layer And Pad R31-4(3114.173mil,2407.205mil) on Top Layer Location : [X = 3114.173mil][Y = 2407.205mil]Waived by Jon Anderson at 17/09/2019 3:19:02 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R31-2(3114.173mil,2419.291mil) on Top Layer And Track (3098.425mil,2385.827mil)(3114.173mil,2401.575mil) on Top Layer Location : [X = 3110.868mil][Y = 2401.153mil]Waived by Jon Anderson at 17/09/2019 3:18:51 PMshunt
+   Waived Violation between Short-Circuit Constraint: Between Pad R31-2(3114.173mil,2419.291mil) on Top Layer And Track (3114.173mil,2401.575mil)(3114.173mil,2407.205mil) on Top Layer Location : [X = 3114.173mil][Y = 2404.39mil]Waived by Jon Anderson at 17/09/2019 3:18:56 PMshunt
+Waived Violations :17
+
+Waived Violations Of Rule : Minimum Solder Mask Sliver (Gap=3.5mil) (All),(All)
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (3.252mil < 3.5mil) Between Pad U6-1(2532.48mil,2816.929mil) on Top Layer And Pad U6-40(2561.024mil,2845.472mil) on Top Layer [Top Solder] Mask Sliver [3.252mil]Waived by Jon Anderson at 17/09/2019 3:04:16 PM
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (3.252mil < 3.5mil) Between Pad U6-10(2532.48mil,2639.764mil) on Top Layer And Pad U6-11(2561.024mil,2611.22mil) on Top Layer [Top Solder] Mask Sliver [3.252mil]Waived by Jon Anderson at 17/09/2019 3:03:43 PM
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (3.252mil < 3.5mil) Between Pad U6-20(2738.189mil,2611.22mil) on Top Layer And Pad U6-21(2766.732mil,2639.764mil) on Top Layer [Top Solder] Mask Sliver [3.252mil]Waived by Jon Anderson at 17/09/2019 3:03:55 PM
+   Waived Violation between Minimum Solder Mask Sliver Constraint: (3.252mil < 3.5mil) Between Pad U6-30(2766.732mil,2816.929mil) on Top Layer And Pad U6-31(2738.189mil,2845.472mil) on Top Layer [Top Solder] Mask Sliver [3.252mil]Waived by Jon Anderson at 17/09/2019 3:04:09 PM
+Waived Violations :4
 
 
-Violations Detected : 25
-Waived Violations : 8
+Violations Detected : 7
+Waived Violations : 39
 Time Elapsed        : 00:00:01

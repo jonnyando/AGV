@@ -1,0 +1,27 @@
+Added Component: Designator=C42(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C43(electrolytic)
+Add component. Clean all parameters for all variants
+Added Component: Designator=C44(electrolytic)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=VBUS Pin=C42-1
+Added Pin To Net: NetName=GND Pin=C42-2
+Added Pin To Net: NetName=VBUS Pin=C43-1
+Added Pin To Net: NetName=GND Pin=C43-2
+Added Pin To Net: NetName=VBUS Pin=C44-1
+Added Pin To Net: NetName=GND Pin=C44-2
+Added Pin To Net: NetName=UART3_Rx Pin=P1-1
+Added Pin To Net: NetName=UART3_Tx Pin=P1-2
+Added Pin To Net: NetName=ENABLE Pin=R14-1
+Change Net Name : Old Net Name=SH_A New Net Name=SHA
+Change Net Name : Old Net Name=SH_B New Net Name=SHB
+Change Net Name : Old Net Name=SH_C New Net Name=SHC
+Change Net Name : Old Net Name=TIM1_CH1 New Net Name=INHC
+Change Net Name : Old Net Name=TIM1_CH1N New Net Name=INLC
+Change Net Name : Old Net Name=TIM1_CH2 New Net Name=INHB
+Change Net Name : Old Net Name=TIM1_CH2N New Net Name=INLB
+Change Net Name : Old Net Name=TIM1_CH3 New Net Name=INHA
+Change Net Name : Old Net Name=TIM1_CH3N New Net Name=INLA
+Added Member To Class: ClassName=MOSFETS Member=Component C42 100uF
+Added Member To Class: ClassName=MOSFETS Member=Component C43 100uF
+Added Member To Class: ClassName=MOSFETS Member=Component C44 100uF

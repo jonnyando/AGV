@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=LED_FAULT Pin=U2-22
+Removed Pin From Net: NetName=ENC_I Pin=U2-45
+Added Pin To Net: NetName=ENC_I Pin=U2-22
+Added Pin To Net: NetName=LED_FAULT Pin=U2-45
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF

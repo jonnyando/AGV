@@ -1,0 +1,6 @@
+Added Component: Designator=D17(SOT23)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=VBUS Pin=D17-2
+Added Pin To Net: NetName=GND Pin=D17-3
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF
+Added Member To Class: ClassName=Power Member=Component D17 TVS

@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=TIM1_CH1 Pin=U1-13
+Removed Pin From Net: NetName=TIM1_CH1N Pin=U1-14
+Removed Pin From Net: NetName=TIM1_CH3 Pin=U1-17
+Removed Pin From Net: NetName=TIM1_CH3N Pin=U1-18
+Added Pin To Net: NetName=TIM1_CH3 Pin=U1-13
+Added Pin To Net: NetName=TIM1_CH3N Pin=U1-14
+Added Pin To Net: NetName=TIM1_CH1 Pin=U1-17
+Added Pin To Net: NetName=TIM1_CH1N Pin=U1-18
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF

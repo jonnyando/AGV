@@ -1,0 +1,40 @@
+Removed Pin From Net: NetName=SH_C Pin=P4-1
+Removed Pin From Net: NetName=SH_A Pin=P4-3
+Removed Member From Class: ClassName=pour_over Member=Q1
+Removed Member From Class: ClassName=pour_over Member=Q2
+Removed Member From Class: ClassName=pour_over Member=Q4
+Removed Member From Class: ClassName=pour_over Member=Q5
+Removed Member From Class: ClassName=pour_over Member=Q7
+Removed Member From Class: ClassName=pour_over Member=Q10
+Removed Member From Class: ClassName=pour_over Member=Q11
+Removed Member From Class: ClassName=pour_over Member=Q12
+Change component parameters: Designator = "Q1"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\KONUNZSE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q2"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\GKJZNBDF"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q3"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\IEZHOOKA"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q4"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\HEWXWKKX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q5"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\DBCMKTXB"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q6"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\YKOCTAZR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q7"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\NDYNCVVN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q8"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\ZDFXTDZS"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q9"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\DGYLTJNZ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q10"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\IMHTQEWR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q11"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\SFVZNPLJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters: Designator = "Q12"; Footprint = "PQFN8_5x6"; UniqueID = "\MZYISTOO\JHKBJQSW"
+Change component parameters. Clean all parameters for all variants
+Added Pin To Net: NetName=SH_A Pin=P4-1
+Added Pin To Net: NetName=SH_C Pin=P4-3
+Added Member To Class: ClassName=MOSFETS Member=Component Q3 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q6 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q8 FDMS7682
+Added Member To Class: ClassName=MOSFETS Member=Component Q9 FDMS7682

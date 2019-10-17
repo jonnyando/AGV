@@ -45,13 +45,13 @@ void SPI_Transfer(SPI_TypeDef *spi, uint16_t data){
     // Wait until SPI is not busy anymore
     while (spi->SR & (SPI_SR_BSY)){}
 
-    pin_reset(GPIOA, SPI_CS_PIN);
+    pin_reset(SPI_PORT, SPI_Pin_NSS);
     // Write data to be transmitted to the SPI data register
 	spi->DR = data;
 
 	while (!(spi->SR & (SPI_SR_TXE))){}
     while (spi->SR & (SPI_SR_BSY)){}
-    pin_set(GPIOA, SPI_CS_PIN);
+    pin_set(SPI_PORT, SPI_Pin_NSS);
     spi->DR;
 }
 
@@ -62,7 +62,7 @@ uint16_t SPI_Transcieve(SPI_TypeDef *spi, uint16_t TxData){
     // Wait until SPI is not busy anymore
     SPI_Transfer(spi, TxData);
 
-    pin_reset(GPIOA, SPI_CS_PIN);
+    pin_reset(SPI_PORT, SPI_CS_PIN);
     uint16_t timeout = 10000;
     while(!(spi->SR & SPI_SR_RXNE)){
         if(timeout == 0){
@@ -75,7 +75,7 @@ uint16_t SPI_Transcieve(SPI_TypeDef *spi, uint16_t TxData){
     RxData = spi->DR;
 
     while (spi->SR & (SPI_SR_BSY)){}
-    pin_set(GPIOA, SPI_CS_PIN);
+    pin_set(SPI_PORT, SPI_Pin_NSS);
     // printf("SPI1->SR\t");  print_reg(SPI1->SR, 16);
 
     return RxData;

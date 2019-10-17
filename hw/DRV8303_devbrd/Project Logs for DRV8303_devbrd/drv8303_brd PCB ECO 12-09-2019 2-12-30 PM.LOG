@@ -1,0 +1,2 @@
+Removed Pin From Net: NetName=SPI.SCLK Pin=U6-28
+Removed Pin From Net: NetName=SPI.nSCS Pin=U6-29

@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=VBUS Pin=R2-1
+Removed Pin From Net: NetName=NetD4_2 Pin=R2-2
+Change Component Footprint: Designator=R2 Old Footprint=RESC0603(1608)_N New Footprint=RESC0402(1005)_N
+Change Component Comment : Designator=R2 Old Comment=1KR New Comment=1K
+Change component parameters: Designator = "R2"; Footprint = "RESC0402(1005)_N"; UniqueID = "\YSDNYUMM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Digikey Part Number"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Mounting Technology"; Value = "Surface Mount"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Part"; Value = "res_generic"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartNumber"; Value = ""; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "PartValue"; Value = "1K"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD4_2 Pin=R2-1
+Added Pin To Net: NetName=VBUS Pin=R2-2

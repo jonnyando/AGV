@@ -1,0 +1,24 @@
+Removed Pin From Net: NetName=3v3 Pin=P1-1
+Removed Pin From Net: NetName=SWCLK Pin=P1-2
+Removed Pin From Net: NetName=SWDIO Pin=P1-3
+Removed Pin From Net: NetName=GND Pin=P1-4
+Removed Pin From Net: NetName=3v3 Pin=P2-1
+Removed Pin From Net: NetName=UART1_Rx Pin=P2-2
+Removed Pin From Net: NetName=UART1_Tx Pin=P2-3
+Removed Pin From Net: NetName=GND Pin=P2-4
+Removed Member From Class: ClassName=STM32 Member=P2
+Change Component Footprint: Designator=P1 Old Footprint=HDR1X4 New Footprint=HDR2X4
+Change Component Comment : Designator=P1 Old Comment=Header 4 New Comment=Header 4X2
+Added Pin To Net: NetName=UART1_Rx Pin=P1-1
+Added Pin To Net: NetName=UART1_Tx Pin=P1-2
+Added Pin To Net: NetName=nRST Pin=P1-4
+Added Pin To Net: NetName=SWDIO Pin=P1-5
+Added Pin To Net: NetName=SWCLK Pin=P1-6
+Added Pin To Net: NetName=GND Pin=P1-7
+Added Pin To Net: NetName=3v3 Pin=P1-8
+Added Pin To Net: NetName=SWO Pin=P1-3
+Added Pin To Net: NetName=SWO Pin=U2-39
+Added Net: Name=SWO
+Added Member To Class: ClassName=Power Member=Component C26 2.2uF
+Added Member To Class: ClassName=Gate Driver Member=Component P4 ScrewTerm_3
+Added Member To Class: ClassName=pour_over Member=Component P4 ScrewTerm_3

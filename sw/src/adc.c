@@ -15,7 +15,7 @@ void ADC1_Init(void){
     ADC1->SMPR2 |= (uint32_t)(0b111 << ADC_SMPR2_SMP8_Pos);
     ADC1->SMPR2 |= (uint32_t)(0b111 << ADC_SMPR2_SMP9_Pos);
 
-    ADC1->SQR1 |= (4 << ADC_SQR1_L);
+    ADC1->SQR1 |= ADC_SQR2_SQ7_2;
     ADC1->SQR3 |= (ADC_SQR3_SQ1_0)\
                 | (ADC_SQR3_SQ2_0 | ADC_SQR3_SQ2_1)\
                 | (ADC_SQR3_SQ3_0 | ADC_SQR3_SQ3_1 | ADC_SQR3_SQ3_2)\
